@@ -28,31 +28,22 @@ def SNR(signal, signal_bin):
     signal_power = 0
     noise_floor = 0
 
-    fft_output = np.fft.rfft(signal)
-
-    for i in range(0, int(len(signal)/2) + 1):
-        if i == 0:
-            continue
-        elif i == signal_bin:
-            signal_power += np.abs(fft_output[i]) ** 2
-        else:
-            noise_floor += np.abs(fft_output[i]) ** 2
+    fft_output = np.abs(np.fft.rfft(signal))
+    signal_power_vector = fft_output**2
+    
+    signal_power = signal_power_vector[signal_bin]
+    noise_floor = np.sum(np.concatenate((signal_power_vector[1:signal_bin], signal_power_vector[1+signal_bin:])))
 
     return 10 * np.log10(signal_power / noise_floor)
 
+# Returns dB relative to our carrier signal. Larger Number is a cleaner signal
 def SFDR(signal, signal_bin):
     signal_amplitude = 0
     spur_amplitude = 0
 
-    fft_output = np.fft.rfft(signal)
-
-    for i in range(0, int(len(signal)/2) + 1):
-        if i == 0:
-            continue
-        elif i == signal_bin:
-            signal_amplitude += np.abs(fft_output[i])
-        else:
-            spur_amplitude = max(spur_amplitude, np.abs(fft_output[i]))
+    fft_output = np.abs(np.fft.rfft(signal))
+    signal_amplitude = fft_output[signal_bin]
+    spur_amplitude = np.max(np.concatenate((fft_output[1:signal_bin] , fft_output[1+signal_bin:])))
 
     return 20 * np.log10(signal_amplitude / spur_amplitude)
 
