@@ -17,17 +17,19 @@ def mixer(signal, f_desired, fs, N, W, P):
 def main():
     fs = 125e6
     N = 2**16
-    N_fft = 2**15
     W = 32 # 32 bit accumulator word
     P = 15 # we will assume the P value we got from the NCO testing
 
     signal_bin = 3456
-    f_desired = signal_bin * fs / N_fft
+    desired_bin = 5698
+    f_signal = signal_bin * fs / N
+    f_desired = desired_bin * fs / N
 
     signal = signal_source.sine(fs, N, 2, bin=signal_bin)
     I, Q = mixer(signal, f_desired, fs, N, W, P)
 
-    fft_output = np.fft.fft(I + np.i0 * Q)
+    helpers.assert_downconversion_tones(I, Q, f_signal, f_desired, fs, N)
+
     return
 
 if __name__ == '__main__':

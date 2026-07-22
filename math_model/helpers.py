@@ -47,6 +47,34 @@ def SFDR(signal, signal_bin):
 
     return 20 * np.log10(signal_amplitude / spur_amplitude)
 
+def tone_bin(f, fs, N):
+    return int(round((f * N / fs) % N))
+
+def assert_downconversion_tones(I, Q, f_in, f_nco, fs, N):
+    diff_bin = tone_bin(f_in - f_nco, fs, N)
+    sum_bin = tone_bin(-1 * (f_in + f_nco), fs, N)
+
+    fft_mag = np.abs(np.fft.fft(I + 1j * Q))
+
+    assert(np.isclose(fft_mag[diff_bin], fft_mag[sum_bin], rtol=0.001))
+
+    # do sfdr
+    diff_amplitude = fft_mag[diff_bin]
+    sum_amplitude = fft_mag[sum_bin]
+    fft_mag[diff_bin] = 0
+    fft_mag[sum_bin] = 0
+
+    spur_amplitude = np.max(fft_mag)
+
+    diff_sfdr = 20 * np.log10(diff_amplitude / spur_amplitude)
+    sum_sfdr = 20 * np.log10(sum_amplitude / spur_amplitude)
+
+    min_sfdr = 70
+    assert diff_sfdr > min_sfdr, f"{diff_sfdr} < {min_sfdr}"
+    assert sum_sfdr > min_sfdr, f"{sum_sfdr} < {min_sfdr}"
+
+    return
+
 
 def main():
 
