@@ -46,15 +46,29 @@ def CIC(signal, N, R, M, num_stages):
 
 def main():
     fs = 125e6
-    N = 2**16
-    signal_bin = 3456
+
     num_stages = 3
     decimation_factor = 625
     differential_delay = 1
 
-    signal = signal_source.sine(fs, N, 1, bin=signal_bin)
+    N_out = 4096
+    N_guard = 64 # we will get rid of extra output samples caused by this to remove transient noise
+    N_in = (N_out + N_guard) * decimation_factor
+    signal_bin = 3
+    # to get an exact bin placement, we need to tie the frequency to the output (analysis window) rather than the input
+    f_bin = signal_bin * fs / (N_out * decimation_factor)
 
-    y = CIC(signal, N, decimation_factor, differential_delay, num_stages)
+    signal = signal_source.sine(fs, N_in, 1, frequency=f_bin)
+
+    y = CIC(signal, N_in, decimation_factor, differential_delay, num_stages)
+
+    y = y[N_guard:] # get rid of transient samples
+    print(len(y))
+
+    fft_output = (2 / N_out) * np.abs(np.fft.fft(y))
+    # now validate the signal
+    # test gain = (R*M)^N
+    print(f"Actual bin: {fft_output[signal_bin]}, Expected bin: {(decimation_factor * differential_delay) ** num_stages}")
 
     return
 
