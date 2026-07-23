@@ -1,23 +1,13 @@
 import numpy as np
 import signal_source
+import sys
 
-def integrator(x, N):
-    y = np.zeros(N)
-    y[0] = x[0]
-    for n in range(1, N):    
-        y[n] = y[n-1] + x[n]
-
-    return y
+def integrator(x):
+    return np.cumsum(x)
 
 def comb(x, N, M):
-    y = np.zeros(N)
-    for i in range(0, M):
-        y[i] = x[i]
 
-    for i in range(M, N):
-        y[i] = x[i] - x[i-M]
-
-    return y
+    return x - np.concatenate((np.zeros(M), x[:-1*M]))
 
 def CIC(signal, N, R, M, num_stages):
 
@@ -25,9 +15,9 @@ def CIC(signal, N, R, M, num_stages):
     integrator_stage_output = np.zeros((num_stages, N))
     for i in range(0, num_stages):
         if i == 0:
-            integrator_stage_output[i] = integrator(signal, N)
+            integrator_stage_output[i] = integrator(signal)
         else:
-            integrator_stage_output[i] = integrator(integrator_stage_output[i-1], N)
+            integrator_stage_output[i] = integrator(integrator_stage_output[i-1])
 
     # decimate
     decimator_stage_output = np.zeros(N // R)
@@ -69,6 +59,23 @@ def main():
     # now validate the signal
     # test gain = (R*M)^N
     print(f"Actual bin: {fft_output[signal_bin]}, Expected bin: {(decimation_factor * differential_delay) ** num_stages}")
+    assert(np.isclose(fft_output[signal_bin], (decimation_factor * differential_delay) ** num_stages, rtol=1000000))
+
+    # bin sweep
+    min_error = sys.maxsize * 2 + 1
+    for i in range(1, 512+1):
+        print(f"Iteration: {i}")
+        f_bin = i * fs / (N_out * decimation_factor)
+        signal = signal_source.sine(fs, N_in, 1, frequency=f_bin)
+        y = CIC(signal, N_in, decimation_factor, differential_delay, num_stages)
+        y = y[N_guard:]
+        fft_output = (2 / N_out) * np.abs(np.fft.fft(y))
+
+        bin_amplitude = fft_output[i]
+        expected_amplitude = np.abs(np.sin(np.pi * decimation_factor * differential_delay * f_bin / fs) / np.sin(np.pi * f_bin / fs)) ** num_stages
+        print(f"Actual bin: {bin_amplitude}, Expected bin: {expected_amplitude}")
+        
+
 
     return
 
