@@ -76,6 +76,11 @@ def assert_downconversion_tones(I, Q, f_in, f_nco, fs, N):
     return
 
 
+def quantize(x, bits):
+    value = 2**bits
+    return np.round(value * x).astype(int)
+
+
 def main():
 
     A_signal = 1

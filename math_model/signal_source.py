@@ -1,6 +1,9 @@
 # functions to generate a sinusoid or inject noise/spurs into our signal
 
 import numpy as np
+from helpers import quantize
+
+ADC_BITS = 14
 
 def sine(fs, N, amplitude, frequency = None, bin = None):
     if frequency == None and bin == None:
@@ -10,8 +13,9 @@ def sine(fs, N, amplitude, frequency = None, bin = None):
     if bin != None:
         frequency = bin * fs/N
 
-    return amplitude * np.sin(2 * np.pi * frequency * np.arange(0, N) / fs)
+    return quantize(amplitude * np.sin(2 * np.pi * frequency * np.arange(0, N) / fs), ADC_BITS)
 
+# need to somehow allow this to be quantized. broken right now
 def noisy_sine(fs, N, amplitude, sigma, frequency = None, bin = None):
     return sine(fs, N, amplitude, frequency, bin) + np.random.normal(0, sigma, N)
 
