@@ -38,7 +38,7 @@ def CIC(signal, N, R, M, num_stages):
 def main(args):
     fs = 125e6
 
-    num_stages = 3
+    num_stages = 5
     decimation_factor = 625
     differential_delay = 1
 
