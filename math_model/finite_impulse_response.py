@@ -1,6 +1,12 @@
 # passband - +-25kHz
 # transition band - 25kHz to 75kHzok 
 
+# taps to ensure flatness in the passband:
+# 3 - 140
+# 4 - 170
+# 5 - 211
+# 6 - 282
+
 import scipy.signal as sc
 import numpy as np
 import matplotlib.pyplot as plt
@@ -26,10 +32,10 @@ def main():
     CIC_differential_delay = 1
     FIR_decimation_factor = 4
 
-    num_taps = 140
+    num_taps = 282
 
     N_out = 2**7
-    bin = 3045
+    bin = 3
     f_bin = bin * fs / (N_out * CIC_decimation_factor * FIR_decimation_factor)
     FIR_guard = int(np.ceil((num_taps - 1) / FIR_decimation_factor))
     N_in = (N_out + FIR_guard) * FIR_decimation_factor * CIC_decimation_factor
@@ -56,18 +62,19 @@ def main():
 
     dB_FIR = CIC_amplitude_dB + 20*np.log10(np.abs(h))
 
-    # plt.plot(w, dB_plot)
-    # plt.show()
+    plt.plot(w, dB_FIR)
+    plt.show()
     # plt.savefig("plot.png")
     passband_region = w <= 25000
     print(f"Passband Flatness: {max(dB_FIR[passband_region]) - min(dB_FIR[passband_region])}")
+    assert max(dB_FIR[passband_region]) - min(dB_FIR[passband_region]) < 0.1, "Passband isn't flat enough!"
 
     # put CIC and FIR together
     signal = signal_source.sine(fs, N_in, 1, frequency=f_bin)
     CIC_output = CIC.CIC(signal, N_in, CIC_decimation_factor, CIC_differential_delay, CIC_num_stages)
     FIR_output = FIR(CIC_output, taps, FIR_decimation_factor)
     FIR_output = FIR_output[FIR_guard:]
-
+    FIR_output = FIR_output.astype(np.float64)
     fft_output = (2 / len(FIR_output)) * np.abs(np.fft.fft(FIR_output))
 
     plt.plot(np.arange(0, len(fft_output)), fft_output)
@@ -80,6 +87,7 @@ def main():
     bin_spacing = fs / (N_out * CIC_decimation_factor * FIR_decimation_factor)
     f_range = np.arange(first_null, second_null, bin_spacing)
 
+
     print(f"Expected sweep iterations: {len(f_range)}")
     sweep_db = np.zeros(len(f_range))
     for i, f in enumerate(f_range):
@@ -88,11 +96,11 @@ def main():
         CIC_output = CIC.CIC(signal, N_in, CIC_decimation_factor, CIC_differential_delay, CIC_num_stages)
         FIR_output = FIR(CIC_output, taps, FIR_decimation_factor)
         FIR_output = FIR_output[FIR_guard:]
+        FIR_output = FIR_output.astype(np.float64)
         fft_output = (2 / N_out) * np.abs(np.fft.fft(FIR_output))
-        
         max_amplitude = np.max(fft_output)
         
-        sweep_db[i] = 20 * np.log10(max_amplitude / ((CIC_decimation_factor * CIC_differential_delay) ** CIC_num_stages))
+        sweep_db[i] = 20 * np.log10(max_amplitude / (2**signal_source.ADC_BITS * (CIC_decimation_factor * CIC_differential_delay) ** CIC_num_stages))
 
         print(f"Logging maximums: Max Amplitude: {max_amplitude}")
         

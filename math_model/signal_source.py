@@ -3,7 +3,7 @@
 import numpy as np
 from helpers import quantize
 
-ADC_BITS = 14
+ADC_BITS = 32
 
 def sine(fs, N, amplitude, frequency = None, bin = None):
     if frequency == None and bin == None:

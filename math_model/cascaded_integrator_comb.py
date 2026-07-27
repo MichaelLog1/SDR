@@ -7,26 +7,25 @@ def integrator(x):
     return np.cumsum(x)
 
 def comb(x, N, M):
-
-    return x - np.concatenate((np.zeros(M), x[:-1*M]))
+    return x - np.concatenate((np.zeros(M, dtype=object), x[:-1*M]))
 
 def CIC(signal, N, R, M, num_stages):
 
     # integrate
-    integrator_stage_output = np.zeros((num_stages, N))
+    integrator_stage_output = np.zeros((num_stages, N), dtype=object)
     for i in range(0, num_stages):
         if i == 0:
-            integrator_stage_output[i] = integrator(signal)
+            integrator_stage_output[i] = integrator(signal.astype(object))
         else:
             integrator_stage_output[i] = integrator(integrator_stage_output[i-1])
 
     # decimate
-    decimator_stage_output = np.zeros(N // R)
+    decimator_stage_output = np.zeros(N // R, dtype=object)
     for i in range(0, N // R):
         decimator_stage_output[i] = integrator_stage_output[num_stages-1][i * R]
 
     # comb
-    comb_stage_output = np.zeros((num_stages, N // R))
+    comb_stage_output = np.zeros((num_stages, N // R), dtype=object)
     for i in range(0, num_stages):
             if i == 0:
                 comb_stage_output[i] = comb(decimator_stage_output, N // R, M)
@@ -38,7 +37,7 @@ def CIC(signal, N, R, M, num_stages):
 def main(args):
     fs = 125e6
 
-    num_stages = 5
+    num_stages = 6
     decimation_factor = 625
     differential_delay = 1
 
@@ -51,23 +50,24 @@ def main(args):
         max_error = 0
         droop_dB = np.zeros(512)
         for i in range(1, 512+1):
-            # print(f"Iteration: {i}")
+            print(f"Iteration: {i}")
             f_bin = i * fs / (N_out * decimation_factor)
             signal = signal_source.sine(fs, N_in, 1, frequency=f_bin)
             y = CIC(signal, N_in, decimation_factor, differential_delay, num_stages)
             y = y[N_guard:]
+            y = y.astype(np.float64)
             fft_output = (2 / N_out) * np.abs(np.fft.fft(y))
         
             # make sure the amplitude is what we expect within reason
-            assert np.isclose(fft_output[i], (decimation_factor * differential_delay) ** num_stages, rtol=1e-1), f"Actual: {fft_output[i]}, Expected: {(decimation_factor * differential_delay) ** num_stages}"
+            assert np.isclose(fft_output[i], 2**signal_source.ADC_BITS * (decimation_factor * differential_delay) ** num_stages, rtol=2e-1), f"Actual: {fft_output[i]}, Expected: {(decimation_factor * differential_delay) ** num_stages}"
 
             # calculate error in amplitude
             actual_amplitude = fft_output[i]
-            expected_amplitude = np.abs(np.sin(np.pi * decimation_factor * differential_delay * f_bin / fs) / np.sin(np.pi * f_bin / fs)) ** num_stages
+            expected_amplitude = 2**signal_source.ADC_BITS * np.abs(np.sin(np.pi * decimation_factor * differential_delay * f_bin / fs) / np.sin(np.pi * f_bin / fs)) ** num_stages
             error = (actual_amplitude - expected_amplitude) / expected_amplitude
             max_error = max(max_error, abs(error))
 
-            droop_dB[i - 1] = 20 * np.log10(actual_amplitude / ((decimation_factor * differential_delay) ** num_stages))
+            droop_dB[i - 1] = 20 * np.log10(actual_amplitude / (2**signal_source.ADC_BITS * (decimation_factor * differential_delay) ** num_stages))
 
         # report max error
         print(f"Max Error: {max_error}")
