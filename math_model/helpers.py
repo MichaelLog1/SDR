@@ -36,6 +36,21 @@ def SNR(signal, signal_bin):
 
     return 10 * np.log10(signal_power / noise_floor)
 
+def SNR_complex(signal, signal_bin, image_bin):
+    signal_power = 0
+    noise_floor = 0
+
+    fft_output = np.abs(np.fft.fft(signal))
+    signal_power_vector = fft_output**2
+
+    print(signal_power_vector)
+    signal_power = signal_power_vector[signal_bin]
+    for i in range(0, len(signal_power_vector)):
+        if (i != signal_bin and i != image_bin):
+            noise_floor += signal_power_vector[i]
+
+    return 10 * np.log10(signal_power / noise_floor)
+
 # Returns dB relative to our carrier signal. Larger Number is a cleaner signal
 def SFDR(signal, signal_bin):
     signal_amplitude = 0

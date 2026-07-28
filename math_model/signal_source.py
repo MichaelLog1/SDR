@@ -5,7 +5,7 @@ from helpers import quantize
 
 ADC_BITS = 32
 
-def sine(fs, N, amplitude, frequency = None, bin = None):
+def raw_sine(fs, N, amplitude, frequency = None, bin = None):
     if frequency == None and bin == None:
         raise ValueError("Frequency or bin must be specified.")
 
@@ -13,14 +13,16 @@ def sine(fs, N, amplitude, frequency = None, bin = None):
     if bin != None:
         frequency = bin * fs/N
 
-    return quantize(amplitude * np.sin(2 * np.pi * frequency * np.arange(0, N) / fs), ADC_BITS)
+    return amplitude * np.sin(2 * np.pi * frequency * np.arange(0, N) / fs)
 
-# need to somehow allow this to be quantized. broken right now
+def sine(fs, N, amplitude, frequency = None, bin = None):
+    return quantize(raw_sine(fs, N, amplitude, frequency, bin), ADC_BITS)
+
 def noisy_sine(fs, N, amplitude, sigma, frequency = None, bin = None):
-    return sine(fs, N, amplitude, frequency, bin) + np.random.normal(0, sigma, N)
+    return quantize(raw_sine(fs, N, amplitude, frequency, bin) + np.random.normal(0, sigma, N), ADC_BITS)
 
 def spurious_signal(fs, N, amplitude, amplitude_spur, frequency = None, bin = None, frequency_spur = None, bin_spur = None):
-    return sine(fs, N, amplitude, frequency, bin) + sine(fs, N, amplitude_spur, frequency_spur, bin_spur)
+    return quantize(raw_sine(fs, N, amplitude, frequency, bin) + raw_sine(fs, N, amplitude_spur, frequency_spur, bin_spur), ADC_BITS)
 
 def main():
     return

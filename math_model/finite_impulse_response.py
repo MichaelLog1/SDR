@@ -56,14 +56,16 @@ def main():
     # plt.plot(freq, gain_dB)
     # plt.show()
 
-    taps = sc.firwin2(num_taps, freq, gain, fs=200000)    
+    taps = sc.firwin2(num_taps, freq, gain, fs=200000)
+    # np.savetxt("./analysis_files/taps.txt", taps)
+    print(taps)
     w, h = sc.freqz(taps, fs=200000)
     CIC_amplitude_dB = 20*np.log10((np.sinc(w * CIC_differential_delay * CIC_decimation_factor / fs) / np.sinc(w / fs)) ** CIC_num_stages)
 
     dB_FIR = CIC_amplitude_dB + 20*np.log10(np.abs(h))
 
-    plt.plot(w, dB_FIR)
-    plt.show()
+    # plt.plot(w, dB_FIR)
+    # plt.show()
     # plt.savefig("plot.png")
     passband_region = w <= 25000
     print(f"Passband Flatness: {max(dB_FIR[passband_region]) - min(dB_FIR[passband_region])}")
@@ -77,9 +79,9 @@ def main():
     FIR_output = FIR_output.astype(np.float64)
     fft_output = (2 / len(FIR_output)) * np.abs(np.fft.fft(FIR_output))
 
-    plt.plot(np.arange(0, len(fft_output)), fft_output)
-    #plt.show()
-    plt.savefig("FIR.png")
+    # plt.plot(np.arange(0, len(fft_output)), fft_output)
+    # plt.show()
+    # plt.savefig("FIR.png")
 
     # actual sweep
     first_null = 1 * fs / (CIC_differential_delay * CIC_decimation_factor)
