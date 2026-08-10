@@ -5,7 +5,7 @@
 # From testing, P should be 15, perhaps 14 will be fine.
 
 import numpy as np
-from helpers import SFDR
+from helpers import SFDR, quantize
 import sys
 
 # W - accumulator width
@@ -14,16 +14,17 @@ import sys
 # TODO: Quantize the lookup table elements
 # Currently this is a float implementation, we will need to implement this in fixed point before we impleemnt.
 
-def initialize_lookup_table(W, P):
+def initialize_lookup_table(W, P, bits):
     if P > W:
         raise ValueError("P must be less than W.")
 
     lookup_table_sin = np.sin(2 * np.pi * np.arange(0, 2**P) / 2**P)
     lookup_table_cos = np.cos(2 * np.pi * np.arange(0, 2**P) / 2**P)
-    return lookup_table_sin, lookup_table_cos
 
-def get_phase_sequence(f_desired, fs, N, W, P):
-    sin, cos = initialize_lookup_table(W, P)
+    return quantize(lookup_table_sin, bits), quantize(lookup_table_cos, bits)
+
+def get_phase_sequence(f_desired, fs, N, W, P, bits):
+    sin, cos = initialize_lookup_table(W, P, bits)
 
     M = round(f_desired * (2**W)/fs)
 
@@ -41,6 +42,8 @@ def main():
     fs = 125e6
     N_fft = 2**16
 
+    bits = 16
+
     # sanity test on the desired frequenct math
     bin_range = np.arange(1, N_fft//2)
     rng = np.random.default_rng()
@@ -53,7 +56,7 @@ def main():
         worst_bin = -1
         worst_frequency = -1
         for i, f_desired in enumerate(f_desireds):
-            sin, cos = get_phase_sequence(f_desired, fs, N_fft, W, P)
+            sin, cos = get_phase_sequence(f_desired, fs, N_fft, W, P, bits)
             sfdr = SFDR(cos, bins[i])
             if sfdr < min_sfdr:
                 min_sfdr = sfdr

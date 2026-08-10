@@ -9,7 +9,7 @@ def integrator(x):
 def comb(x, N, M):
     return x - np.concatenate((np.zeros(M, dtype=object), x[:-1*M]))
 
-def CIC(signal, N, R, M, num_stages):
+def CIC(signal, N, R, M, num_stages, bits):
 
     # integrate
     integrator_stage_output = np.zeros((num_stages, N), dtype=object)
@@ -40,6 +40,8 @@ def main(args):
     num_stages = 6
     decimation_factor = 625
     differential_delay = 1
+
+    bits = 18
 
     N_out = 4096
     N_guard = 64 # we will get rid of extra output samples caused by this to remove transient noise

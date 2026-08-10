@@ -122,20 +122,20 @@ def main():
     CIC_output_I = CIC(I, N_in, CIC_decimation_factor, CIC_differential_delay, CIC_num_stages)
     CIC_output_Q = CIC(Q, N_in, CIC_decimation_factor, CIC_differential_delay, CIC_num_stages)
 
-    CIC_output_I = CIC_output_I.astype(np.float64)
-    CIC_output_Q = CIC_output_Q.astype(np.float64)
+    # CIC_output_I = CIC_output_I.astype(np.float64)
+    # CIC_output_Q = CIC_output_Q.astype(np.float64)
 
-    N_CIC = len(CIC_output_I)
+    # N_CIC = len(CIC_output_I)
 
-    CIC_fs = fs / CIC_decimation_factor
-    CIC_signal_bin = round((f_signal - f_desired) * N_CIC / CIC_fs)
-    CIC_image_bin = round(N_CIC - (f_signal + f_desired) * N_CIC / CIC_fs)
+    # CIC_fs = fs / CIC_decimation_factor
+    # CIC_signal_bin = round((f_signal - f_desired) * N_CIC / CIC_fs)
+    # CIC_image_bin = round(N_CIC - (f_signal + f_desired) * N_CIC / CIC_fs)
 
-    fft_output = np.fft.fft(CIC_output_I + 1j * CIC_output_Q)
-    plt.plot(np.arange(0, len(fft_output)), np.abs(fft_output))
-    plt.savefig("SDR_CIC_output.png")
+    # fft_output = np.fft.fft(CIC_output_I + 1j * CIC_output_Q)
+    # plt.plot(np.arange(0, len(fft_output)), np.abs(fft_output))
+    # plt.savefig("SDR_CIC_output.png")
 
-    print(f"Signal to Noise Ratio [CIC]: {SNR_complex(CIC_output_I + 1j * CIC_output_Q, CIC_signal_bin, CIC_image_bin)}")
+    # print(f"Signal to Noise Ratio [CIC]: {SNR_complex(CIC_output_I + 1j * CIC_output_Q, CIC_signal_bin, CIC_image_bin)}")
 
     # FIR
     FIR_output_I = FIR(CIC_output_I, FIR_taps, FIR_decimation_factor)

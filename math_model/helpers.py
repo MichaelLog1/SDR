@@ -91,13 +91,28 @@ def assert_downconversion_tones(I, Q, f_in, f_nco, fs, N):
     return
 
 
-def quantize(x, bits):
-    value = 2**bits
-    return np.round(value * x).astype(int)
+def round_by_mode(x, mode='convergent'):
+    if mode == 'truncate':
+        return np.floor(x)
+    elif mode == 'round_half_up':
+        return np.floor(x + 0.5)
+    elif mode == 'convergent':
+        return np.round(x)
+    else:
+        raise ValueError(f"Unknown rounding mode: {mode}")
+
+
+def quantize(x, bits, mode='convergent'):
+    value = 2**(bits - 1)
+    rounded_result = round_by_mode(value * x, mode)
+    clipped_result = np.clip(rounded_result, -1 * 2**(bits - 1), 2**(bits - 1) - 1)
+    if (bits <= 16):
+        return clipped_result.astype(np.int16)
+    else:
+        return clipped_result.astype(np.int32)
 
 
 def main():
-
     A_signal = 1
     A_spur = 0.3
     sigma = 3
