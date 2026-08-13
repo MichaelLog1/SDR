@@ -4,7 +4,7 @@ module NCO_tb #(
     parameter int unsigned P = 15,
     parameter int unsigned fs = 125000000,
     parameter int N = 1000,
-    parameter int M = 1234
+    parameter int M = 343597384 // we generated golden model values for this M value specifically
 );
 
     logic clk = 1'b0;

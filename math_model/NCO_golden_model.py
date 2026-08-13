@@ -5,7 +5,7 @@ def main():
     # W=32, P, M, N given
     W = 32
     P = 15
-    M = 1234
+    M = 343597384
     N = 1000
 
     sin, cos = initialize_lookup_table(W, P, 16)     # int16, your existing fn
