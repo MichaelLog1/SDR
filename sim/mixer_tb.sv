@@ -41,7 +41,7 @@ module mixer_tb #(
 
     initial begin
         $readmemh("mixer_stimulus.hex", stimulus);
-        $readmemh("mixer_expected.hex", model)
+        $readmemh("mixer_expected.hex", model);
     end
 
     initial begin : driver
@@ -57,19 +57,19 @@ module mixer_tb #(
             adc <= stimulus[i][45:32];
             sine <= stimulus[i][31:16];
             cosine <= stimulus[i][15:0];
-            driver_mailbox.put(model[i])
+            driver_mailbox.put(model[i]);
         end
     end
 
     initial begin : scoreboard
         logic [31:0] expected;
         @(negedge rst);
-        repeat (PIPELINE_DEPTH) @(posedge clk);
+        repeat (DUT.PIPELINE_DEPTH+1) @(posedge clk);
 
         for (int i = 0; i < N; i++) begin
             @(posedge clk);
             driver_mailbox.get(expected);
-            if ({I, Q} !== exp) errors++;
+            if ({I, Q} !== expected) errors++;
         end
 
         if (errors == 0) begin
