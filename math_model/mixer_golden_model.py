@@ -23,13 +23,13 @@ def main():
     N = 1000
 
     # generate random inputs
-    adc = rng.integers(-8192, 8192, N, dtype=int16)
-    sine = rng.integers(-32768, 32768, N, dtype=int16)
-    cosine = rng.integers(-32768, 32768, N, dtype=int16)
+    adc = rng.integers(-8192, 8192, N, dtype=np.int16)
+    sine = rng.integers(-32768, 32768, N, dtype=np.int16)
+    cosine = rng.integers(-32768, 32768, N, dtype=np.int16)
 
     with open("mixer_stimulus.hex", "w") as fh:
         for a, s, c in zip(adc, sine, cosine):
-            fh.write(f"{pack(a, s, c):012x}\n")
+            fh.write(f"{((int(a) & 0x3FFF) << 32) | ((int(s) & 0xFFFF) << 16) | (int(c) & 0xFFFF):012x}\n")
 
     I, Q = complex_multiply(adc, sine, cosine)
 
