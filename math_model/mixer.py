@@ -3,11 +3,9 @@ import signal_source
 import numpy as np
 import helpers
 
-def mixer(signal, f_desired, fs, N, W, P, bits, mode='convergent'):
+def mixer(signal, sin, cos, f_desired, N, mode='convergent'):
     if len(signal) != N:
         raise ValueError("Signal must be of length N.")
-
-    sin, cos = get_phase_sequence(f_desired, fs, N, W, P, bits)
 
     I = signal.astype(np.int32) * cos
     Q = signal.astype(np.int32) * -1 * sin
@@ -34,7 +32,9 @@ def main():
     f_desired = desired_bin * fs / N
 
     signal = signal_source.sine(fs, N, 1, bin=signal_bin)
-    I, Q = mixer(signal, f_desired, fs, N, W, P, bits)
+    sin, cos = get_phase_sequence(f_desired, fs, N, W, P, bits)
+
+    I, Q = mixer(signal, sin, cos, f_desired, N, mode='round_half_up')
 
     helpers.assert_downconversion_tones(I, Q, f_signal, f_desired, fs, N)
 

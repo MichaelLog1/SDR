@@ -61,6 +61,7 @@ module NCO_tb #(
         end else begin
             $display("FAIL: %0d errors", errors);
         end
-    end
 
+        disable generate_clock;
+    end
 endmodule
