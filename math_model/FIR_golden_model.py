@@ -9,12 +9,20 @@ def main():
     TAPS = 282
     DECIMATION_FACTOR = 4
     N = 100000
+    
+    seed = 10
+    rng = np.random.default_rng(seed)
 
     # generate quantized taps
     freq_step = 100
     freq = np.linspace(0, 100000, freq_step, endpoint=True)
 
     # determine gain regions
+    fs = 125e6
+    CIC_num_stages = 6
+    CIC_decimation_factor = 625
+    CIC_differential_delay = 1
+
     freq_region_1 = freq <= 25000
     freq_region_2 = (freq > 25000) & (freq <= 75000)
     freq_region_3 = freq > 75000
