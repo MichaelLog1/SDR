@@ -8,8 +8,8 @@ module mixer #(
     input  logic signed [ADC_WIDTH-1:0]    adc,
     input  logic signed [NCO_WIDTH-1:0]    sine,
     input  logic signed [NCO_WIDTH-1:0]    cosine,
-    output logic        [OUTPUT_WIDTH-1:0] I,
-    output logic        [OUTPUT_WIDTH-1:0] Q
+    output logic signed [OUTPUT_WIDTH-1:0] I,
+    output logic signed [OUTPUT_WIDTH-1:0] Q
 );
 
     localparam PIPELINE_DEPTH = 3;
