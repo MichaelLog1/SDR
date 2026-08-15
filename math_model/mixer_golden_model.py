@@ -16,7 +16,25 @@ def complex_multiply(adc, sine, cosine, mode='round_half_up'):
     return np.int16(I), np.int16(Q)
 
 
-def main():
+def mixer(adc, sin, cos, write_artifacts=True):
+    assert len(adc) == len(sin) == len(cos), f"Mixer length error."
+
+    if (write_artifacts):
+        with open("mixer_stimulus.hex", "w") as fh:
+            for a, s, c in zip(adc, sin, cos):
+                fh.write(f"{((int(a) & 0x3FFF) << 32) | ((int(s) & 0xFFFF) << 16) | (int(c) & 0xFFFF):012x}\n")
+
+    I, Q = complex_multiply(adc, sin, cos)
+
+    if (write_artifacts):
+        with open("mixer_expected.hex", "w") as fh:
+            for i, q in zip(I, Q):
+                fh.write(f"{((int(i) & 0xFFFF) << 16) | (int(q) & 0xFFFF):08x}\n")
+
+    return I, Q
+
+
+if __name__ == "__main__":
     seed = 10
     rng = np.random.default_rng(seed)
 
@@ -24,21 +42,7 @@ def main():
 
     # generate random inputs
     adc = rng.integers(-8192, 8192, N, dtype=np.int16)
-    sine = rng.integers(-32768, 32768, N, dtype=np.int16)
-    cosine = rng.integers(-32768, 32768, N, dtype=np.int16)
+    sin = rng.integers(-32768, 32768, N, dtype=np.int16)
+    cos = rng.integers(-32768, 32768, N, dtype=np.int16)
 
-    with open("mixer_stimulus.hex", "w") as fh:
-        for a, s, c in zip(adc, sine, cosine):
-            fh.write(f"{((int(a) & 0x3FFF) << 32) | ((int(s) & 0xFFFF) << 16) | (int(c) & 0xFFFF):012x}\n")
-
-    I, Q = complex_multiply(adc, sine, cosine)
-
-    with open("mixer_expected.hex", "w") as fh:
-        for i, q in zip(I, Q):
-            fh.write(f"{((int(i) & 0xFFFF) << 16) | (int(q) & 0xFFFF):08x}\n")
-
-    return
-
-
-if __name__ == "__main__":
-    main()
+    mixer(adc, sin, cos)

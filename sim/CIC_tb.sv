@@ -9,12 +9,12 @@ module CIC_tb #(
 
     logic [15:0] I_in;
     logic [15:0] Q_in;
-    logic [71:0] I_out;
-    logic [71:0] Q_out;
+    logic [15:0] I_out;
+    logic [15:0] Q_out;
     logic valid_out;
 
     logic [31:0] stimulus [0:N-1];
-    logic [143:0] model [0:N-1];
+    logic [31:0] model [0:N-1];
 
     int errors = 0;
 

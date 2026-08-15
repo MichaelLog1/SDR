@@ -1,8 +1,8 @@
-module CIC_tb #(
+module FIR_tb #(
     parameter int unsigned TAPS = 282,
     parameter int unsigned TAP_WIDTH = 16,
     parameter int unsigned DECIMATION_FACTOR = 4,
-    parameter int unsigned N = 100000
+    parameter int unsigned N = 4000
 );
 
     logic clk = 1'b0;
@@ -10,7 +10,7 @@ module CIC_tb #(
 
     logic [15:0] I_in;
     logic [15:0] Q_in;
-    logic valid_in
+    logic valid_in;
     logic [15:0] I_out;
     logic [15:0] Q_out;
     logic valid_out;
@@ -57,7 +57,11 @@ module CIC_tb #(
         for (int i = 0; i < N; i++) begin
             I_in <= stimulus[i][31:16];
             Q_in <= stimulus[i][15:0];
+            valid_in <= 1'b1;
             @(posedge clk);
+            valid_in <= 1'b0;
+
+            repeat (300 + ($urandom % 200)) @(posedge clk); // need to remain IDLE for at least the time it takes to MAC, plus some extra randomly
         end
     end
 

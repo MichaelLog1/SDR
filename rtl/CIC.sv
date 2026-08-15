@@ -6,8 +6,8 @@ module CIC#(
     input  logic               rst,
     input  logic signed [15:0] I_in,
     input  logic signed [15:0] Q_in,
-    output logic signed [71:0] I_out,
-    output logic signed [71:0] Q_out,
+    output logic signed [15:0] I_out,
+    output logic signed [15:0] Q_out,
     output logic               valid_out
 );
     // integrator stage
@@ -19,6 +19,10 @@ module CIC#(
     logic signed [71:0] comb_delay_I_r [STAGES];
     logic signed [71:0] comb_Q_r       [STAGES];
     logic signed [71:0] comb_delay_Q_r [STAGES];
+    logic signed [15:0] round_I_out;
+    logic signed [15:0] round_Q_out;
+    logic signed [71:0] round_I;
+    logic signed [71:0] round_Q;
 
     // decimation logic
     logic [$clog2(DECIMATION_FACTOR)-1:0] decimation_count_r;
@@ -26,6 +30,7 @@ module CIC#(
 
     // valid delay
     logic valid_out_r;
+    logic valid_out_scaled_r;
     logic [$clog2(STAGES+1)-1:0] fill_r;
     logic filled;
 
@@ -66,8 +71,30 @@ module CIC#(
         end
     end
 
-    assign I_out = comb_I_r[STAGES-1];
-    assign Q_out = comb_Q_r[STAGES-1];
+    // extra cycle for rounding and saturation
+    always_ff @(posedge clk) begin
+        if (rst) begin
+            valid_out_scaled_r <= '0;
+            round_I_out <= '0;
+            round_Q_out <= '0;
+        end else begin
+            valid_out_scaled_r <= valid_out_r;
+
+            round_I = (comb_I_r[STAGES-1] + (72'sd1 << 54)) >>> 55;
+            if      (round_I > 72'sd32767)  round_I_out <= 16'sd32767;
+            else if (round_I < -72'sd32768) round_I_out <= -16'sd32768;
+            else                            round_I_out <= round_I[15:0];
+
+            round_Q = (comb_Q_r[STAGES-1] + (72'sd1 << 54)) >>> 55;
+            if      (round_Q > 72'sd32767)  round_Q_out <= 16'sd32767;
+            else if (round_Q < -72'sd32768) round_Q_out <= -16'sd32768;
+            else                            round_Q_out <= round_Q[15:0];
+        end
+    end
+
+    assign I_out = round_I_out;
+    assign Q_out = round_Q_out;
+    assign valid_out = valid_out_scaled_r;
 
     // decimation counter
     always_ff @(posedge clk) begin
@@ -100,6 +127,5 @@ module CIC#(
     end
 
     assign filled = (fill_r == STAGES);
-    assign valid_out = valid_out_r;
     
 endmodule
