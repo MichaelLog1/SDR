@@ -12,6 +12,8 @@ module NCO #(
 
     logic [P-1:0] address;
     logic [PHASE_WIDTH-1:0] accumulator;
+    logic [OUTPUT_WIDTH-1:0] sine_r;
+    logic [OUTPUT_WIDTH-1:0] cosine_r;
 
     logic [OUTPUT_WIDTH*2-1:0] ram [2**P];
 
@@ -25,9 +27,14 @@ module NCO #(
     always_ff @(posedge clk) begin
         if (rst) begin
             accumulator <= '0;
+            sine_r <= '0;
+            cosine_r <= '0;
         end else begin
             accumulator <= accumulator + phase_inc;
-            {sine, cosine} <= ram[address];
+            {sine_r, cosine_r} <= ram[address];
         end
     end
+
+    assign sine = sine_r;
+    assign cosine = cosine_r;
 endmodule

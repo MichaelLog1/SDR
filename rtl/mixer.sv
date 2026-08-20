@@ -1,5 +1,5 @@
 module mixer #(
-    parameter int unsigned ADC_WIDTH = 14,
+    parameter int unsigned ADC_WIDTH = 16,
     parameter int unsigned NCO_WIDTH = 16,
     parameter int unsigned OUTPUT_WIDTH = 16
 ) (
@@ -34,8 +34,8 @@ module mixer #(
             I_product_r <= cosine * adc;
             Q_product_r <= sine * adc * -1;
             // round stage
-            I_round_r <= (I_product_r + 13'd4096) >>> 13;
-            Q_round_r <= (Q_product_r + 13'd4096) >>> 13;
+            I_round_r <= (I_product_r + 15'd4096) >>> 15;
+            Q_round_r <= (Q_product_r + 15'd4096) >>> 15;
             // saturation stage
             if      (I_round_r > 17'sd32767)  I_saturate_r <= 16'sd32767;
             else if (I_round_r < -17'sd32768) I_saturate_r <= -16'sd32768;

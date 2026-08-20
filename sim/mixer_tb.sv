@@ -1,5 +1,5 @@
 module mixer_tb #(
-    parameter int unsigned ADC_WIDTH = 14,
+    parameter int unsigned ADC_WIDTH = 16,
     parameter int unsigned NCO_WIDTH = 16,
     parameter int unsigned OUTPUT_WIDTH = 16,
     parameter int unsigned N = 1000 // in sync with golden model script
@@ -14,7 +14,7 @@ module mixer_tb #(
     logic [OUTPUT_WIDTH-1:0] I;
     logic [OUTPUT_WIDTH-1:0] Q;
 
-    logic [45:0] stimulus [0:N-1];
+    logic [47:0] stimulus [0:N-1];
     logic [31:0] model [0:N-1];
 
     int errors = 0;
@@ -54,7 +54,7 @@ module mixer_tb #(
 
         for (int i = 0; i < N; i++) begin
             @(posedge clk);
-            adc <= stimulus[i][45:32];
+            adc <= stimulus[i][47:32];
             sine <= stimulus[i][31:16];
             cosine <= stimulus[i][15:0];
             driver_mailbox.put(model[i]);

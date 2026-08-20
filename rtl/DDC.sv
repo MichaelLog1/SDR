@@ -2,7 +2,7 @@ module DDC #(
     parameter int unsigned NCO_PHASE_WIDTH = 32,
     parameter int unsigned NCO_OUTPUT_WIDTH = 16,
     parameter int unsigned NCO_P = 15,
-    parameter int unsigned MIXER_ADC_WIDTH = 14,
+    parameter int unsigned MIXER_ADC_WIDTH = 16,
     parameter int unsigned MIXER_OUTPUT_WIDTH = 16,
     parameter int unsigned CIC_STAGES = 6,
     parameter int unsigned CIC_DECIMATION_FACTOR = 625,
@@ -12,12 +12,13 @@ module DDC #(
     input  logic                       clk,
     input  logic                       rst,
     input  logic [MIXER_ADC_WIDTH-1:0] adc,
+    input  logic [NCO_PHASE_WIDTH-1:0] phase_inc,
+    input  logic                       phase_valid,
     output logic [15:0]                I_out,
     output logic [15:0]                Q_out,
     output logic                       valid_out
 );
 
-    logic [NCO_PHASE_WIDTH-1:0] phase_increment_r;
     logic [NCO_OUTPUT_WIDTH-1:0] NCO_sine;
     logic [NCO_OUTPUT_WIDTH-1:0] NCO_cosine;
     logic [MIXER_OUTPUT_WIDTH-1:0] mixer_I_out;
@@ -26,6 +27,8 @@ module DDC #(
     logic [15:0] CIC_Q_out;
     logic CIC_valid_out;
 
+    logic [NCO_PHASE_WIDTH-1:0] phase_inc_r;
+
     NCO #(
         .PHASE_WIDTH(NCO_PHASE_WIDTH),
         .OUTPUT_WIDTH(NCO_OUTPUT_WIDTH),
@@ -33,7 +36,7 @@ module DDC #(
     ) DUT_NCO (
         .clk(clk),
         .rst(rst),
-        .phase_inc(phase_increment_r),
+        .phase_inc(phase_inc_r),
         .sine(NCO_sine),
         .cosine(NCO_cosine)
     );
@@ -78,5 +81,13 @@ module DDC #(
         .Q_out(Q_out),
         .valid_out(valid_out)
     );
-    
+
+    // capture synchronized values;
+    always_ff @(posedge clk) begin
+        if (rst) begin
+            phase_inc_r <= '0;
+        end else begin
+            if (phase_valid) phase_inc_r <= phase_inc;
+        end
+    end
 endmodule
