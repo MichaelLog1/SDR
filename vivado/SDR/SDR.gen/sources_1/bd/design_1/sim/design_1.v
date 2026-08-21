@@ -1,7 +1,7 @@
 //Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2021.2 (lin64) Build 3367213 Tue Oct 19 02:47:39 MDT 2021
-//Date        : Fri Aug 21 09:41:03 2026
+//Date        : Fri Aug 21 10:05:01 2026
 //Host        : ece-lnx-10 running 64-bit Red Hat Enterprise Linux release 8.10 (Ootpa)
 //Command     : generate_target design_1.bd
 //Design      : design_1
@@ -99,6 +99,7 @@ module design_1
   wire axis_clock_converter_0_M_AXIS_TLAST;
   wire axis_clock_converter_0_M_AXIS_TREADY;
   wire axis_clock_converter_0_M_AXIS_TVALID;
+  wire [0:0]proc_sys_reset_0_peripheral_aresetn;
   wire [0:0]proc_sys_reset_0_peripheral_reset;
   wire [14:0]processing_system7_0_DDR_ADDR;
   wire [2:0]processing_system7_0_DDR_BA;
@@ -290,13 +291,13 @@ module design_1
         .S00_AXI_wvalid(axi_dma_0_M_AXI_S2MM_WVALID));
   design_1_axis_clock_converter_0_0 axis_clock_converter_0
        (.m_axis_aclk(processing_system7_0_FCLK_CLK0),
-        .m_axis_aresetn(1'b0),
+        .m_axis_aresetn(rst_ps7_0_50M_peripheral_aresetn),
         .m_axis_tdata(axis_clock_converter_0_M_AXIS_TDATA),
         .m_axis_tlast(axis_clock_converter_0_M_AXIS_TLAST),
         .m_axis_tready(axis_clock_converter_0_M_AXIS_TREADY),
         .m_axis_tvalid(axis_clock_converter_0_M_AXIS_TVALID),
         .s_axis_aclk(util_ds_buf_1_BUFG_O),
-        .s_axis_aresetn(1'b0),
+        .s_axis_aresetn(proc_sys_reset_0_peripheral_aresetn),
         .s_axis_tdata(top_0_m_axis_TDATA),
         .s_axis_tlast(top_0_m_axis_TLAST),
         .s_axis_tready(top_0_m_axis_TREADY),
@@ -306,6 +307,7 @@ module design_1
         .dcm_locked(xlconstant_0_dout),
         .ext_reset_in(processing_system7_0_FCLK_RESET0_N),
         .mb_debug_sys_rst(1'b0),
+        .peripheral_aresetn(proc_sys_reset_0_peripheral_aresetn),
         .peripheral_reset(proc_sys_reset_0_peripheral_reset),
         .slowest_sync_clk(util_ds_buf_1_BUFG_O));
   design_1_processing_system7_0_0 processing_system7_0
