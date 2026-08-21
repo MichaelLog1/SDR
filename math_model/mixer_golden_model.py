@@ -7,8 +7,8 @@ def complex_multiply(adc, sine, cosine, mode='round_half_up'):
     Q = adc.astype(np.int32) * -1 * sine
 
     # round off to 16 bits precision
-    I = round_by_mode(I / (2**(29 - 16)), mode)
-    Q = round_by_mode(Q / (2**(29 - 16)), mode)
+    I = round_by_mode(I / (2**(31 - 16)), mode)
+    Q = round_by_mode(Q / (2**(31 - 16)), mode)
 
     I = np.clip(I, -1 * 2**(16 - 1), 2**(16 - 1) - 1)
     Q = np.clip(Q, -1 * 2**(16 - 1), 2**(16 - 1) - 1)
@@ -22,7 +22,7 @@ def mixer(adc, sin, cos, write_artifacts=True):
     if (write_artifacts):
         with open("mixer_stimulus.hex", "w") as fh:
             for a, s, c in zip(adc, sin, cos):
-                fh.write(f"{((int(a) & 0x3FFF) << 32) | ((int(s) & 0xFFFF) << 16) | (int(c) & 0xFFFF):012x}\n")
+                fh.write(f"{((int(a) & 0xFFFF) << 32) | ((int(s) & 0xFFFF) << 16) | (int(c) & 0xFFFF):012x}\n")
 
     I, Q = complex_multiply(adc, sin, cos)
 
@@ -41,7 +41,7 @@ if __name__ == "__main__":
     N = 1000
 
     # generate random inputs
-    adc = rng.integers(-8192, 8192, N, dtype=np.int16)
+    adc = rng.integers(-32768, 32768, N, dtype=np.int16)
     sin = rng.integers(-32768, 32768, N, dtype=np.int16)
     cos = rng.integers(-32768, 32768, N, dtype=np.int16)
 

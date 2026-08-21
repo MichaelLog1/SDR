@@ -1,0 +1,7 @@
+set_property SRC_FILE_INFO {cfile:/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.srcs/constrs_1/new/adc.xdc rfile:../../../SDR.srcs/constrs_1/new/adc.xdc id:1} [current_design]
+set_property src_info {type:XDC file:1 line:1 export:INPUT save:INPUT read:READ} [current_design]
+set_property PACKAGE_PIN U18 [get_ports {CLK_IN_D_0_clk_p[0]}]
+set_property src_info {type:XDC file:1 line:2 export:INPUT save:INPUT read:READ} [current_design]
+set_property PACKAGE_PIN U19 [get_ports {CLK_IN_D_0_clk_n[0]}]
+set_property src_info {type:XDC file:1 line:9 export:INPUT save:INPUT read:READ} [current_design]
+set_clock_groups -asynchronous -group [get_clocks adc_clk] -group [get_clocks clk_fpga_0]

@@ -6,33 +6,35 @@ from FIR_golden_model import FIR
 import matplotlib.pyplot as plt
 import numpy as np
 
+GUARD = 256
+FS      = 122.88e6
+R       = 2500
+FS_OUT  = FS / R
+N_OUT   = 2**11
+BIN_OUT = 400
+N_IN = (N_OUT + GUARD + 8) * R
 
-def DDC():
-    fs      = 125e6
-    R       = 2500
-    fs_out  = fs / R
-    N_out   = 2**11
-    bin_out = 400
+def DDC(write_artifacts=True):
+    
     
     f_lo_target = 10e6
-    phase_inc = round(f_lo_target / fs * 2**32)
-    f_lo_actual = phase_inc / 2**32 * fs
-    f_bb = bin_out * fs_out / N_out
+    phase_inc = round(f_lo_target / FS * 2**32)
+    f_lo_actual = phase_inc / 2**32 * FS
+    f_bb = BIN_OUT * FS_OUT / N_OUT
     f_rf = f_lo_actual + f_bb
 
-    guard = 256
-    N_in = (N_out + guard + 8) * R
+    
 
     # input values
-    adc = sine(fs, N_in, 0.9, frequency=f_rf)
+    adc = sine(FS, N_IN, 0.9, frequency=f_rf)
 
     # write stimulus
     with open("adc_stimulus.hex", "w") as fh:
         for x in adc:
-            fh.write(f"{int(x) & 0x3FFF:04x}\n")
+            fh.write(f"{int(x) & 0xFFFF:04x}\n")
 
     print("Beginning NCO...")
-    sin, cos = NCO(phase_inc, N_in, write_artifacts=False)
+    sin, cos = NCO(phase_inc, N_IN, write_artifacts=False)
     print("Beginning mixer...")
     I, Q = mixer(adc, sin, cos, write_artifacts=False)
     print("Beginning CIC...")
@@ -41,11 +43,16 @@ def DDC():
     I, Q = FIR(I, Q, write_artifacts=False)
     print("Finished.")
 
-    # write expected (TODO)
+    # write expected
+    if (write_artifacts):
+        with open("ddc_expected.hex", "w") as fh:
+            for i, q in zip(I, Q):
+                word = ((int(i) & 0xFFFF) << 16) | (int(q) & 0xFFFF)
+                fh.write(f"{word:08x}\n")
 
     # fft analysis
-    I = np.array(I[guard:guard+N_out])
-    Q = np.array(Q[guard:guard+N_out])
+    I = np.array(I[GUARD:GUARD+N_OUT])
+    Q = np.array(Q[GUARD:GUARD+N_OUT])
 
     complex_signal = I + 1j*Q
     fft_output = np.fft.fft(complex_signal)

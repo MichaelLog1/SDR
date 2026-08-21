@@ -1,7 +1,7 @@
 import numpy as np
 
-# Red Pitaya ACD samples at 125 Msps
-fs = 125e6
+# Red Pitaya SDRlab 122-16 ADC samples at 122.88 Msps
+fs = 122.88e6
 # Number of FFT bins
 N = 2**16
 

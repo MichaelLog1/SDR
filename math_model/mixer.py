@@ -11,8 +11,9 @@ def mixer(signal, sin, cos, f_desired, N, mode='convergent'):
     Q = signal.astype(np.int32) * -1 * sin
 
     # round off to 16 bits precision
-    I = helpers.round_by_mode(I / (2**(29 - 16)), mode)
-    Q = helpers.round_by_mode(Q / (2**(29 - 16)), mode)
+    # product width = adc_bits + nco_bits - 1 = 16 + 16 - 1 = 31 (was 29 for a 14-bit ADC)
+    I = helpers.round_by_mode(I / (2**(31 - 16)), mode)
+    Q = helpers.round_by_mode(Q / (2**(31 - 16)), mode)
 
     I = np.clip(I, -1 * 2**(16 - 1), 2**(16 - 1) - 1)
     Q = np.clip(Q, -1 * 2**(16 - 1), 2**(16 - 1) - 1)
@@ -20,7 +21,7 @@ def mixer(signal, sin, cos, f_desired, N, mode='convergent'):
     return np.int16(I), np.int16(Q)
 
 def main():
-    fs = 125e6
+    fs = 122.88e6
     N = 2**16
     W = 32 # 32 bit accumulator word
     P = 15 # we will assume the P value we got from the NCO testing
