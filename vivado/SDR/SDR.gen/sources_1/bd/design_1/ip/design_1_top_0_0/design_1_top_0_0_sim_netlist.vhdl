@@ -1,7 +1,7 @@
 -- Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2021.2 (lin64) Build 3367213 Tue Oct 19 02:47:39 MDT 2021
--- Date        : Fri Aug 21 09:43:14 2026
+-- Date        : Fri Aug 21 14:08:03 2026
 -- Host        : ece-lnx-10 running 64-bit Red Hat Enterprise Linux release 8.10 (Ootpa)
 -- Command     : write_vhdl -force -mode funcsim
 --               /ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/ip/design_1_top_0_0/design_1_top_0_0_sim_netlist.vhdl
@@ -58180,7 +58180,7 @@ entity design_1_top_0_0_mixer is
     \Q_saturate_r_reg[15]_15\ : out STD_LOGIC_VECTOR ( 3 downto 0 );
     adc_clk : in STD_LOGIC;
     adc_rst : in STD_LOGIC;
-    adc : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    B : in STD_LOGIC_VECTOR ( 15 downto 0 );
     \out\ : in STD_LOGIC_VECTOR ( 31 downto 0 );
     \integrator_I_r_reg[0]_24\ : in STD_LOGIC_VECTOR ( 71 downto 0 );
     \integrator_Q_r_reg[0]_30\ : in STD_LOGIC_VECTOR ( 71 downto 0 )
@@ -58494,8 +58494,8 @@ I_round_r1: unisim.vcomponents.DSP48E1
       AREG => 1,
       AUTORESET_PATDET => "NO_RESET",
       A_INPUT => "DIRECT",
-      BCASCREG => 0,
-      BREG => 0,
+      BCASCREG => 1,
+      BREG => 1,
       B_INPUT => "DIRECT",
       CARRYINREG => 0,
       CARRYINSELREG => 0,
@@ -58533,9 +58533,9 @@ I_round_r1: unisim.vcomponents.DSP48E1
       ACIN(29 downto 0) => B"000000000000000000000000000000",
       ACOUT(29 downto 0) => NLW_I_round_r1_ACOUT_UNCONNECTED(29 downto 0),
       ALUMODE(3 downto 0) => B"0000",
-      B(17) => adc(15),
-      B(16) => adc(15),
-      B(15 downto 0) => adc(15 downto 0),
+      B(17) => B(15),
+      B(16) => B(15),
+      B(15 downto 0) => B(15 downto 0),
       BCIN(17 downto 0) => B"000000000000000000",
       BCOUT(17 downto 0) => NLW_I_round_r1_BCOUT_UNCONNECTED(17 downto 0),
       C(47 downto 0) => B"000000000000000000000000000000000100000000000000",
@@ -58549,7 +58549,7 @@ I_round_r1: unisim.vcomponents.DSP48E1
       CEAD => '0',
       CEALUMODE => '0',
       CEB1 => '0',
-      CEB2 => '0',
+      CEB2 => '1',
       CEC => '0',
       CECARRYIN => '0',
       CECTRL => '0',
@@ -58588,7 +58588,7 @@ I_round_r1: unisim.vcomponents.DSP48E1
       RSTA => adc_rst,
       RSTALLCARRYIN => '0',
       RSTALUMODE => '0',
-      RSTB => '0',
+      RSTB => adc_rst,
       RSTC => '0',
       RSTCTRL => '0',
       RSTD => '0',
@@ -58938,8 +58938,8 @@ Q_product_r1: unisim.vcomponents.DSP48E1
       AREG => 1,
       AUTORESET_PATDET => "NO_RESET",
       A_INPUT => "DIRECT",
-      BCASCREG => 0,
-      BREG => 0,
+      BCASCREG => 1,
+      BREG => 1,
       B_INPUT => "DIRECT",
       CARRYINREG => 0,
       CARRYINSELREG => 0,
@@ -58977,9 +58977,9 @@ Q_product_r1: unisim.vcomponents.DSP48E1
       ACIN(29 downto 0) => B"000000000000000000000000000000",
       ACOUT(29 downto 0) => NLW_Q_product_r1_ACOUT_UNCONNECTED(29 downto 0),
       ALUMODE(3 downto 0) => B"0000",
-      B(17) => adc(15),
-      B(16) => adc(15),
-      B(15 downto 0) => adc(15 downto 0),
+      B(17) => B(15),
+      B(16) => B(15),
+      B(15 downto 0) => B(15 downto 0),
       BCIN(17 downto 0) => B"000000000000000000",
       BCOUT(17 downto 0) => NLW_Q_product_r1_BCOUT_UNCONNECTED(17 downto 0),
       C(47 downto 0) => B"111111111111111111111111111111111111111111111111",
@@ -58993,7 +58993,7 @@ Q_product_r1: unisim.vcomponents.DSP48E1
       CEAD => '0',
       CEALUMODE => '0',
       CEB1 => '0',
-      CEB2 => '0',
+      CEB2 => '1',
       CEC => '0',
       CECARRYIN => '0',
       CECTRL => '0',
@@ -59048,7 +59048,7 @@ Q_product_r1: unisim.vcomponents.DSP48E1
       RSTA => adc_rst,
       RSTALLCARRYIN => '0',
       RSTALUMODE => '0',
-      RSTB => '0',
+      RSTB => adc_rst,
       RSTC => '0',
       RSTCTRL => '0',
       RSTD => '0',
@@ -61479,7 +61479,7 @@ entity design_1_top_0_0_DDC is
     packed_signal : out STD_LOGIC_VECTOR ( 31 downto 0 );
     adc_rst : in STD_LOGIC;
     adc_clk : in STD_LOGIC;
-    adc : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    B : in STD_LOGIC_VECTOR ( 15 downto 0 );
     \out\ : in STD_LOGIC_VECTOR ( 31 downto 0 );
     E : in STD_LOGIC_VECTOR ( 0 to 0 );
     D : in STD_LOGIC_VECTOR ( 31 downto 0 )
@@ -61817,6 +61817,7 @@ DUT_FIR: entity work.design_1_top_0_0_FIR
     );
 DUT_MIXER: entity work.design_1_top_0_0_mixer
      port map (
+      B(15 downto 0) => B(15 downto 0),
       \I_saturate_r_reg[11]_0\(3) => DUT_MIXER_n_48,
       \I_saturate_r_reg[11]_0\(2) => DUT_MIXER_n_49,
       \I_saturate_r_reg[11]_0\(1) => DUT_MIXER_n_50,
@@ -61963,7 +61964,6 @@ DUT_MIXER: entity work.design_1_top_0_0_mixer
       S(2) => DUT_MIXER_n_41,
       S(1) => DUT_MIXER_n_42,
       S(0) => DUT_MIXER_n_43,
-      adc(15 downto 0) => adc(15 downto 0),
       adc_clk => adc_clk,
       adc_rst => adc_rst,
       \integrator_I_r_reg[0]_24\(71 downto 0) => \integrator_I_r_reg[0]_24\(71 downto 0),
@@ -62288,7 +62288,6 @@ entity design_1_top_0_0_top is
     adc_rst : in STD_LOGIC;
     adc_clk : in STD_LOGIC;
     s_axi_aclk : in STD_LOGIC;
-    adc : in STD_LOGIC_VECTOR ( 15 downto 0 );
     \out\ : in STD_LOGIC_VECTOR ( 31 downto 0 );
     s_axi_aresetn : in STD_LOGIC;
     s_axi_bready : in STD_LOGIC;
@@ -62298,6 +62297,7 @@ entity design_1_top_0_0_top is
     s_axi_wvalid : in STD_LOGIC;
     s_axi_awaddr : in STD_LOGIC_VECTOR ( 1 downto 0 );
     s_axi_wdata : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    adc_dat_i : in STD_LOGIC_VECTOR ( 15 downto 0 );
     m_axis_tready : in STD_LOGIC;
     s_axi_araddr : in STD_LOGIC_VECTOR ( 1 downto 0 )
   );
@@ -62319,7 +62319,23 @@ architecture STRUCTURE of design_1_top_0_0_top is
   signal \ack_dest_in_src_r_reg_n_0_[1]\ : STD_LOGIC;
   signal ack_dest_r : STD_LOGIC;
   signal ack_dest_r_i_1_n_0 : STD_LOGIC;
+  signal \adc_r_reg_n_0_[0]\ : STD_LOGIC;
+  signal \adc_r_reg_n_0_[10]\ : STD_LOGIC;
+  signal \adc_r_reg_n_0_[11]\ : STD_LOGIC;
+  signal \adc_r_reg_n_0_[12]\ : STD_LOGIC;
+  signal \adc_r_reg_n_0_[13]\ : STD_LOGIC;
+  signal \adc_r_reg_n_0_[14]\ : STD_LOGIC;
+  signal \adc_r_reg_n_0_[1]\ : STD_LOGIC;
+  signal \adc_r_reg_n_0_[2]\ : STD_LOGIC;
+  signal \adc_r_reg_n_0_[3]\ : STD_LOGIC;
+  signal \adc_r_reg_n_0_[4]\ : STD_LOGIC;
+  signal \adc_r_reg_n_0_[5]\ : STD_LOGIC;
+  signal \adc_r_reg_n_0_[6]\ : STD_LOGIC;
+  signal \adc_r_reg_n_0_[7]\ : STD_LOGIC;
+  signal \adc_r_reg_n_0_[8]\ : STD_LOGIC;
+  signal \adc_r_reg_n_0_[9]\ : STD_LOGIC;
   signal debug_count : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal p_1_out : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal packed_signal : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal phase_inc_r : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal \rcv__0\ : STD_LOGIC;
@@ -62387,11 +62403,11 @@ DUT_AXI: entity work.design_1_top_0_0_AXI_slave
 DUT_DDC: entity work.design_1_top_0_0_DDC
      port map (
       ADDRARDADDR(14 downto 0) => ADDRARDADDR(14 downto 0),
+      B(15 downto 0) => p_1_out(15 downto 0),
       D(31 downto 0) => phase_inc_r(31 downto 0),
       DDC_valid_out => DDC_valid_out,
       E(0) => \rcv__0\,
       Q(1 downto 0) => debug_count(1 downto 0),
-      adc(15 downto 0) => adc(15 downto 0),
       adc_clk => adc_clk,
       adc_rst => adc_rst,
       adc_rst_0(14 downto 0) => adc_rst_0(14 downto 0),
@@ -62460,6 +62476,126 @@ DUT_DDC: entity work.design_1_top_0_0_DDC
       Q => state_src_r(1),
       R => DUT_AXI_n_0
     );
+I_round_r1_i_1: unisim.vcomponents.LUT1
+    generic map(
+      INIT => X"1"
+    )
+        port map (
+      I0 => \adc_r_reg_n_0_[14]\,
+      O => p_1_out(14)
+    );
+I_round_r1_i_10: unisim.vcomponents.LUT1
+    generic map(
+      INIT => X"1"
+    )
+        port map (
+      I0 => \adc_r_reg_n_0_[5]\,
+      O => p_1_out(5)
+    );
+I_round_r1_i_11: unisim.vcomponents.LUT1
+    generic map(
+      INIT => X"1"
+    )
+        port map (
+      I0 => \adc_r_reg_n_0_[4]\,
+      O => p_1_out(4)
+    );
+I_round_r1_i_12: unisim.vcomponents.LUT1
+    generic map(
+      INIT => X"1"
+    )
+        port map (
+      I0 => \adc_r_reg_n_0_[3]\,
+      O => p_1_out(3)
+    );
+I_round_r1_i_13: unisim.vcomponents.LUT1
+    generic map(
+      INIT => X"1"
+    )
+        port map (
+      I0 => \adc_r_reg_n_0_[2]\,
+      O => p_1_out(2)
+    );
+I_round_r1_i_14: unisim.vcomponents.LUT1
+    generic map(
+      INIT => X"1"
+    )
+        port map (
+      I0 => \adc_r_reg_n_0_[1]\,
+      O => p_1_out(1)
+    );
+I_round_r1_i_15: unisim.vcomponents.LUT1
+    generic map(
+      INIT => X"1"
+    )
+        port map (
+      I0 => \adc_r_reg_n_0_[0]\,
+      O => p_1_out(0)
+    );
+I_round_r1_i_2: unisim.vcomponents.LUT1
+    generic map(
+      INIT => X"1"
+    )
+        port map (
+      I0 => \adc_r_reg_n_0_[13]\,
+      O => p_1_out(13)
+    );
+I_round_r1_i_3: unisim.vcomponents.LUT1
+    generic map(
+      INIT => X"1"
+    )
+        port map (
+      I0 => \adc_r_reg_n_0_[12]\,
+      O => p_1_out(12)
+    );
+I_round_r1_i_4: unisim.vcomponents.LUT1
+    generic map(
+      INIT => X"1"
+    )
+        port map (
+      I0 => \adc_r_reg_n_0_[11]\,
+      O => p_1_out(11)
+    );
+I_round_r1_i_5: unisim.vcomponents.LUT1
+    generic map(
+      INIT => X"1"
+    )
+        port map (
+      I0 => \adc_r_reg_n_0_[10]\,
+      O => p_1_out(10)
+    );
+I_round_r1_i_6: unisim.vcomponents.LUT1
+    generic map(
+      INIT => X"1"
+    )
+        port map (
+      I0 => \adc_r_reg_n_0_[9]\,
+      O => p_1_out(9)
+    );
+I_round_r1_i_7: unisim.vcomponents.LUT1
+    generic map(
+      INIT => X"1"
+    )
+        port map (
+      I0 => \adc_r_reg_n_0_[8]\,
+      O => p_1_out(8)
+    );
+I_round_r1_i_8: unisim.vcomponents.LUT1
+    generic map(
+      INIT => X"1"
+    )
+        port map (
+      I0 => \adc_r_reg_n_0_[7]\,
+      O => p_1_out(7)
+    );
+I_round_r1_i_9: unisim.vcomponents.LUT1
+    generic map(
+      INIT => X"1"
+    )
+        port map (
+      I0 => \adc_r_reg_n_0_[6]\,
+      O => p_1_out(6)
+    );
 \ack_dest_in_src_r[0]_i_1\: unisim.vcomponents.LUT3
     generic map(
       INIT => X"B8"
@@ -62513,6 +62649,134 @@ ack_dest_r_reg: unisim.vcomponents.FDRE
       CE => '1',
       D => ack_dest_r_i_1_n_0,
       Q => ack_dest_r,
+      R => adc_rst
+    );
+\adc_r_reg[0]\: unisim.vcomponents.FDRE
+     port map (
+      C => adc_clk,
+      CE => '1',
+      D => adc_dat_i(0),
+      Q => \adc_r_reg_n_0_[0]\,
+      R => adc_rst
+    );
+\adc_r_reg[10]\: unisim.vcomponents.FDRE
+     port map (
+      C => adc_clk,
+      CE => '1',
+      D => adc_dat_i(10),
+      Q => \adc_r_reg_n_0_[10]\,
+      R => adc_rst
+    );
+\adc_r_reg[11]\: unisim.vcomponents.FDRE
+     port map (
+      C => adc_clk,
+      CE => '1',
+      D => adc_dat_i(11),
+      Q => \adc_r_reg_n_0_[11]\,
+      R => adc_rst
+    );
+\adc_r_reg[12]\: unisim.vcomponents.FDRE
+     port map (
+      C => adc_clk,
+      CE => '1',
+      D => adc_dat_i(12),
+      Q => \adc_r_reg_n_0_[12]\,
+      R => adc_rst
+    );
+\adc_r_reg[13]\: unisim.vcomponents.FDRE
+     port map (
+      C => adc_clk,
+      CE => '1',
+      D => adc_dat_i(13),
+      Q => \adc_r_reg_n_0_[13]\,
+      R => adc_rst
+    );
+\adc_r_reg[14]\: unisim.vcomponents.FDRE
+     port map (
+      C => adc_clk,
+      CE => '1',
+      D => adc_dat_i(14),
+      Q => \adc_r_reg_n_0_[14]\,
+      R => adc_rst
+    );
+\adc_r_reg[15]\: unisim.vcomponents.FDRE
+     port map (
+      C => adc_clk,
+      CE => '1',
+      D => adc_dat_i(15),
+      Q => p_1_out(15),
+      R => adc_rst
+    );
+\adc_r_reg[1]\: unisim.vcomponents.FDRE
+     port map (
+      C => adc_clk,
+      CE => '1',
+      D => adc_dat_i(1),
+      Q => \adc_r_reg_n_0_[1]\,
+      R => adc_rst
+    );
+\adc_r_reg[2]\: unisim.vcomponents.FDRE
+     port map (
+      C => adc_clk,
+      CE => '1',
+      D => adc_dat_i(2),
+      Q => \adc_r_reg_n_0_[2]\,
+      R => adc_rst
+    );
+\adc_r_reg[3]\: unisim.vcomponents.FDRE
+     port map (
+      C => adc_clk,
+      CE => '1',
+      D => adc_dat_i(3),
+      Q => \adc_r_reg_n_0_[3]\,
+      R => adc_rst
+    );
+\adc_r_reg[4]\: unisim.vcomponents.FDRE
+     port map (
+      C => adc_clk,
+      CE => '1',
+      D => adc_dat_i(4),
+      Q => \adc_r_reg_n_0_[4]\,
+      R => adc_rst
+    );
+\adc_r_reg[5]\: unisim.vcomponents.FDRE
+     port map (
+      C => adc_clk,
+      CE => '1',
+      D => adc_dat_i(5),
+      Q => \adc_r_reg_n_0_[5]\,
+      R => adc_rst
+    );
+\adc_r_reg[6]\: unisim.vcomponents.FDRE
+     port map (
+      C => adc_clk,
+      CE => '1',
+      D => adc_dat_i(6),
+      Q => \adc_r_reg_n_0_[6]\,
+      R => adc_rst
+    );
+\adc_r_reg[7]\: unisim.vcomponents.FDRE
+     port map (
+      C => adc_clk,
+      CE => '1',
+      D => adc_dat_i(7),
+      Q => \adc_r_reg_n_0_[7]\,
+      R => adc_rst
+    );
+\adc_r_reg[8]\: unisim.vcomponents.FDRE
+     port map (
+      C => adc_clk,
+      CE => '1',
+      D => adc_dat_i(8),
+      Q => \adc_r_reg_n_0_[8]\,
+      R => adc_rst
+    );
+\adc_r_reg[9]\: unisim.vcomponents.FDRE
+     port map (
+      C => adc_clk,
+      CE => '1',
+      D => adc_dat_i(9),
+      Q => \adc_r_reg_n_0_[9]\,
       R => adc_rst
     );
 rcv: unisim.vcomponents.LUT3
@@ -62605,11 +62869,13 @@ entity design_1_top_0_0 is
     s_axi_rresp : out STD_LOGIC_VECTOR ( 1 downto 0 );
     s_axi_rvalid : out STD_LOGIC;
     s_axi_rready : in STD_LOGIC;
-    adc : in STD_LOGIC_VECTOR ( 15 downto 0 );
     m_axis_tdata : out STD_LOGIC_VECTOR ( 31 downto 0 );
     m_axis_tvalid : out STD_LOGIC;
     m_axis_tready : in STD_LOGIC;
-    m_axis_tlast : out STD_LOGIC
+    m_axis_tlast : out STD_LOGIC;
+    adc_dat_i : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    adc_clk_o : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    adc_cdcs_o : out STD_LOGIC
   );
   attribute NotValidForBitStream : boolean;
   attribute NotValidForBitStream of design_1_top_0_0 : entity is true;
@@ -62625,6 +62891,7 @@ end design_1_top_0_0;
 
 architecture STRUCTURE of design_1_top_0_0 is
   signal \<const0>\ : STD_LOGIC;
+  signal \<const1>\ : STD_LOGIC;
   signal inst_n_37 : STD_LOGIC;
   signal inst_n_38 : STD_LOGIC;
   signal inst_n_39 : STD_LOGIC;
@@ -63389,11 +63656,11 @@ architecture STRUCTURE of design_1_top_0_0 is
   attribute X_INTERFACE_INFO : string;
   attribute X_INTERFACE_INFO of adc_clk : signal is "xilinx.com:signal:clock:1.0 adc_clk CLK";
   attribute X_INTERFACE_PARAMETER : string;
-  attribute X_INTERFACE_PARAMETER of adc_clk : signal is "XIL_INTERFACENAME adc_clk, ASSOCIATED_RESET adc_rst, ASSOCIATED_BUSIF m_axis, FREQ_HZ 122880000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN design_1_util_ds_buf_0_0_IBUF_OUT, INSERT_VIP 0";
+  attribute X_INTERFACE_PARAMETER of adc_clk : signal is "XIL_INTERFACENAME adc_clk, ASSOCIATED_RESET adc_rst, ASSOCIATED_BUSIF m_axis, FREQ_HZ 122880000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN /clk_wiz_0_clk_out1, INSERT_VIP 0";
   attribute X_INTERFACE_INFO of adc_rst : signal is "xilinx.com:signal:reset:1.0 adc_rst RST";
   attribute X_INTERFACE_PARAMETER of adc_rst : signal is "XIL_INTERFACENAME adc_rst, POLARITY ACTIVE_HIGH, INSERT_VIP 0";
   attribute X_INTERFACE_INFO of m_axis_tlast : signal is "xilinx.com:interface:axis:1.0 m_axis TLAST";
-  attribute X_INTERFACE_PARAMETER of m_axis_tlast : signal is "XIL_INTERFACENAME m_axis, TDATA_NUM_BYTES 4, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 1, FREQ_HZ 122880000, PHASE 0.0, CLK_DOMAIN design_1_util_ds_buf_0_0_IBUF_OUT, LAYERED_METADATA undef, INSERT_VIP 0";
+  attribute X_INTERFACE_PARAMETER of m_axis_tlast : signal is "XIL_INTERFACENAME m_axis, TDATA_NUM_BYTES 4, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 1, FREQ_HZ 122880000, PHASE 0.0, CLK_DOMAIN /clk_wiz_0_clk_out1, LAYERED_METADATA undef, INSERT_VIP 0";
   attribute X_INTERFACE_INFO of m_axis_tready : signal is "xilinx.com:interface:axis:1.0 m_axis TREADY";
   attribute X_INTERFACE_INFO of m_axis_tvalid : signal is "xilinx.com:interface:axis:1.0 m_axis TVALID";
   attribute X_INTERFACE_INFO of s_axi_aclk : signal is "xilinx.com:signal:clock:1.0 s_axi_aclk CLK";
@@ -63420,6 +63687,9 @@ architecture STRUCTURE of design_1_top_0_0 is
   attribute X_INTERFACE_INFO of s_axi_wdata : signal is "xilinx.com:interface:aximm:1.0 s_axi WDATA";
   attribute X_INTERFACE_INFO of s_axi_wstrb : signal is "xilinx.com:interface:aximm:1.0 s_axi WSTRB";
 begin
+  adc_cdcs_o <= \<const1>\;
+  adc_clk_o(1) <= \<const1>\;
+  adc_clk_o(0) <= \<const0>\;
   s_axi_bresp(1) <= \<const0>\;
   s_axi_bresp(0) <= \<const0>\;
   s_axi_rresp(1) <= \<const0>\;
@@ -63427,6 +63697,10 @@ begin
 GND: unisim.vcomponents.GND
      port map (
       G => \<const0>\
+    );
+VCC: unisim.vcomponents.VCC
+     port map (
+      P => \<const1>\
     );
 inst: entity work.design_1_top_0_0_top
      port map (
@@ -63445,8 +63719,8 @@ inst: entity work.design_1_top_0_0_top
       ADDRARDADDR(2) => inst_n_49,
       ADDRARDADDR(1) => inst_n_50,
       ADDRARDADDR(0) => inst_n_51,
-      adc(15 downto 0) => adc(15 downto 0),
       adc_clk => adc_clk,
+      adc_dat_i(15 downto 0) => adc_dat_i(15 downto 0),
       adc_rst => adc_rst,
       adc_rst_0(14) => inst_n_52,
       adc_rst_0(13) => inst_n_53,

@@ -125,7 +125,7 @@ set ACTIVE_STEP write_bitstream
 set rc [catch {
   create_msg_db write_bitstream.pb
   set_param chipscope.maxJobs 11
-  open_checkpoint design_1_wrapper_routed.dcp
+  open_checkpoint design_1_wrapper_postroute_physopt.dcp
   set_property webtalk.parent_dir /ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.cache/wt [current_project]
 set_property TOP design_1_wrapper [current_fileset]
 OPTRACE "read constraints: write_bitstream" START { }

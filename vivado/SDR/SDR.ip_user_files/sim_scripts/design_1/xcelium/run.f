@@ -84,14 +84,7 @@
   "../../../bd/design_1/ip/design_1_rst_ps7_0_50M_0/sim/design_1_rst_ps7_0_50M_0.vhd" \
   "../../../bd/design_1/ip/design_1_util_ds_buf_0_0/util_ds_buf.vhd" \
   "../../../bd/design_1/ip/design_1_util_ds_buf_0_0/sim/design_1_util_ds_buf_0_0.vhd" \
-  "../../../bd/design_1/ip/design_1_util_ds_buf_1_0/sim/design_1_util_ds_buf_1_0.vhd" \
   "../../../bd/design_1/ip/design_1_proc_sys_reset_0_0/sim/design_1_proc_sys_reset_0_0.vhd" \
--endlib
--makelib xcelium_lib/xlconstant_v1_1_7 \
-  "../../../../SDR.gen/sources_1/bd/design_1/ipshared/fcfc/hdl/xlconstant_v1_1_vl_rfs.v" \
--endlib
--makelib xcelium_lib/xil_defaultlib \
-  "../../../bd/design_1/ip/design_1_xlconstant_0_0/sim/design_1_xlconstant_0_0.v" \
 -endlib
 -makelib xcelium_lib/axis_infrastructure_v1_1_0 \
   "../../../../SDR.gen/sources_1/bd/design_1/ipshared/8713/hdl/axis_infrastructure_v1_1_vl_rfs.v" \
@@ -101,16 +94,24 @@
 -endlib
 -makelib xcelium_lib/xil_defaultlib \
   "../../../bd/design_1/ip/design_1_axis_clock_converter_0_0/sim/design_1_axis_clock_converter_0_0.v" \
+  "../../../bd/design_1/ip/design_1_clk_wiz_0_0/design_1_clk_wiz_0_0_clk_wiz.v" \
+  "../../../bd/design_1/ip/design_1_clk_wiz_0_0/design_1_clk_wiz_0_0.v" \
+-endlib
+-makelib xcelium_lib/xlconstant_v1_1_7 \
+  "../../../../SDR.gen/sources_1/bd/design_1/ipshared/fcfc/hdl/xlconstant_v1_1_vl_rfs.v" \
+-endlib
+-makelib xcelium_lib/xil_defaultlib \
+  "../../../bd/design_1/ip/design_1_xlconstant_0_1/sim/design_1_xlconstant_0_1.v" \
 -endlib
 -makelib xcelium_lib/xil_defaultlib -sv \
-  "../../../bd/design_1/ipshared/3e96/src/AXI_adapter.sv" \
-  "../../../bd/design_1/ipshared/3e96/src/AXI_slave.sv" \
-  "../../../bd/design_1/ipshared/3e96/src/CIC.sv" \
-  "../../../bd/design_1/ipshared/3e96/src/DDC.sv" \
-  "../../../bd/design_1/ipshared/3e96/src/FIR.sv" \
-  "../../../bd/design_1/ipshared/3e96/src/NCO.sv" \
-  "../../../bd/design_1/ipshared/3e96/src/mixer.sv" \
-  "../../../bd/design_1/ipshared/3e96/src/top.sv" \
+  "../../../bd/design_1/ipshared/4baa/src/AXI_adapter.sv" \
+  "../../../bd/design_1/ipshared/4baa/src/AXI_slave.sv" \
+  "../../../bd/design_1/ipshared/4baa/src/CIC.sv" \
+  "../../../bd/design_1/ipshared/4baa/src/DDC.sv" \
+  "../../../bd/design_1/ipshared/4baa/src/FIR.sv" \
+  "../../../bd/design_1/ipshared/4baa/src/NCO.sv" \
+  "../../../bd/design_1/ipshared/4baa/src/mixer.sv" \
+  "../../../bd/design_1/ipshared/4baa/src/top.sv" \
   "../../../bd/design_1/ip/design_1_top_0_0/sim/design_1_top_0_0.sv" \
 -endlib
 -makelib xcelium_lib/axi_protocol_converter_v2_1_25 \

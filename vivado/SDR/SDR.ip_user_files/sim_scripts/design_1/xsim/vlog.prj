@@ -1,21 +1,23 @@
-verilog xil_defaultlib --include "/apps/reconfig/tools/Xilinx/Vivado/2021.2/data/xilinx_vip/include" --include "../../../../SDR.gen/sources_1/bd/design_1/ipshared/ec67/hdl" --include "../../../../SDR.gen/sources_1/bd/design_1/ipshared/3007/hdl" --include "../../../../SDR.gen/sources_1/bd/design_1/ipshared/8713/hdl" \
+verilog xil_defaultlib --include "/apps/reconfig/tools/Xilinx/Vivado/2021.2/data/xilinx_vip/include" --include "../../../../SDR.gen/sources_1/bd/design_1/ipshared/ec67/hdl" --include "../../../../SDR.gen/sources_1/bd/design_1/ipshared/3007/hdl" --include "../../../../SDR.gen/sources_1/bd/design_1/ipshared/8713/hdl" --include "../../../../SDR.gen/sources_1/bd/design_1/ipshared/62b6" \
 "../../../bd/design_1/ip/design_1_processing_system7_0_0/sim/design_1_processing_system7_0_0.v" \
 "../../../bd/design_1/ip/design_1_xbar_0/sim/design_1_xbar_0.v" \
-"../../../bd/design_1/ip/design_1_xlconstant_0_0/sim/design_1_xlconstant_0_0.v" \
 "../../../bd/design_1/ip/design_1_axis_clock_converter_0_0/sim/design_1_axis_clock_converter_0_0.v" \
+"../../../bd/design_1/ip/design_1_clk_wiz_0_0/design_1_clk_wiz_0_0_clk_wiz.v" \
+"../../../bd/design_1/ip/design_1_clk_wiz_0_0/design_1_clk_wiz_0_0.v" \
+"../../../bd/design_1/ip/design_1_xlconstant_0_1/sim/design_1_xlconstant_0_1.v" \
 
-sv xil_defaultlib --include "/apps/reconfig/tools/Xilinx/Vivado/2021.2/data/xilinx_vip/include" --include "../../../../SDR.gen/sources_1/bd/design_1/ipshared/ec67/hdl" --include "../../../../SDR.gen/sources_1/bd/design_1/ipshared/3007/hdl" --include "../../../../SDR.gen/sources_1/bd/design_1/ipshared/8713/hdl" \
-"../../../bd/design_1/ipshared/3e96/src/AXI_adapter.sv" \
-"../../../bd/design_1/ipshared/3e96/src/AXI_slave.sv" \
-"../../../bd/design_1/ipshared/3e96/src/CIC.sv" \
-"../../../bd/design_1/ipshared/3e96/src/DDC.sv" \
-"../../../bd/design_1/ipshared/3e96/src/FIR.sv" \
-"../../../bd/design_1/ipshared/3e96/src/NCO.sv" \
-"../../../bd/design_1/ipshared/3e96/src/mixer.sv" \
-"../../../bd/design_1/ipshared/3e96/src/top.sv" \
+sv xil_defaultlib --include "/apps/reconfig/tools/Xilinx/Vivado/2021.2/data/xilinx_vip/include" --include "../../../../SDR.gen/sources_1/bd/design_1/ipshared/ec67/hdl" --include "../../../../SDR.gen/sources_1/bd/design_1/ipshared/3007/hdl" --include "../../../../SDR.gen/sources_1/bd/design_1/ipshared/8713/hdl" --include "../../../../SDR.gen/sources_1/bd/design_1/ipshared/62b6" \
+"../../../bd/design_1/ipshared/4baa/src/AXI_adapter.sv" \
+"../../../bd/design_1/ipshared/4baa/src/AXI_slave.sv" \
+"../../../bd/design_1/ipshared/4baa/src/CIC.sv" \
+"../../../bd/design_1/ipshared/4baa/src/DDC.sv" \
+"../../../bd/design_1/ipshared/4baa/src/FIR.sv" \
+"../../../bd/design_1/ipshared/4baa/src/NCO.sv" \
+"../../../bd/design_1/ipshared/4baa/src/mixer.sv" \
+"../../../bd/design_1/ipshared/4baa/src/top.sv" \
 "../../../bd/design_1/ip/design_1_top_0_0/sim/design_1_top_0_0.sv" \
 
-verilog xil_defaultlib --include "/apps/reconfig/tools/Xilinx/Vivado/2021.2/data/xilinx_vip/include" --include "../../../../SDR.gen/sources_1/bd/design_1/ipshared/ec67/hdl" --include "../../../../SDR.gen/sources_1/bd/design_1/ipshared/3007/hdl" --include "../../../../SDR.gen/sources_1/bd/design_1/ipshared/8713/hdl" \
+verilog xil_defaultlib --include "/apps/reconfig/tools/Xilinx/Vivado/2021.2/data/xilinx_vip/include" --include "../../../../SDR.gen/sources_1/bd/design_1/ipshared/ec67/hdl" --include "../../../../SDR.gen/sources_1/bd/design_1/ipshared/3007/hdl" --include "../../../../SDR.gen/sources_1/bd/design_1/ipshared/8713/hdl" --include "../../../../SDR.gen/sources_1/bd/design_1/ipshared/62b6" \
 "../../../bd/design_1/ip/design_1_auto_pc_0/sim/design_1_auto_pc_0.v" \
 "../../../bd/design_1/ip/design_1_auto_pc_1/sim/design_1_auto_pc_1.v" \
 "../../../bd/design_1/sim/design_1.v" \

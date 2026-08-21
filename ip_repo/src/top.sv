@@ -34,12 +34,15 @@ module top #(
     output logic        s_axi_rvalid,
     input  logic        s_axi_rready,
 
-    input logic [MIXER_ADC_WIDTH-1:0] adc,
-
     output logic [31:0] m_axis_tdata,
     output logic m_axis_tvalid,
     input logic m_axis_tready,
-    output logic m_axis_tlast
+    output logic m_axis_tlast,
+
+    // adc stuff
+    input logic [MIXER_ADC_WIDTH-1:0] adc_dat_i,
+    output logic [1:0] adc_clk_o,
+    output logic adc_cdcs_o
 );
 
     logic phase_inc_sync;
@@ -71,6 +74,8 @@ module top #(
     logic ack;
     logic ack_dest_r;
     logic rcv;
+    logic [15:0] adc_r;
+    logic [15:0] adc_conv_r;
 
     DDC #(
         .NCO_PHASE_WIDTH(NCO_PHASE_WIDTH),
@@ -85,7 +90,7 @@ module top #(
     ) DUT_DDC (
         .clk(adc_clk),
         .rst(adc_rst),
-        .adc(adc),
+        .adc(adc_conv_r),
         .phase_inc(phase_inc),
         .phase_valid(rcv),
         .I_out(I_out),
@@ -209,4 +214,16 @@ module top #(
         end
     end
     
+    // adc front end
+    always_ff @(posedge adc_clk) begin
+        if (adc_rst) begin
+            adc_r <= '0;
+            adc_conv_r <= '0;
+        end else begin
+            adc_r <= adc_dat_i;
+            adc_conv_r <= {adc_r[15], ~adc_r[14:0]};
+        end
+    end
+    assign adc_clk_o = 2'b10;
+    assign adc_cdcs_o = 1'b1;
 endmodule

@@ -18,7 +18,8 @@ def DDC(write_artifacts=True):
     
     
     f_lo_target = 10e6
-    phase_inc = round(f_lo_target / FS * 2**32)
+    # phase_inc = round(f_lo_target / FS * 2**32)
+    phase_inc = 0
     f_lo_actual = phase_inc / 2**32 * FS
     f_bb = BIN_OUT * FS_OUT / N_OUT
     f_rf = f_lo_actual + f_bb
@@ -26,7 +27,8 @@ def DDC(write_artifacts=True):
     
 
     # input values
-    adc = sine(FS, N_IN, 0.9, frequency=f_rf)
+    # adc = sine(FS, N_IN, 0.9, frequency=f_rf)
+    adc = np.full(N_IN, 16384)
 
     # write stimulus
     with open("adc_stimulus.hex", "w") as fh:

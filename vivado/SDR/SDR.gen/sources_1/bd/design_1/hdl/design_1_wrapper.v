@@ -1,7 +1,7 @@
 //Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2021.2 (lin64) Build 3367213 Tue Oct 19 02:47:39 MDT 2021
-//Date        : Fri Aug 21 10:21:59 2026
+//Date        : Fri Aug 21 14:06:05 2026
 //Host        : ece-lnx-10 running 64-bit Red Hat Enterprise Linux release 8.10 (Ootpa)
 //Command     : generate_target design_1_wrapper.bd
 //Design      : design_1_wrapper
@@ -32,7 +32,10 @@ module design_1_wrapper
     FIXED_IO_mio,
     FIXED_IO_ps_clk,
     FIXED_IO_ps_porb,
-    FIXED_IO_ps_srstb);
+    FIXED_IO_ps_srstb,
+    adc_cdcs_o,
+    adc_clk_o,
+    adc_dat_i);
   input [0:0]CLK_IN_D_0_clk_n;
   input [0:0]CLK_IN_D_0_clk_p;
   inout [14:0]DDR_addr;
@@ -56,6 +59,9 @@ module design_1_wrapper
   inout FIXED_IO_ps_clk;
   inout FIXED_IO_ps_porb;
   inout FIXED_IO_ps_srstb;
+  output adc_cdcs_o;
+  output [1:0]adc_clk_o;
+  input [15:0]adc_dat_i;
 
   wire [0:0]CLK_IN_D_0_clk_n;
   wire [0:0]CLK_IN_D_0_clk_p;
@@ -80,6 +86,9 @@ module design_1_wrapper
   wire FIXED_IO_ps_clk;
   wire FIXED_IO_ps_porb;
   wire FIXED_IO_ps_srstb;
+  wire adc_cdcs_o;
+  wire [1:0]adc_clk_o;
+  wire [15:0]adc_dat_i;
 
   design_1 design_1_i
        (.CLK_IN_D_0_clk_n(CLK_IN_D_0_clk_n),
@@ -104,5 +113,8 @@ module design_1_wrapper
         .FIXED_IO_mio(FIXED_IO_mio),
         .FIXED_IO_ps_clk(FIXED_IO_ps_clk),
         .FIXED_IO_ps_porb(FIXED_IO_ps_porb),
-        .FIXED_IO_ps_srstb(FIXED_IO_ps_srstb));
+        .FIXED_IO_ps_srstb(FIXED_IO_ps_srstb),
+        .adc_cdcs_o(adc_cdcs_o),
+        .adc_clk_o(adc_clk_o),
+        .adc_dat_i(adc_dat_i));
 endmodule

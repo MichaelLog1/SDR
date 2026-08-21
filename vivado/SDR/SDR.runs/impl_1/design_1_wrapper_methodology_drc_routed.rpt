@@ -1,7 +1,7 @@
 Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2021.2 (lin64) Build 3367213 Tue Oct 19 02:47:39 MDT 2021
-| Date         : Fri Aug 21 10:26:28 2026
+| Date         : Fri Aug 21 14:12:03 2026
 | Host         : ece-lnx-10 running 64-bit Red Hat Enterprise Linux release 8.10 (Ootpa)
 | Command      : report_methodology -file design_1_wrapper_methodology_drc_routed.rpt -pb design_1_wrapper_methodology_drc_routed.pb -rpx design_1_wrapper_methodology_drc_routed.rpx
 | Design       : design_1_wrapper
@@ -23,13 +23,14 @@ Table of Contents
           Floorplan: design_1
       Design limits: <entire design considered>
              Max violations: <unlimited>
-             Violations found: 4
-+-----------+----------+------------------------------------+------------+
-| Rule      | Severity | Description                        | Violations |
-+-----------+----------+------------------------------------+------------+
-| LUTAR-1   | Warning  | LUT drives async reset alert       | 2          |
-| TIMING-24 | Warning  | Overridden Max delay datapath only | 2          |
-+-----------+----------+------------------------------------+------------+
+             Violations found: 20
++-----------+----------+------------------------------------------+------------+
+| Rule      | Severity | Description                              | Violations |
++-----------+----------+------------------------------------------+------------+
+| LUTAR-1   | Warning  | LUT drives async reset alert             | 2          |
+| TIMING-24 | Warning  | Overridden Max delay datapath only       | 2          |
+| XDCH-2    | Warning  | Same min and max delay values on IO port | 16         |
++-----------+----------+------------------------------------------+------------+
 
 2. REPORT DETAILS
 -----------------
@@ -75,12 +76,124 @@ Related violations: <none>
 
 TIMING-24#1 Warning
 Overridden Max delay datapath only  
-An asynchronous set_clock_groups or a set_false path (see constraint position 7 in the Timing Constraints window in Vivado IDE) between clocks adc_clk and clk_fpga_0 overrides a set_max_delay -datapath_only (position 12). It is not recommended to override a set_max_delay -datapath_only constraint. Replace the set_clock_groups or set_false_path between clocks with point-to-point set_false_path constraints
+An asynchronous set_clock_groups or a set_false path (see constraint position 8 in the Timing Constraints window in Vivado IDE) between clocks clk_fpga_0 and clk_out1_design_1_clk_wiz_0_0 overrides a set_max_delay -datapath_only (position 12). It is not recommended to override a set_max_delay -datapath_only constraint. Replace the set_clock_groups or set_false_path between clocks with point-to-point set_false_path constraints
 Related violations: <none>
 
 TIMING-24#2 Warning
 Overridden Max delay datapath only  
-An asynchronous set_clock_groups or a set_false path (see constraint position 7 in the Timing Constraints window in Vivado IDE) between clocks clk_fpga_0 and adc_clk overrides a set_max_delay -datapath_only (position 10). It is not recommended to override a set_max_delay -datapath_only constraint. Replace the set_clock_groups or set_false_path between clocks with point-to-point set_false_path constraints
+An asynchronous set_clock_groups or a set_false path (see constraint position 8 in the Timing Constraints window in Vivado IDE) between clocks clk_out1_design_1_clk_wiz_0_0 and clk_fpga_0 overrides a set_max_delay -datapath_only (position 14). It is not recommended to override a set_max_delay -datapath_only constraint. Replace the set_clock_groups or set_false_path between clocks with point-to-point set_false_path constraints
+Related violations: <none>
+
+XDCH-2#1 Warning
+Same min and max delay values on IO port  
+The same input delay of 6.000 ns has been defined on port 'adc_dat_i[0]' relative to clock adc_clk for both max and min. Make sure this reflects the design intent.
+set_input_delay -clock adc_clk 6.000 [get_ports {adc_dat_i[*]}]
+/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.srcs/constrs_1/new/adc.xdc (Line: 33)
+Related violations: <none>
+
+XDCH-2#2 Warning
+Same min and max delay values on IO port  
+The same input delay of 6.000 ns has been defined on port 'adc_dat_i[10]' relative to clock adc_clk for both max and min. Make sure this reflects the design intent.
+set_input_delay -clock adc_clk 6.000 [get_ports {adc_dat_i[*]}]
+/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.srcs/constrs_1/new/adc.xdc (Line: 33)
+Related violations: <none>
+
+XDCH-2#3 Warning
+Same min and max delay values on IO port  
+The same input delay of 6.000 ns has been defined on port 'adc_dat_i[11]' relative to clock adc_clk for both max and min. Make sure this reflects the design intent.
+set_input_delay -clock adc_clk 6.000 [get_ports {adc_dat_i[*]}]
+/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.srcs/constrs_1/new/adc.xdc (Line: 33)
+Related violations: <none>
+
+XDCH-2#4 Warning
+Same min and max delay values on IO port  
+The same input delay of 6.000 ns has been defined on port 'adc_dat_i[12]' relative to clock adc_clk for both max and min. Make sure this reflects the design intent.
+set_input_delay -clock adc_clk 6.000 [get_ports {adc_dat_i[*]}]
+/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.srcs/constrs_1/new/adc.xdc (Line: 33)
+Related violations: <none>
+
+XDCH-2#5 Warning
+Same min and max delay values on IO port  
+The same input delay of 6.000 ns has been defined on port 'adc_dat_i[13]' relative to clock adc_clk for both max and min. Make sure this reflects the design intent.
+set_input_delay -clock adc_clk 6.000 [get_ports {adc_dat_i[*]}]
+/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.srcs/constrs_1/new/adc.xdc (Line: 33)
+Related violations: <none>
+
+XDCH-2#6 Warning
+Same min and max delay values on IO port  
+The same input delay of 6.000 ns has been defined on port 'adc_dat_i[14]' relative to clock adc_clk for both max and min. Make sure this reflects the design intent.
+set_input_delay -clock adc_clk 6.000 [get_ports {adc_dat_i[*]}]
+/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.srcs/constrs_1/new/adc.xdc (Line: 33)
+Related violations: <none>
+
+XDCH-2#7 Warning
+Same min and max delay values on IO port  
+The same input delay of 6.000 ns has been defined on port 'adc_dat_i[15]' relative to clock adc_clk for both max and min. Make sure this reflects the design intent.
+set_input_delay -clock adc_clk 6.000 [get_ports {adc_dat_i[*]}]
+/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.srcs/constrs_1/new/adc.xdc (Line: 33)
+Related violations: <none>
+
+XDCH-2#8 Warning
+Same min and max delay values on IO port  
+The same input delay of 6.000 ns has been defined on port 'adc_dat_i[1]' relative to clock adc_clk for both max and min. Make sure this reflects the design intent.
+set_input_delay -clock adc_clk 6.000 [get_ports {adc_dat_i[*]}]
+/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.srcs/constrs_1/new/adc.xdc (Line: 33)
+Related violations: <none>
+
+XDCH-2#9 Warning
+Same min and max delay values on IO port  
+The same input delay of 6.000 ns has been defined on port 'adc_dat_i[2]' relative to clock adc_clk for both max and min. Make sure this reflects the design intent.
+set_input_delay -clock adc_clk 6.000 [get_ports {adc_dat_i[*]}]
+/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.srcs/constrs_1/new/adc.xdc (Line: 33)
+Related violations: <none>
+
+XDCH-2#10 Warning
+Same min and max delay values on IO port  
+The same input delay of 6.000 ns has been defined on port 'adc_dat_i[3]' relative to clock adc_clk for both max and min. Make sure this reflects the design intent.
+set_input_delay -clock adc_clk 6.000 [get_ports {adc_dat_i[*]}]
+/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.srcs/constrs_1/new/adc.xdc (Line: 33)
+Related violations: <none>
+
+XDCH-2#11 Warning
+Same min and max delay values on IO port  
+The same input delay of 6.000 ns has been defined on port 'adc_dat_i[4]' relative to clock adc_clk for both max and min. Make sure this reflects the design intent.
+set_input_delay -clock adc_clk 6.000 [get_ports {adc_dat_i[*]}]
+/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.srcs/constrs_1/new/adc.xdc (Line: 33)
+Related violations: <none>
+
+XDCH-2#12 Warning
+Same min and max delay values on IO port  
+The same input delay of 6.000 ns has been defined on port 'adc_dat_i[5]' relative to clock adc_clk for both max and min. Make sure this reflects the design intent.
+set_input_delay -clock adc_clk 6.000 [get_ports {adc_dat_i[*]}]
+/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.srcs/constrs_1/new/adc.xdc (Line: 33)
+Related violations: <none>
+
+XDCH-2#13 Warning
+Same min and max delay values on IO port  
+The same input delay of 6.000 ns has been defined on port 'adc_dat_i[6]' relative to clock adc_clk for both max and min. Make sure this reflects the design intent.
+set_input_delay -clock adc_clk 6.000 [get_ports {adc_dat_i[*]}]
+/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.srcs/constrs_1/new/adc.xdc (Line: 33)
+Related violations: <none>
+
+XDCH-2#14 Warning
+Same min and max delay values on IO port  
+The same input delay of 6.000 ns has been defined on port 'adc_dat_i[7]' relative to clock adc_clk for both max and min. Make sure this reflects the design intent.
+set_input_delay -clock adc_clk 6.000 [get_ports {adc_dat_i[*]}]
+/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.srcs/constrs_1/new/adc.xdc (Line: 33)
+Related violations: <none>
+
+XDCH-2#15 Warning
+Same min and max delay values on IO port  
+The same input delay of 6.000 ns has been defined on port 'adc_dat_i[8]' relative to clock adc_clk for both max and min. Make sure this reflects the design intent.
+set_input_delay -clock adc_clk 6.000 [get_ports {adc_dat_i[*]}]
+/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.srcs/constrs_1/new/adc.xdc (Line: 33)
+Related violations: <none>
+
+XDCH-2#16 Warning
+Same min and max delay values on IO port  
+The same input delay of 6.000 ns has been defined on port 'adc_dat_i[9]' relative to clock adc_clk for both max and min. Make sure this reflects the design intent.
+set_input_delay -clock adc_clk 6.000 [get_ports {adc_dat_i[*]}]
+/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.srcs/constrs_1/new/adc.xdc (Line: 33)
 Related violations: <none>
 
 

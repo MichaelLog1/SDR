@@ -1,7 +1,7 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0x85A58A800C4F8495",
+      "boundary_crc": "0xC675EE9B47E468B1",
       "device": "xc7z020clg400-1",
       "gen_directory": "../../../../SDR.gen/sources_1/bd/design_1",
       "name": "design_1",
@@ -23,17 +23,16 @@
       },
       "rst_ps7_0_50M": "",
       "util_ds_buf_0": "",
-      "util_ds_buf_1": "",
       "proc_sys_reset_0": "",
-      "xlconstant_0": "",
       "axis_clock_converter_0": "",
       "axi_mem_intercon": {
         "s00_couplers": {
           "auto_pc": ""
         }
       },
-      "top_0": "",
-      "xlconstant_1": ""
+      "clk_wiz_0": "",
+      "xlconstant_0": "",
+      "top_0": ""
     },
     "interface_ports": {
       "DDR": {
@@ -115,6 +114,21 @@
             "value": "122880000"
           }
         }
+      }
+    },
+    "ports": {
+      "adc_dat_i": {
+        "direction": "I",
+        "left": "15",
+        "right": "0"
+      },
+      "adc_clk_o": {
+        "direction": "O",
+        "left": "1",
+        "right": "0"
+      },
+      "adc_cdcs_o": {
+        "direction": "O"
       }
     },
     "components": {
@@ -725,28 +739,11 @@
         "xci_path": "ip/design_1_util_ds_buf_0_0/design_1_util_ds_buf_0_0.xci",
         "inst_hier_path": "util_ds_buf_0"
       },
-      "util_ds_buf_1": {
-        "vlnv": "xilinx.com:ip:util_ds_buf:2.2",
-        "xci_name": "design_1_util_ds_buf_1_0",
-        "xci_path": "ip/design_1_util_ds_buf_1_0/design_1_util_ds_buf_1_0.xci",
-        "inst_hier_path": "util_ds_buf_1",
-        "parameters": {
-          "C_BUF_TYPE": {
-            "value": "BUFG"
-          }
-        }
-      },
       "proc_sys_reset_0": {
         "vlnv": "xilinx.com:ip:proc_sys_reset:5.0",
         "xci_name": "design_1_proc_sys_reset_0_0",
         "xci_path": "ip/design_1_proc_sys_reset_0_0/design_1_proc_sys_reset_0_0.xci",
         "inst_hier_path": "proc_sys_reset_0"
-      },
-      "xlconstant_0": {
-        "vlnv": "xilinx.com:ip:xlconstant:1.1",
-        "xci_name": "design_1_xlconstant_0_0",
-        "xci_path": "ip/design_1_xlconstant_0_0/design_1_xlconstant_0_0.xci",
-        "inst_hier_path": "xlconstant_0"
       },
       "axis_clock_converter_0": {
         "vlnv": "xilinx.com:ip:axis_clock_converter:1.1",
@@ -967,25 +964,96 @@
           }
         }
       },
+      "clk_wiz_0": {
+        "vlnv": "xilinx.com:ip:clk_wiz:6.0",
+        "xci_name": "design_1_clk_wiz_0_0",
+        "xci_path": "ip/design_1_clk_wiz_0_0/design_1_clk_wiz_0_0.xci",
+        "inst_hier_path": "clk_wiz_0",
+        "parameters": {
+          "CLKIN1_JITTER_PS": {
+            "value": "81.38"
+          },
+          "CLKOUT1_DRIVES": {
+            "value": "BUFG"
+          },
+          "CLKOUT1_JITTER": {
+            "value": "126.701"
+          },
+          "CLKOUT1_PHASE_ERROR": {
+            "value": "105.342"
+          },
+          "CLKOUT1_REQUESTED_OUT_FREQ": {
+            "value": "122.88"
+          },
+          "CLKOUT2_DRIVES": {
+            "value": "BUFG"
+          },
+          "CLKOUT3_DRIVES": {
+            "value": "BUFG"
+          },
+          "CLKOUT4_DRIVES": {
+            "value": "BUFG"
+          },
+          "CLKOUT5_DRIVES": {
+            "value": "BUFG"
+          },
+          "CLKOUT6_DRIVES": {
+            "value": "BUFG"
+          },
+          "CLKOUT7_DRIVES": {
+            "value": "BUFG"
+          },
+          "MMCM_BANDWIDTH": {
+            "value": "OPTIMIZED"
+          },
+          "MMCM_CLKFBOUT_MULT_F": {
+            "value": "7"
+          },
+          "MMCM_CLKIN1_PERIOD": {
+            "value": "8.138"
+          },
+          "MMCM_CLKIN2_PERIOD": {
+            "value": "10.0"
+          },
+          "MMCM_CLKOUT0_DIVIDE_F": {
+            "value": "7"
+          },
+          "MMCM_COMPENSATION": {
+            "value": "ZHOLD"
+          },
+          "MMCM_DIVCLK_DIVIDE": {
+            "value": "1"
+          },
+          "PLL_CLKIN_PERIOD": {
+            "value": "8.138"
+          },
+          "PRIMITIVE": {
+            "value": "PLL"
+          },
+          "PRIM_IN_FREQ": {
+            "value": "122.88"
+          },
+          "PRIM_SOURCE": {
+            "value": "Global_buffer"
+          }
+        }
+      },
+      "xlconstant_0": {
+        "vlnv": "xilinx.com:ip:xlconstant:1.1",
+        "xci_name": "design_1_xlconstant_0_1",
+        "xci_path": "ip/design_1_xlconstant_0_1/design_1_xlconstant_0_1.xci",
+        "inst_hier_path": "xlconstant_0",
+        "parameters": {
+          "CONST_VAL": {
+            "value": "0"
+          }
+        }
+      },
       "top_0": {
         "vlnv": "user.org:user:top:1.0",
         "xci_name": "design_1_top_0_0",
         "xci_path": "ip/design_1_top_0_0/design_1_top_0_0.xci",
         "inst_hier_path": "top_0"
-      },
-      "xlconstant_1": {
-        "vlnv": "xilinx.com:ip:xlconstant:1.1",
-        "xci_name": "design_1_xlconstant_1_0",
-        "xci_path": "ip/design_1_xlconstant_1_0/design_1_xlconstant_1_0.xci",
-        "inst_hier_path": "xlconstant_1",
-        "parameters": {
-          "CONST_VAL": {
-            "value": "0x4000"
-          },
-          "CONST_WIDTH": {
-            "value": "16"
-          }
-        }
       }
     },
     "interface_nets": {
@@ -1051,10 +1119,22 @@
       }
     },
     "nets": {
+      "adc_dat_i_0_1": {
+        "ports": [
+          "adc_dat_i",
+          "top_0/adc_dat_i"
+        ]
+      },
       "axi_dma_0_s2mm_introut": {
         "ports": [
           "axi_dma_0/s2mm_introut",
           "processing_system7_0/IRQ_F2P"
+        ]
+      },
+      "clk_wiz_0_locked": {
+        "ports": [
+          "clk_wiz_0/locked",
+          "proc_sys_reset_0/dcm_locked"
         ]
       },
       "proc_sys_reset_0_peripheral_aresetn": {
@@ -1106,19 +1186,31 @@
           "axi_mem_intercon/S00_ARESETN",
           "axi_mem_intercon/M00_ARESETN",
           "axi_mem_intercon/ARESETN",
-          "top_0/s_axi_aresetn",
-          "axis_clock_converter_0/m_axis_aresetn"
+          "axis_clock_converter_0/m_axis_aresetn",
+          "top_0/s_axi_aresetn"
+        ]
+      },
+      "top_0_adc_cdcs_o": {
+        "ports": [
+          "top_0/adc_cdcs_o",
+          "adc_cdcs_o"
+        ]
+      },
+      "top_0_adc_clk_o": {
+        "ports": [
+          "top_0/adc_clk_o",
+          "adc_clk_o"
         ]
       },
       "util_ds_buf_0_IBUF_OUT": {
         "ports": [
           "util_ds_buf_0/IBUF_OUT",
-          "util_ds_buf_1/BUFG_I"
+          "clk_wiz_0/clk_in1"
         ]
       },
       "util_ds_buf_1_BUFG_O": {
         "ports": [
-          "util_ds_buf_1/BUFG_O",
+          "clk_wiz_0/clk_out1",
           "proc_sys_reset_0/slowest_sync_clk",
           "axis_clock_converter_0/s_axis_aclk",
           "top_0/adc_clk"
@@ -1127,13 +1219,7 @@
       "xlconstant_0_dout": {
         "ports": [
           "xlconstant_0/dout",
-          "proc_sys_reset_0/dcm_locked"
-        ]
-      },
-      "xlconstant_1_dout": {
-        "ports": [
-          "xlconstant_1/dout",
-          "top_0/adc"
+          "clk_wiz_0/reset"
         ]
       }
     },

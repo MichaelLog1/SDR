@@ -1,7 +1,7 @@
 //Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2021.2 (lin64) Build 3367213 Tue Oct 19 02:47:39 MDT 2021
-//Date        : Fri Aug 21 09:41:03 2026
+//Date        : Fri Aug 21 14:06:05 2026
 //Host        : ece-lnx-10 running 64-bit Red Hat Enterprise Linux release 8.10 (Ootpa)
 //Command     : generate_target design_1.bd
 //Design      : design_1
@@ -33,7 +33,10 @@ module design_1
     FIXED_IO_mio,
     FIXED_IO_ps_clk,
     FIXED_IO_ps_porb,
-    FIXED_IO_ps_srstb);
+    FIXED_IO_ps_srstb,
+    adc_cdcs_o,
+    adc_clk_o,
+    adc_dat_i);
   (* X_INTERFACE_INFO = "xilinx.com:interface:diff_clock:1.0 CLK_IN_D_0 CLK_N" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK_IN_D_0, CAN_DEBUG false, FREQ_HZ 122880000" *) input [0:0]CLK_IN_D_0_clk_n;
   (* X_INTERFACE_INFO = "xilinx.com:interface:diff_clock:1.0 CLK_IN_D_0 CLK_P" *) input [0:0]CLK_IN_D_0_clk_p;
   (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 DDR ADDR" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME DDR, AXI_ARBITRATION_SCHEME TDM, BURST_LENGTH 8, CAN_DEBUG false, CAS_LATENCY 11, CAS_WRITE_LATENCY 11, CS_ENABLED true, DATA_MASK_ENABLED true, DATA_WIDTH 8, MEMORY_TYPE COMPONENTS, MEM_ADDR_MAP ROW_COLUMN_BANK, SLOT Single, TIMEPERIOD_PS 1250" *) inout [14:0]DDR_addr;
@@ -57,9 +60,13 @@ module design_1
   (* X_INTERFACE_INFO = "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO PS_CLK" *) inout FIXED_IO_ps_clk;
   (* X_INTERFACE_INFO = "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO PS_PORB" *) inout FIXED_IO_ps_porb;
   (* X_INTERFACE_INFO = "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO PS_SRSTB" *) inout FIXED_IO_ps_srstb;
+  output adc_cdcs_o;
+  output [1:0]adc_clk_o;
+  input [15:0]adc_dat_i;
 
   wire [0:0]adc_clk_CLK_N;
   wire [0:0]adc_clk_CLK_P;
+  wire [15:0]adc_dat_i_0_1;
   wire [31:0]axi_dma_0_M_AXI_S2MM_AWADDR;
   wire [1:0]axi_dma_0_M_AXI_S2MM_AWBURST;
   wire [3:0]axi_dma_0_M_AXI_S2MM_AWCACHE;
@@ -99,6 +106,8 @@ module design_1
   wire axis_clock_converter_0_M_AXIS_TLAST;
   wire axis_clock_converter_0_M_AXIS_TREADY;
   wire axis_clock_converter_0_M_AXIS_TVALID;
+  wire clk_wiz_0_locked;
+  wire [0:0]proc_sys_reset_0_peripheral_aresetn;
   wire [0:0]proc_sys_reset_0_peripheral_reset;
   wire [14:0]processing_system7_0_DDR_ADDR;
   wire [2:0]processing_system7_0_DDR_BA;
@@ -195,16 +204,21 @@ module design_1
   wire [3:0]ps7_0_axi_periph_M01_AXI_WSTRB;
   wire ps7_0_axi_periph_M01_AXI_WVALID;
   wire [0:0]rst_ps7_0_50M_peripheral_aresetn;
+  wire top_0_adc_cdcs_o;
+  wire [1:0]top_0_adc_clk_o;
   wire [31:0]top_0_m_axis_TDATA;
   wire top_0_m_axis_TLAST;
   wire top_0_m_axis_TREADY;
   wire top_0_m_axis_TVALID;
   wire [0:0]util_ds_buf_0_IBUF_OUT;
-  wire [0:0]util_ds_buf_1_BUFG_O;
+  wire util_ds_buf_1_BUFG_O;
   wire [0:0]xlconstant_0_dout;
 
+  assign adc_cdcs_o = top_0_adc_cdcs_o;
   assign adc_clk_CLK_N = CLK_IN_D_0_clk_n[0];
   assign adc_clk_CLK_P = CLK_IN_D_0_clk_p[0];
+  assign adc_clk_o[1:0] = top_0_adc_clk_o;
+  assign adc_dat_i_0_1 = adc_dat_i[15:0];
   design_1_axi_dma_0_0 axi_dma_0
        (.axi_resetn(rst_ps7_0_50M_peripheral_aresetn),
         .m_axi_s2mm_aclk(processing_system7_0_FCLK_CLK0),
@@ -290,22 +304,28 @@ module design_1
         .S00_AXI_wvalid(axi_dma_0_M_AXI_S2MM_WVALID));
   design_1_axis_clock_converter_0_0 axis_clock_converter_0
        (.m_axis_aclk(processing_system7_0_FCLK_CLK0),
-        .m_axis_aresetn(1'b0),
+        .m_axis_aresetn(rst_ps7_0_50M_peripheral_aresetn),
         .m_axis_tdata(axis_clock_converter_0_M_AXIS_TDATA),
         .m_axis_tlast(axis_clock_converter_0_M_AXIS_TLAST),
         .m_axis_tready(axis_clock_converter_0_M_AXIS_TREADY),
         .m_axis_tvalid(axis_clock_converter_0_M_AXIS_TVALID),
         .s_axis_aclk(util_ds_buf_1_BUFG_O),
-        .s_axis_aresetn(1'b0),
+        .s_axis_aresetn(proc_sys_reset_0_peripheral_aresetn),
         .s_axis_tdata(top_0_m_axis_TDATA),
         .s_axis_tlast(top_0_m_axis_TLAST),
         .s_axis_tready(top_0_m_axis_TREADY),
         .s_axis_tvalid(top_0_m_axis_TVALID));
+  design_1_clk_wiz_0_0 clk_wiz_0
+       (.clk_in1(util_ds_buf_0_IBUF_OUT),
+        .clk_out1(util_ds_buf_1_BUFG_O),
+        .locked(clk_wiz_0_locked),
+        .reset(xlconstant_0_dout));
   design_1_proc_sys_reset_0_0 proc_sys_reset_0
        (.aux_reset_in(1'b1),
-        .dcm_locked(xlconstant_0_dout),
+        .dcm_locked(clk_wiz_0_locked),
         .ext_reset_in(processing_system7_0_FCLK_RESET0_N),
         .mb_debug_sys_rst(1'b0),
+        .peripheral_aresetn(proc_sys_reset_0_peripheral_aresetn),
         .peripheral_reset(proc_sys_reset_0_peripheral_reset),
         .slowest_sync_clk(util_ds_buf_1_BUFG_O));
   design_1_processing_system7_0_0 processing_system7_0
@@ -494,8 +514,10 @@ module design_1
         .peripheral_aresetn(rst_ps7_0_50M_peripheral_aresetn),
         .slowest_sync_clk(processing_system7_0_FCLK_CLK0));
   design_1_top_0_0 top_0
-       (.adc({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+       (.adc_cdcs_o(top_0_adc_cdcs_o),
         .adc_clk(util_ds_buf_1_BUFG_O),
+        .adc_clk_o(top_0_adc_clk_o),
+        .adc_dat_i(adc_dat_i_0_1),
         .adc_rst(proc_sys_reset_0_peripheral_reset),
         .m_axis_tdata(top_0_m_axis_TDATA),
         .m_axis_tlast(top_0_m_axis_TLAST),
@@ -524,10 +546,7 @@ module design_1
        (.IBUF_DS_N(adc_clk_CLK_N),
         .IBUF_DS_P(adc_clk_CLK_P),
         .IBUF_OUT(util_ds_buf_0_IBUF_OUT));
-  design_1_util_ds_buf_1_0 util_ds_buf_1
-       (.BUFG_I(util_ds_buf_0_IBUF_OUT),
-        .BUFG_O(util_ds_buf_1_BUFG_O));
-  design_1_xlconstant_0_0 xlconstant_0
+  design_1_xlconstant_0_1 xlconstant_0
        (.dout(xlconstant_0_dout));
 endmodule
 
