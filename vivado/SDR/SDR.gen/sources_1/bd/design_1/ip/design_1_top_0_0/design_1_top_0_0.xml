@@ -834,11 +834,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Fri Aug 21 18:06:06 UTC 2026</spirit:value>
+            <spirit:value>Fri Aug 21 21:54:22 UTC 2026</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:df1bcf14</spirit:value>
+            <spirit:value>9:1a67be6a</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -849,7 +849,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:df1bcf14</spirit:value>
+            <spirit:value>9:1a67be6a</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -865,11 +865,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Fri Aug 21 18:06:06 UTC 2026</spirit:value>
+            <spirit:value>Fri Aug 21 21:54:22 UTC 2026</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:df1bcf14</spirit:value>
+            <spirit:value>9:1a67be6a</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -884,11 +884,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Fri Aug 21 18:06:06 UTC 2026</spirit:value>
+            <spirit:value>Fri Aug 21 21:54:22 UTC 2026</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:f284b492</spirit:value>
+            <spirit:value>9:37f8c5ec</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -904,11 +904,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Fri Aug 21 18:06:06 UTC 2026</spirit:value>
+            <spirit:value>Fri Aug 21 21:54:22 UTC 2026</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:f284b492</spirit:value>
+            <spirit:value>9:37f8c5ec</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -922,11 +922,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Fri Aug 21 18:08:04 UTC 2026</spirit:value>
+            <spirit:value>Fri Aug 21 21:55:49 UTC 2026</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:df1bcf14</spirit:value>
+            <spirit:value>9:1a67be6a</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -1431,31 +1431,31 @@
     <spirit:fileSet>
       <spirit:name>xilinx_anylanguagesynthesis_view_fileset</spirit:name>
       <spirit:file>
-        <spirit:name>../../ipshared/4baa/src/AXI_adapter.sv</spirit:name>
+        <spirit:name>../../ipshared/79c9/src/AXI_adapter.sv</spirit:name>
         <spirit:fileType>systemVerilogSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/4baa/src/AXI_slave.sv</spirit:name>
+        <spirit:name>../../ipshared/79c9/src/AXI_slave.sv</spirit:name>
         <spirit:fileType>systemVerilogSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/4baa/src/CIC.sv</spirit:name>
+        <spirit:name>../../ipshared/79c9/src/CIC.sv</spirit:name>
         <spirit:fileType>systemVerilogSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/4baa/src/DDC.sv</spirit:name>
+        <spirit:name>../../ipshared/79c9/src/DDC.sv</spirit:name>
         <spirit:fileType>systemVerilogSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/4baa/src/FIR.sv</spirit:name>
+        <spirit:name>../../ipshared/79c9/src/FIR.sv</spirit:name>
         <spirit:fileType>systemVerilogSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/4baa/src/NCO.sv</spirit:name>
+        <spirit:name>../../ipshared/79c9/src/NCO.sv</spirit:name>
         <spirit:fileType>systemVerilogSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/4baa/src/mixer.sv</spirit:name>
+        <spirit:name>../../ipshared/79c9/src/mixer.sv</spirit:name>
         <spirit:fileType>systemVerilogSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
@@ -1467,7 +1467,7 @@
         <spirit:userFileType>mem</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/4baa/src/top.sv</spirit:name>
+        <spirit:name>../../ipshared/79c9/src/top.sv</spirit:name>
         <spirit:fileType>systemVerilogSource</spirit:fileType>
       </spirit:file>
     </spirit:fileSet>
@@ -1482,31 +1482,31 @@
     <spirit:fileSet>
       <spirit:name>xilinx_anylanguagebehavioralsimulation_view_fileset</spirit:name>
       <spirit:file>
-        <spirit:name>../../ipshared/4baa/src/AXI_adapter.sv</spirit:name>
+        <spirit:name>../../ipshared/79c9/src/AXI_adapter.sv</spirit:name>
         <spirit:fileType>systemVerilogSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/4baa/src/AXI_slave.sv</spirit:name>
+        <spirit:name>../../ipshared/79c9/src/AXI_slave.sv</spirit:name>
         <spirit:fileType>systemVerilogSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/4baa/src/CIC.sv</spirit:name>
+        <spirit:name>../../ipshared/79c9/src/CIC.sv</spirit:name>
         <spirit:fileType>systemVerilogSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/4baa/src/DDC.sv</spirit:name>
+        <spirit:name>../../ipshared/79c9/src/DDC.sv</spirit:name>
         <spirit:fileType>systemVerilogSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/4baa/src/FIR.sv</spirit:name>
+        <spirit:name>../../ipshared/79c9/src/FIR.sv</spirit:name>
         <spirit:fileType>systemVerilogSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/4baa/src/NCO.sv</spirit:name>
+        <spirit:name>../../ipshared/79c9/src/NCO.sv</spirit:name>
         <spirit:fileType>systemVerilogSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/4baa/src/mixer.sv</spirit:name>
+        <spirit:name>../../ipshared/79c9/src/mixer.sv</spirit:name>
         <spirit:fileType>systemVerilogSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
@@ -1518,7 +1518,7 @@
         <spirit:userFileType>mem</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/4baa/src/top.sv</spirit:name>
+        <spirit:name>../../ipshared/79c9/src/top.sv</spirit:name>
         <spirit:fileType>systemVerilogSource</spirit:fileType>
       </spirit:file>
     </spirit:fileSet>
@@ -1628,7 +1628,7 @@
     <xilinx:coreExtensions>
       <xilinx:displayName>top_v1_0</xilinx:displayName>
       <xilinx:definitionSource>package_project</xilinx:definitionSource>
-      <xilinx:coreRevision>10</xilinx:coreRevision>
+      <xilinx:coreRevision>11</xilinx:coreRevision>
       <xilinx:tags>
         <xilinx:tag xilinx:name="ui.data.coregen.df@3e0abf8a_ARCHIVE_LOCATION">/ecel/UFAD/michael.logsdon/workspace/SDR/ip_repo</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.df@46812dd5_ARCHIVE_LOCATION">/ecel/UFAD/michael.logsdon/workspace/SDR/ip_repo</xilinx:tag>
@@ -1802,6 +1802,24 @@
         <xilinx:tag xilinx:name="ui.data.coregen.df@678e04f5_ARCHIVE_LOCATION">/ecel/UFAD/michael.logsdon/workspace/SDR/ip_repo</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.df@6f2ba86f_ARCHIVE_LOCATION">/ecel/UFAD/michael.logsdon/workspace/SDR/ip_repo</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.df@7197bf55_ARCHIVE_LOCATION">/ecel/UFAD/michael.logsdon/workspace/SDR/ip_repo</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@3be7c120_ARCHIVE_LOCATION">/ecel/UFAD/michael.logsdon/workspace/SDR/ip_repo</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@4cca0fda_ARCHIVE_LOCATION">/ecel/UFAD/michael.logsdon/workspace/SDR/ip_repo</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@16c086c7_ARCHIVE_LOCATION">/ecel/UFAD/michael.logsdon/workspace/SDR/ip_repo</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@1873f6a1_ARCHIVE_LOCATION">/ecel/UFAD/michael.logsdon/workspace/SDR/ip_repo</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@49c20dd9_ARCHIVE_LOCATION">/ecel/UFAD/michael.logsdon/workspace/SDR/ip_repo</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@43388909_ARCHIVE_LOCATION">/ecel/UFAD/michael.logsdon/workspace/SDR/ip_repo</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@1629660c_ARCHIVE_LOCATION">/ecel/UFAD/michael.logsdon/workspace/SDR/ip_repo</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@7fa27a56_ARCHIVE_LOCATION">/ecel/UFAD/michael.logsdon/workspace/SDR/ip_repo</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@261558bc_ARCHIVE_LOCATION">/ecel/UFAD/michael.logsdon/workspace/SDR/ip_repo</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@f64d3f6_ARCHIVE_LOCATION">/ecel/UFAD/michael.logsdon/workspace/SDR/ip_repo</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@8f0bb17_ARCHIVE_LOCATION">/ecel/UFAD/michael.logsdon/workspace/SDR/ip_repo</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@5ac2a4b_ARCHIVE_LOCATION">/ecel/UFAD/michael.logsdon/workspace/SDR/ip_repo</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@3939fa16_ARCHIVE_LOCATION">/ecel/UFAD/michael.logsdon/workspace/SDR/ip_repo</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@4ef8f052_ARCHIVE_LOCATION">/ecel/UFAD/michael.logsdon/workspace/SDR/ip_repo</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@3845910_ARCHIVE_LOCATION">/ecel/UFAD/michael.logsdon/workspace/SDR/ip_repo</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@73f93697_ARCHIVE_LOCATION">/ecel/UFAD/michael.logsdon/workspace/SDR/ip_repo</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@2b39352d_ARCHIVE_LOCATION">/ecel/UFAD/michael.logsdon/workspace/SDR/ip_repo</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@60936fa2_ARCHIVE_LOCATION">/ecel/UFAD/michael.logsdon/workspace/SDR/ip_repo</xilinx:tag>
       </xilinx:tags>
       <xilinx:configElementInfos>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.ADC_CLK.ASSOCIATED_BUSIF" xilinx:valuePermission="bd_and_user"/>
@@ -1868,7 +1886,7 @@
       <xilinx:xilinxVersion>2021.2</xilinx:xilinxVersion>
       <xilinx:checksum xilinx:scope="busInterfaces" xilinx:value="64c724ec"/>
       <xilinx:checksum xilinx:scope="memoryMaps" xilinx:value="da6fc9ff"/>
-      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="2c0f1622"/>
+      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="6f2a6377"/>
       <xilinx:checksum xilinx:scope="ports" xilinx:value="86029a6f"/>
       <xilinx:checksum xilinx:scope="hdlParameters" xilinx:value="47bb3d49"/>
       <xilinx:checksum xilinx:scope="parameters" xilinx:value="8a15ac07"/>

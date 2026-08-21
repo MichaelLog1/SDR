@@ -9,7 +9,7 @@
     ** Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
 
 source design_1_wrapper.tcl -notrace
-create_project: Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 2733.164 ; gain = 2.016 ; free physical = 455270 ; free virtual = 617280
+create_project: Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 2733.164 ; gain = 2.016 ; free physical = 441385 ; free virtual = 613525
 INFO: [IP_Flow 19-234] Refreshing IP repositories
 INFO: [IP_Flow 19-1700] Loaded user IP repository '/ecel/UFAD/michael.logsdon/workspace/SDR/ip_repo'.
 INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/apps/reconfig/tools/Xilinx/Vivado/2021.2/data/ip'.
@@ -25,79 +25,86 @@ WARNING: [Designutils 20-4072] Reference run did not run incremental synthesis b
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 4 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 805682
+INFO: [Synth 8-7075] Helper process launched with PID 957942
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 2737.340 ; gain = 0.000 ; free physical = 453955 ; free virtual = 615965
+Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 2737.340 ; gain = 0.000 ; free physical = 440367 ; free virtual = 612508
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-6157] synthesizing module 'design_1_wrapper' [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/hdl/design_1_wrapper.v:12]
 INFO: [Synth 8-6157] synthesizing module 'design_1' [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/synth/design_1.v:13]
-INFO: [Synth 8-6157] synthesizing module 'design_1_axi_dma_0_0' [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.runs/synth_1/.Xil/Vivado-805349-ece-lnx-10/realtime/design_1_axi_dma_0_0_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'design_1_axi_dma_0_0' (1#1) [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.runs/synth_1/.Xil/Vivado-805349-ece-lnx-10/realtime/design_1_axi_dma_0_0_stub.v:6]
-WARNING: [Synth 8-7071] port 's2mm_prmry_reset_out_n' of module 'design_1_axi_dma_0_0' is unconnected for instance 'axi_dma_0' [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/synth/design_1.v:222]
-WARNING: [Synth 8-7071] port 'axi_dma_tstvec' of module 'design_1_axi_dma_0_0' is unconnected for instance 'axi_dma_0' [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/synth/design_1.v:222]
-WARNING: [Synth 8-7023] instance 'axi_dma_0' of module 'design_1_axi_dma_0_0' has 43 connections declared, but only 41 given [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/synth/design_1.v:222]
-INFO: [Synth 8-6157] synthesizing module 'design_1_axi_mem_intercon_0' [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/synth/design_1.v:553]
-INFO: [Synth 8-6157] synthesizing module 's00_couplers_imp_7HNO1D' [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/synth/design_1.v:1549]
-INFO: [Synth 8-6157] synthesizing module 'design_1_auto_pc_1' [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.runs/synth_1/.Xil/Vivado-805349-ece-lnx-10/realtime/design_1_auto_pc_1_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'design_1_auto_pc_1' (2#1) [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.runs/synth_1/.Xil/Vivado-805349-ece-lnx-10/realtime/design_1_auto_pc_1_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 's00_couplers_imp_7HNO1D' (3#1) [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/synth/design_1.v:1549]
-INFO: [Synth 8-6155] done synthesizing module 'design_1_axi_mem_intercon_0' (4#1) [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/synth/design_1.v:553]
-INFO: [Synth 8-6157] synthesizing module 'design_1_axis_clock_converter_0_0' [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.runs/synth_1/.Xil/Vivado-805349-ece-lnx-10/realtime/design_1_axis_clock_converter_0_0_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'design_1_axis_clock_converter_0_0' (5#1) [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.runs/synth_1/.Xil/Vivado-805349-ece-lnx-10/realtime/design_1_axis_clock_converter_0_0_stub.v:6]
-INFO: [Synth 8-6157] synthesizing module 'design_1_clk_wiz_0_0' [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.runs/synth_1/.Xil/Vivado-805349-ece-lnx-10/realtime/design_1_clk_wiz_0_0_stub.v:5]
-INFO: [Synth 8-6155] done synthesizing module 'design_1_clk_wiz_0_0' (6#1) [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.runs/synth_1/.Xil/Vivado-805349-ece-lnx-10/realtime/design_1_clk_wiz_0_0_stub.v:5]
-INFO: [Synth 8-6157] synthesizing module 'design_1_proc_sys_reset_0_0' [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.runs/synth_1/.Xil/Vivado-805349-ece-lnx-10/realtime/design_1_proc_sys_reset_0_0_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'design_1_proc_sys_reset_0_0' (7#1) [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.runs/synth_1/.Xil/Vivado-805349-ece-lnx-10/realtime/design_1_proc_sys_reset_0_0_stub.v:6]
-WARNING: [Synth 8-7071] port 'mb_reset' of module 'design_1_proc_sys_reset_0_0' is unconnected for instance 'proc_sys_reset_0' [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/synth/design_1.v:323]
-WARNING: [Synth 8-7071] port 'bus_struct_reset' of module 'design_1_proc_sys_reset_0_0' is unconnected for instance 'proc_sys_reset_0' [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/synth/design_1.v:323]
-WARNING: [Synth 8-7071] port 'interconnect_aresetn' of module 'design_1_proc_sys_reset_0_0' is unconnected for instance 'proc_sys_reset_0' [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/synth/design_1.v:323]
-WARNING: [Synth 8-7023] instance 'proc_sys_reset_0' of module 'design_1_proc_sys_reset_0_0' has 10 connections declared, but only 7 given [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/synth/design_1.v:323]
-INFO: [Synth 8-6157] synthesizing module 'design_1_processing_system7_0_0' [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.runs/synth_1/.Xil/Vivado-805349-ece-lnx-10/realtime/design_1_processing_system7_0_0_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'design_1_processing_system7_0_0' (8#1) [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.runs/synth_1/.Xil/Vivado-805349-ece-lnx-10/realtime/design_1_processing_system7_0_0_stub.v:6]
-WARNING: [Synth 8-7071] port 'S_AXI_HP0_ARREADY' of module 'design_1_processing_system7_0_0' is unconnected for instance 'processing_system7_0' [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/synth/design_1.v:331]
-WARNING: [Synth 8-7071] port 'S_AXI_HP0_RLAST' of module 'design_1_processing_system7_0_0' is unconnected for instance 'processing_system7_0' [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/synth/design_1.v:331]
-WARNING: [Synth 8-7071] port 'S_AXI_HP0_RVALID' of module 'design_1_processing_system7_0_0' is unconnected for instance 'processing_system7_0' [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/synth/design_1.v:331]
-WARNING: [Synth 8-7071] port 'S_AXI_HP0_RRESP' of module 'design_1_processing_system7_0_0' is unconnected for instance 'processing_system7_0' [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/synth/design_1.v:331]
-WARNING: [Synth 8-7071] port 'S_AXI_HP0_BID' of module 'design_1_processing_system7_0_0' is unconnected for instance 'processing_system7_0' [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/synth/design_1.v:331]
-WARNING: [Synth 8-7071] port 'S_AXI_HP0_RID' of module 'design_1_processing_system7_0_0' is unconnected for instance 'processing_system7_0' [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/synth/design_1.v:331]
-WARNING: [Synth 8-7071] port 'S_AXI_HP0_RDATA' of module 'design_1_processing_system7_0_0' is unconnected for instance 'processing_system7_0' [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/synth/design_1.v:331]
-WARNING: [Synth 8-7071] port 'S_AXI_HP0_RCOUNT' of module 'design_1_processing_system7_0_0' is unconnected for instance 'processing_system7_0' [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/synth/design_1.v:331]
-WARNING: [Synth 8-7071] port 'S_AXI_HP0_WCOUNT' of module 'design_1_processing_system7_0_0' is unconnected for instance 'processing_system7_0' [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/synth/design_1.v:331]
-WARNING: [Synth 8-7071] port 'S_AXI_HP0_RACOUNT' of module 'design_1_processing_system7_0_0' is unconnected for instance 'processing_system7_0' [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/synth/design_1.v:331]
-WARNING: [Synth 8-7071] port 'S_AXI_HP0_WACOUNT' of module 'design_1_processing_system7_0_0' is unconnected for instance 'processing_system7_0' [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/synth/design_1.v:331]
-WARNING: [Synth 8-7023] instance 'processing_system7_0' of module 'design_1_processing_system7_0_0' has 108 connections declared, but only 97 given [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/synth/design_1.v:331]
-INFO: [Synth 8-6157] synthesizing module 'design_1_ps7_0_axi_periph_0' [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/synth/design_1.v:753]
-INFO: [Synth 8-6157] synthesizing module 'm00_couplers_imp_15SPJYW' [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/synth/design_1.v:1292]
-INFO: [Synth 8-6155] done synthesizing module 'm00_couplers_imp_15SPJYW' (9#1) [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/synth/design_1.v:1292]
-INFO: [Synth 8-6157] synthesizing module 'm01_couplers_imp_XU9C55' [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/synth/design_1.v:1417]
-INFO: [Synth 8-6155] done synthesizing module 'm01_couplers_imp_XU9C55' (10#1) [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/synth/design_1.v:1417]
-INFO: [Synth 8-6157] synthesizing module 's00_couplers_imp_UYSKKA' [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/synth/design_1.v:1742]
-INFO: [Synth 8-6157] synthesizing module 'design_1_auto_pc_0' [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.runs/synth_1/.Xil/Vivado-805349-ece-lnx-10/realtime/design_1_auto_pc_0_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'design_1_auto_pc_0' (11#1) [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.runs/synth_1/.Xil/Vivado-805349-ece-lnx-10/realtime/design_1_auto_pc_0_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 's00_couplers_imp_UYSKKA' (12#1) [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/synth/design_1.v:1742]
-INFO: [Synth 8-6157] synthesizing module 'design_1_xbar_0' [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.runs/synth_1/.Xil/Vivado-805349-ece-lnx-10/realtime/design_1_xbar_0_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'design_1_xbar_0' (13#1) [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.runs/synth_1/.Xil/Vivado-805349-ece-lnx-10/realtime/design_1_xbar_0_stub.v:6]
-WARNING: [Synth 8-7071] port 'm_axi_awprot' of module 'design_1_xbar_0' is unconnected for instance 'xbar' [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/synth/design_1.v:1251]
-WARNING: [Synth 8-7071] port 'm_axi_arprot' of module 'design_1_xbar_0' is unconnected for instance 'xbar' [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/synth/design_1.v:1251]
-WARNING: [Synth 8-7023] instance 'xbar' of module 'design_1_xbar_0' has 40 connections declared, but only 38 given [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/synth/design_1.v:1251]
-INFO: [Synth 8-6155] done synthesizing module 'design_1_ps7_0_axi_periph_0' (14#1) [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/synth/design_1.v:753]
-INFO: [Synth 8-6157] synthesizing module 'design_1_rst_ps7_0_50M_0' [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.runs/synth_1/.Xil/Vivado-805349-ece-lnx-10/realtime/design_1_rst_ps7_0_50M_0_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'design_1_rst_ps7_0_50M_0' (15#1) [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.runs/synth_1/.Xil/Vivado-805349-ece-lnx-10/realtime/design_1_rst_ps7_0_50M_0_stub.v:6]
-WARNING: [Synth 8-7071] port 'mb_reset' of module 'design_1_rst_ps7_0_50M_0' is unconnected for instance 'rst_ps7_0_50M' [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/synth/design_1.v:509]
-WARNING: [Synth 8-7071] port 'bus_struct_reset' of module 'design_1_rst_ps7_0_50M_0' is unconnected for instance 'rst_ps7_0_50M' [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/synth/design_1.v:509]
-WARNING: [Synth 8-7071] port 'peripheral_reset' of module 'design_1_rst_ps7_0_50M_0' is unconnected for instance 'rst_ps7_0_50M' [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/synth/design_1.v:509]
-WARNING: [Synth 8-7071] port 'interconnect_aresetn' of module 'design_1_rst_ps7_0_50M_0' is unconnected for instance 'rst_ps7_0_50M' [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/synth/design_1.v:509]
-WARNING: [Synth 8-7023] instance 'rst_ps7_0_50M' of module 'design_1_rst_ps7_0_50M_0' has 10 connections declared, but only 6 given [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/synth/design_1.v:509]
-INFO: [Synth 8-6157] synthesizing module 'design_1_top_0_0' [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.runs/synth_1/.Xil/Vivado-805349-ece-lnx-10/realtime/design_1_top_0_0_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'design_1_top_0_0' (16#1) [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.runs/synth_1/.Xil/Vivado-805349-ece-lnx-10/realtime/design_1_top_0_0_stub.v:6]
-INFO: [Synth 8-6157] synthesizing module 'design_1_util_ds_buf_0_0' [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.runs/synth_1/.Xil/Vivado-805349-ece-lnx-10/realtime/design_1_util_ds_buf_0_0_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'design_1_util_ds_buf_0_0' (17#1) [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.runs/synth_1/.Xil/Vivado-805349-ece-lnx-10/realtime/design_1_util_ds_buf_0_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'design_1_axi_dma_0_0' [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.runs/synth_1/.Xil/Vivado-957062-ece-lnx-10/realtime/design_1_axi_dma_0_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'design_1_axi_dma_0_0' (1#1) [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.runs/synth_1/.Xil/Vivado-957062-ece-lnx-10/realtime/design_1_axi_dma_0_0_stub.v:6]
+WARNING: [Synth 8-7071] port 's2mm_prmry_reset_out_n' of module 'design_1_axi_dma_0_0' is unconnected for instance 'axi_dma_0' [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/synth/design_1.v:271]
+WARNING: [Synth 8-7071] port 'axi_dma_tstvec' of module 'design_1_axi_dma_0_0' is unconnected for instance 'axi_dma_0' [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/synth/design_1.v:271]
+WARNING: [Synth 8-7023] instance 'axi_dma_0' of module 'design_1_axi_dma_0_0' has 73 connections declared, but only 71 given [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/synth/design_1.v:271]
+INFO: [Synth 8-6157] synthesizing module 'design_1_axi_mem_intercon_0' [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/synth/design_1.v:690]
+INFO: [Synth 8-6157] synthesizing module 'm00_couplers_imp_1R706YB' [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/synth/design_1.v:2067]
+INFO: [Synth 8-6157] synthesizing module 'design_1_auto_pc_1' [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.runs/synth_1/.Xil/Vivado-957062-ece-lnx-10/realtime/design_1_auto_pc_1_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'design_1_auto_pc_1' (2#1) [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.runs/synth_1/.Xil/Vivado-957062-ece-lnx-10/realtime/design_1_auto_pc_1_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'm00_couplers_imp_1R706YB' (3#1) [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/synth/design_1.v:2067]
+INFO: [Synth 8-6157] synthesizing module 's00_couplers_imp_7HNO1D' [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/synth/design_1.v:2604]
+INFO: [Synth 8-6155] done synthesizing module 's00_couplers_imp_7HNO1D' (4#1) [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/synth/design_1.v:2604]
+INFO: [Synth 8-6157] synthesizing module 's01_couplers_imp_1W60HW0' [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/synth/design_1.v:3034]
+INFO: [Synth 8-6157] synthesizing module 'design_1_auto_us_0' [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.runs/synth_1/.Xil/Vivado-957062-ece-lnx-10/realtime/design_1_auto_us_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'design_1_auto_us_0' (5#1) [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.runs/synth_1/.Xil/Vivado-957062-ece-lnx-10/realtime/design_1_auto_us_0_stub.v:6]
+WARNING: [Synth 8-7071] port 'm_axi_awregion' of module 'design_1_auto_us_0' is unconnected for instance 'auto_us' [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/synth/design_1.v:3297]
+WARNING: [Synth 8-7071] port 'm_axi_arregion' of module 'design_1_auto_us_0' is unconnected for instance 'auto_us' [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/synth/design_1.v:3297]
+WARNING: [Synth 8-7023] instance 'auto_us' of module 'design_1_auto_us_0' has 72 connections declared, but only 70 given [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/synth/design_1.v:3297]
+INFO: [Synth 8-6155] done synthesizing module 's01_couplers_imp_1W60HW0' (6#1) [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/synth/design_1.v:3034]
+INFO: [Synth 8-6157] synthesizing module 'design_1_xbar_1' [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.runs/synth_1/.Xil/Vivado-957062-ece-lnx-10/realtime/design_1_xbar_1_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'design_1_xbar_1' (7#1) [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.runs/synth_1/.Xil/Vivado-957062-ece-lnx-10/realtime/design_1_xbar_1_stub.v:6]
+WARNING: [Synth 8-7071] port 's_axi_bid' of module 'design_1_xbar_1' is unconnected for instance 'xbar' [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/synth/design_1.v:1324]
+WARNING: [Synth 8-7071] port 's_axi_rid' of module 'design_1_xbar_1' is unconnected for instance 'xbar' [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/synth/design_1.v:1324]
+WARNING: [Synth 8-7023] instance 'xbar' of module 'design_1_xbar_1' has 78 connections declared, but only 76 given [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/synth/design_1.v:1324]
+INFO: [Synth 8-6155] done synthesizing module 'design_1_axi_mem_intercon_0' (8#1) [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/synth/design_1.v:690]
+INFO: [Synth 8-6157] synthesizing module 'design_1_axis_clock_converter_0_0' [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.runs/synth_1/.Xil/Vivado-957062-ece-lnx-10/realtime/design_1_axis_clock_converter_0_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'design_1_axis_clock_converter_0_0' (9#1) [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.runs/synth_1/.Xil/Vivado-957062-ece-lnx-10/realtime/design_1_axis_clock_converter_0_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'design_1_clk_wiz_0_0' [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.runs/synth_1/.Xil/Vivado-957062-ece-lnx-10/realtime/design_1_clk_wiz_0_0_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'design_1_clk_wiz_0_0' (10#1) [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.runs/synth_1/.Xil/Vivado-957062-ece-lnx-10/realtime/design_1_clk_wiz_0_0_stub.v:5]
+INFO: [Synth 8-6157] synthesizing module 'design_1_proc_sys_reset_0_0' [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.runs/synth_1/.Xil/Vivado-957062-ece-lnx-10/realtime/design_1_proc_sys_reset_0_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'design_1_proc_sys_reset_0_0' (11#1) [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.runs/synth_1/.Xil/Vivado-957062-ece-lnx-10/realtime/design_1_proc_sys_reset_0_0_stub.v:6]
+WARNING: [Synth 8-7071] port 'mb_reset' of module 'design_1_proc_sys_reset_0_0' is unconnected for instance 'proc_sys_reset_0' [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/synth/design_1.v:453]
+WARNING: [Synth 8-7071] port 'bus_struct_reset' of module 'design_1_proc_sys_reset_0_0' is unconnected for instance 'proc_sys_reset_0' [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/synth/design_1.v:453]
+WARNING: [Synth 8-7071] port 'interconnect_aresetn' of module 'design_1_proc_sys_reset_0_0' is unconnected for instance 'proc_sys_reset_0' [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/synth/design_1.v:453]
+WARNING: [Synth 8-7023] instance 'proc_sys_reset_0' of module 'design_1_proc_sys_reset_0_0' has 10 connections declared, but only 7 given [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/synth/design_1.v:453]
+INFO: [Synth 8-6157] synthesizing module 'design_1_processing_system7_0_0' [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.runs/synth_1/.Xil/Vivado-957062-ece-lnx-10/realtime/design_1_processing_system7_0_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'design_1_processing_system7_0_0' (12#1) [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.runs/synth_1/.Xil/Vivado-957062-ece-lnx-10/realtime/design_1_processing_system7_0_0_stub.v:6]
+WARNING: [Synth 8-7071] port 'S_AXI_HP0_RCOUNT' of module 'design_1_processing_system7_0_0' is unconnected for instance 'processing_system7_0' [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/synth/design_1.v:461]
+WARNING: [Synth 8-7071] port 'S_AXI_HP0_WCOUNT' of module 'design_1_processing_system7_0_0' is unconnected for instance 'processing_system7_0' [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/synth/design_1.v:461]
+WARNING: [Synth 8-7071] port 'S_AXI_HP0_RACOUNT' of module 'design_1_processing_system7_0_0' is unconnected for instance 'processing_system7_0' [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/synth/design_1.v:461]
+WARNING: [Synth 8-7071] port 'S_AXI_HP0_WACOUNT' of module 'design_1_processing_system7_0_0' is unconnected for instance 'processing_system7_0' [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/synth/design_1.v:461]
+WARNING: [Synth 8-7023] instance 'processing_system7_0' of module 'design_1_processing_system7_0_0' has 108 connections declared, but only 104 given [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/synth/design_1.v:461]
+INFO: [Synth 8-6157] synthesizing module 'design_1_ps7_0_axi_periph_0' [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/synth/design_1.v:1403]
+INFO: [Synth 8-6157] synthesizing module 'm00_couplers_imp_15SPJYW' [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/synth/design_1.v:1942]
+INFO: [Synth 8-6155] done synthesizing module 'm00_couplers_imp_15SPJYW' (13#1) [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/synth/design_1.v:1942]
+INFO: [Synth 8-6157] synthesizing module 'm01_couplers_imp_XU9C55' [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/synth/design_1.v:2472]
+INFO: [Synth 8-6155] done synthesizing module 'm01_couplers_imp_XU9C55' (14#1) [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/synth/design_1.v:2472]
+INFO: [Synth 8-6157] synthesizing module 's00_couplers_imp_UYSKKA' [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/synth/design_1.v:2729]
+INFO: [Synth 8-6157] synthesizing module 'design_1_auto_pc_0' [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.runs/synth_1/.Xil/Vivado-957062-ece-lnx-10/realtime/design_1_auto_pc_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'design_1_auto_pc_0' (15#1) [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.runs/synth_1/.Xil/Vivado-957062-ece-lnx-10/realtime/design_1_auto_pc_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 's00_couplers_imp_UYSKKA' (16#1) [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/synth/design_1.v:2729]
+INFO: [Synth 8-6157] synthesizing module 'design_1_xbar_0' [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.runs/synth_1/.Xil/Vivado-957062-ece-lnx-10/realtime/design_1_xbar_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'design_1_xbar_0' (17#1) [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.runs/synth_1/.Xil/Vivado-957062-ece-lnx-10/realtime/design_1_xbar_0_stub.v:6]
+WARNING: [Synth 8-7071] port 'm_axi_awprot' of module 'design_1_xbar_0' is unconnected for instance 'xbar' [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/synth/design_1.v:1901]
+WARNING: [Synth 8-7071] port 'm_axi_arprot' of module 'design_1_xbar_0' is unconnected for instance 'xbar' [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/synth/design_1.v:1901]
+WARNING: [Synth 8-7023] instance 'xbar' of module 'design_1_xbar_0' has 40 connections declared, but only 38 given [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/synth/design_1.v:1901]
+INFO: [Synth 8-6155] done synthesizing module 'design_1_ps7_0_axi_periph_0' (18#1) [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/synth/design_1.v:1403]
+INFO: [Synth 8-6157] synthesizing module 'design_1_rst_ps7_0_50M_0' [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.runs/synth_1/.Xil/Vivado-957062-ece-lnx-10/realtime/design_1_rst_ps7_0_50M_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'design_1_rst_ps7_0_50M_0' (19#1) [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.runs/synth_1/.Xil/Vivado-957062-ece-lnx-10/realtime/design_1_rst_ps7_0_50M_0_stub.v:6]
+WARNING: [Synth 8-7071] port 'mb_reset' of module 'design_1_rst_ps7_0_50M_0' is unconnected for instance 'rst_ps7_0_50M' [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/synth/design_1.v:646]
+WARNING: [Synth 8-7071] port 'bus_struct_reset' of module 'design_1_rst_ps7_0_50M_0' is unconnected for instance 'rst_ps7_0_50M' [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/synth/design_1.v:646]
+WARNING: [Synth 8-7071] port 'peripheral_reset' of module 'design_1_rst_ps7_0_50M_0' is unconnected for instance 'rst_ps7_0_50M' [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/synth/design_1.v:646]
+WARNING: [Synth 8-7071] port 'interconnect_aresetn' of module 'design_1_rst_ps7_0_50M_0' is unconnected for instance 'rst_ps7_0_50M' [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/synth/design_1.v:646]
+WARNING: [Synth 8-7023] instance 'rst_ps7_0_50M' of module 'design_1_rst_ps7_0_50M_0' has 10 connections declared, but only 6 given [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/synth/design_1.v:646]
+INFO: [Synth 8-6157] synthesizing module 'design_1_top_0_0' [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.runs/synth_1/.Xil/Vivado-957062-ece-lnx-10/realtime/design_1_top_0_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'design_1_top_0_0' (20#1) [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.runs/synth_1/.Xil/Vivado-957062-ece-lnx-10/realtime/design_1_top_0_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'design_1_util_ds_buf_0_0' [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.runs/synth_1/.Xil/Vivado-957062-ece-lnx-10/realtime/design_1_util_ds_buf_0_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'design_1_util_ds_buf_0_0' (21#1) [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.runs/synth_1/.Xil/Vivado-957062-ece-lnx-10/realtime/design_1_util_ds_buf_0_0_stub.v:6]
 INFO: [Synth 8-6157] synthesizing module 'design_1_xlconstant_0_1' [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/ip/design_1_xlconstant_0_1/synth/design_1_xlconstant_0_1.v:57]
 INFO: [Synth 8-6157] synthesizing module 'xlconstant_v1_1_7_xlconstant' [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/ipshared/fcfc/hdl/xlconstant_v1_1_vl_rfs.v:23]
-INFO: [Synth 8-6155] done synthesizing module 'xlconstant_v1_1_7_xlconstant' (18#1) [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/ipshared/fcfc/hdl/xlconstant_v1_1_vl_rfs.v:23]
-INFO: [Synth 8-6155] done synthesizing module 'design_1_xlconstant_0_1' (19#1) [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/ip/design_1_xlconstant_0_1/synth/design_1_xlconstant_0_1.v:57]
-INFO: [Synth 8-6155] done synthesizing module 'design_1' (20#1) [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/synth/design_1.v:13]
-INFO: [Synth 8-6155] done synthesizing module 'design_1_wrapper' (21#1) [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/hdl/design_1_wrapper.v:12]
+INFO: [Synth 8-6155] done synthesizing module 'xlconstant_v1_1_7_xlconstant' (22#1) [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/ipshared/fcfc/hdl/xlconstant_v1_1_vl_rfs.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'design_1_xlconstant_0_1' (23#1) [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/ip/design_1_xlconstant_0_1/synth/design_1_xlconstant_0_1.v:57]
+INFO: [Synth 8-6155] done synthesizing module 'design_1' (24#1) [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/synth/design_1.v:13]
+INFO: [Synth 8-6155] done synthesizing module 'design_1_wrapper' (25#1) [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/hdl/design_1_wrapper.v:12]
 WARNING: [Synth 8-7129] Port M_ACLK in module s00_couplers_imp_UYSKKA is either unconnected or has no load
 WARNING: [Synth 8-7129] Port M_ARESETN in module s00_couplers_imp_UYSKKA is either unconnected or has no load
 WARNING: [Synth 8-7129] Port M_ACLK in module m01_couplers_imp_XU9C55 is either unconnected or has no load
@@ -114,23 +121,43 @@ WARNING: [Synth 8-7129] Port M01_ACLK in module design_1_ps7_0_axi_periph_0 is e
 WARNING: [Synth 8-7129] Port M01_ARESETN in module design_1_ps7_0_axi_periph_0 is either unconnected or has no load
 WARNING: [Synth 8-7129] Port S00_ACLK in module design_1_ps7_0_axi_periph_0 is either unconnected or has no load
 WARNING: [Synth 8-7129] Port S00_ARESETN in module design_1_ps7_0_axi_periph_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port M_ACLK in module s01_couplers_imp_1W60HW0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port M_ARESETN in module s01_couplers_imp_1W60HW0 is either unconnected or has no load
 WARNING: [Synth 8-7129] Port M_ACLK in module s00_couplers_imp_7HNO1D is either unconnected or has no load
 WARNING: [Synth 8-7129] Port M_ARESETN in module s00_couplers_imp_7HNO1D is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ACLK in module design_1_axi_mem_intercon_0 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ARESETN in module design_1_axi_mem_intercon_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_ACLK in module s00_couplers_imp_7HNO1D is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S_ARESETN in module s00_couplers_imp_7HNO1D is either unconnected or has no load
+WARNING: [Synth 8-7129] Port M_ACLK in module m00_couplers_imp_1R706YB is either unconnected or has no load
+WARNING: [Synth 8-7129] Port M_ARESETN in module m00_couplers_imp_1R706YB is either unconnected or has no load
+WARNING: [Synth 8-7129] Port M_AXI_bid[5] in module m00_couplers_imp_1R706YB is either unconnected or has no load
+WARNING: [Synth 8-7129] Port M_AXI_bid[4] in module m00_couplers_imp_1R706YB is either unconnected or has no load
+WARNING: [Synth 8-7129] Port M_AXI_bid[3] in module m00_couplers_imp_1R706YB is either unconnected or has no load
+WARNING: [Synth 8-7129] Port M_AXI_bid[2] in module m00_couplers_imp_1R706YB is either unconnected or has no load
+WARNING: [Synth 8-7129] Port M_AXI_bid[1] in module m00_couplers_imp_1R706YB is either unconnected or has no load
+WARNING: [Synth 8-7129] Port M_AXI_rid[5] in module m00_couplers_imp_1R706YB is either unconnected or has no load
+WARNING: [Synth 8-7129] Port M_AXI_rid[4] in module m00_couplers_imp_1R706YB is either unconnected or has no load
+WARNING: [Synth 8-7129] Port M_AXI_rid[3] in module m00_couplers_imp_1R706YB is either unconnected or has no load
+WARNING: [Synth 8-7129] Port M_AXI_rid[2] in module m00_couplers_imp_1R706YB is either unconnected or has no load
+WARNING: [Synth 8-7129] Port M_AXI_rid[1] in module m00_couplers_imp_1R706YB is either unconnected or has no load
+WARNING: [Synth 8-7129] Port M00_ACLK in module design_1_axi_mem_intercon_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port M00_ARESETN in module design_1_axi_mem_intercon_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S00_ACLK in module design_1_axi_mem_intercon_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S00_ARESETN in module design_1_axi_mem_intercon_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S01_ACLK in module design_1_axi_mem_intercon_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S01_ARESETN in module design_1_axi_mem_intercon_0 is either unconnected or has no load
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 2737.340 ; gain = 0.000 ; free physical = 453473 ; free virtual = 615484
+Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 2737.340 ; gain = 0.000 ; free physical = 439557 ; free virtual = 611698
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 2737.340 ; gain = 0.000 ; free physical = 453467 ; free virtual = 615477
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 2737.340 ; gain = 0.000 ; free physical = 439549 ; free virtual = 611691
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 2737.340 ; gain = 0.000 ; free physical = 453467 ; free virtual = 615477
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 2737.340 ; gain = 0.000 ; free physical = 439549 ; free virtual = 611691
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.02 . Memory (MB): peak = 2737.340 ; gain = 0.000 ; free physical = 453459 ; free virtual = 615470
+Netlist sorting complete. Time (s): cpu = 00:00:00.04 ; elapsed = 00:00:00.05 . Memory (MB): peak = 2737.340 ; gain = 0.000 ; free physical = 439541 ; free virtual = 611683
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
@@ -151,8 +178,12 @@ Parsing XDC File [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/so
 Finished Parsing XDC File [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/ip/design_1_proc_sys_reset_0_0/design_1_proc_sys_reset_0_0/design_1_proc_sys_reset_0_0_in_context.xdc] for cell 'design_1_i/proc_sys_reset_0'
 Parsing XDC File [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/ip/design_1_axis_clock_converter_0_0/design_1_axis_clock_converter_0_0/design_1_axis_clock_converter_0_0_in_context.xdc] for cell 'design_1_i/axis_clock_converter_0'
 Finished Parsing XDC File [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/ip/design_1_axis_clock_converter_0_0/design_1_axis_clock_converter_0_0/design_1_axis_clock_converter_0_0_in_context.xdc] for cell 'design_1_i/axis_clock_converter_0'
-Parsing XDC File [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/ip/design_1_auto_pc_1/design_1_auto_pc_1/design_1_auto_pc_1_in_context.xdc] for cell 'design_1_i/axi_mem_intercon/s00_couplers/auto_pc'
-Finished Parsing XDC File [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/ip/design_1_auto_pc_1/design_1_auto_pc_1/design_1_auto_pc_1_in_context.xdc] for cell 'design_1_i/axi_mem_intercon/s00_couplers/auto_pc'
+Parsing XDC File [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/ip/design_1_xbar_1/design_1_xbar_1/design_1_xbar_1_in_context.xdc] for cell 'design_1_i/axi_mem_intercon/xbar'
+Finished Parsing XDC File [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/ip/design_1_xbar_1/design_1_xbar_1/design_1_xbar_1_in_context.xdc] for cell 'design_1_i/axi_mem_intercon/xbar'
+Parsing XDC File [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/ip/design_1_auto_us_0/design_1_auto_us_0/design_1_auto_us_0_in_context.xdc] for cell 'design_1_i/axi_mem_intercon/s01_couplers/auto_us'
+Finished Parsing XDC File [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/ip/design_1_auto_us_0/design_1_auto_us_0/design_1_auto_us_0_in_context.xdc] for cell 'design_1_i/axi_mem_intercon/s01_couplers/auto_us'
+Parsing XDC File [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/ip/design_1_auto_pc_1/design_1_auto_pc_1/design_1_auto_pc_1_in_context.xdc] for cell 'design_1_i/axi_mem_intercon/m00_couplers/auto_pc'
+Finished Parsing XDC File [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/ip/design_1_auto_pc_1/design_1_auto_pc_1/design_1_auto_pc_1_in_context.xdc] for cell 'design_1_i/axi_mem_intercon/m00_couplers/auto_pc'
 Parsing XDC File [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/ip/design_1_clk_wiz_0_0/design_1_clk_wiz_0_0/design_1_clk_wiz_0_0_in_context.xdc] for cell 'design_1_i/clk_wiz_0'
 Finished Parsing XDC File [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/ip/design_1_clk_wiz_0_0/design_1_clk_wiz_0_0/design_1_clk_wiz_0_0_in_context.xdc] for cell 'design_1_i/clk_wiz_0'
 Parsing XDC File [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/ip/design_1_top_0_0/design_1_top_0_0/design_1_top_0_0_in_context.xdc] for cell 'design_1_i/top_0'
@@ -178,23 +209,23 @@ Parsing XDC File [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.runs/s
 Finished Parsing XDC File [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.runs/synth_1/dont_touch.xdc]
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2801.312 ; gain = 0.000 ; free physical = 454300 ; free virtual = 616310
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2801.312 ; gain = 0.000 ; free physical = 440383 ; free virtual = 612524
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.02 . Memory (MB): peak = 2801.312 ; gain = 0.000 ; free physical = 454299 ; free virtual = 616310
+Constraint Validation Runtime : Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2801.312 ; gain = 0.000 ; free physical = 440383 ; free virtual = 612524
 WARNING: [Timing 38-316] Clock period '10.000' specified during out-of-context synthesis of instance 'design_1_i/util_ds_buf_0' at clock pin 'IBUF_DS_P[0]' is different from the actual clock period '8.138', this can lead to different synthesis results.
 WARNING: [Designutils 20-4072] Reference run did not run incremental synthesis because the design is too small; reverting to default synthesis
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:11 ; elapsed = 00:00:13 . Memory (MB): peak = 2801.312 ; gain = 63.973 ; free physical = 454384 ; free virtual = 616395
+Finished Constraint Validation : Time (s): cpu = 00:00:12 ; elapsed = 00:00:14 . Memory (MB): peak = 2801.312 ; gain = 63.973 ; free physical = 440503 ; free virtual = 612645
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7z020clg400-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:11 ; elapsed = 00:00:13 . Memory (MB): peak = 2801.312 ; gain = 63.973 ; free physical = 454384 ; free virtual = 616395
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:12 ; elapsed = 00:00:14 . Memory (MB): peak = 2801.312 ; gain = 63.973 ; free physical = 440504 ; free virtual = 612646
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
@@ -473,16 +504,18 @@ Applied set_property KEEP_HIERARCHY = SOFT for design_1_i/rst_ps7_0_50M. (constr
 Applied set_property KEEP_HIERARCHY = SOFT for design_1_i/util_ds_buf_0. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for design_1_i/proc_sys_reset_0. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for design_1_i/axis_clock_converter_0. (constraint file  auto generated constraint).
-Applied set_property KEEP_HIERARCHY = SOFT for design_1_i/axi_mem_intercon/s00_couplers/auto_pc. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for design_1_i/axi_mem_intercon/xbar. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for design_1_i/axi_mem_intercon/s01_couplers/auto_us. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for design_1_i/axi_mem_intercon/m00_couplers/auto_pc. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for design_1_i/axi_mem_intercon. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for design_1_i/clk_wiz_0. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for design_1_i/xlconstant_0. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for design_1_i/top_0. (constraint file  auto generated constraint).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:12 ; elapsed = 00:00:14 . Memory (MB): peak = 2801.312 ; gain = 63.973 ; free physical = 454381 ; free virtual = 616392
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:13 ; elapsed = 00:00:15 . Memory (MB): peak = 2801.312 ; gain = 63.973 ; free physical = 440502 ; free virtual = 612645
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:12 ; elapsed = 00:00:14 . Memory (MB): peak = 2801.312 ; gain = 63.973 ; free physical = 454381 ; free virtual = 616392
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:13 ; elapsed = 00:00:15 . Memory (MB): peak = 2801.312 ; gain = 63.973 ; free physical = 440504 ; free virtual = 612647
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
@@ -510,24 +543,36 @@ WARNING: [Synth 8-7129] Port M01_ACLK in module design_1_ps7_0_axi_periph_0 is e
 WARNING: [Synth 8-7129] Port M01_ARESETN in module design_1_ps7_0_axi_periph_0 is either unconnected or has no load
 WARNING: [Synth 8-7129] Port S00_ACLK in module design_1_ps7_0_axi_periph_0 is either unconnected or has no load
 WARNING: [Synth 8-7129] Port S00_ARESETN in module design_1_ps7_0_axi_periph_0 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ACLK in module design_1_axi_mem_intercon_0 is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ARESETN in module design_1_axi_mem_intercon_0 is either unconnected or has no load
 WARNING: [Synth 8-7129] Port M00_ACLK in module design_1_axi_mem_intercon_0 is either unconnected or has no load
 WARNING: [Synth 8-7129] Port M00_ARESETN in module design_1_axi_mem_intercon_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port M00_AXI_bid[5] in module design_1_axi_mem_intercon_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port M00_AXI_bid[4] in module design_1_axi_mem_intercon_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port M00_AXI_bid[3] in module design_1_axi_mem_intercon_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port M00_AXI_bid[2] in module design_1_axi_mem_intercon_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port M00_AXI_bid[1] in module design_1_axi_mem_intercon_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port M00_AXI_rid[5] in module design_1_axi_mem_intercon_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port M00_AXI_rid[4] in module design_1_axi_mem_intercon_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port M00_AXI_rid[3] in module design_1_axi_mem_intercon_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port M00_AXI_rid[2] in module design_1_axi_mem_intercon_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port M00_AXI_rid[1] in module design_1_axi_mem_intercon_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S00_ACLK in module design_1_axi_mem_intercon_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S00_ARESETN in module design_1_axi_mem_intercon_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S01_ACLK in module design_1_axi_mem_intercon_0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port S01_ARESETN in module design_1_axi_mem_intercon_0 is either unconnected or has no load
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:14 ; elapsed = 00:00:16 . Memory (MB): peak = 2801.312 ; gain = 63.973 ; free physical = 454363 ; free virtual = 616378
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:15 ; elapsed = 00:00:17 . Memory (MB): peak = 2801.312 ; gain = 63.973 ; free physical = 440450 ; free virtual = 612598
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:19 ; elapsed = 00:00:21 . Memory (MB): peak = 2801.312 ; gain = 63.973 ; free physical = 454232 ; free virtual = 616247
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:20 ; elapsed = 00:00:22 . Memory (MB): peak = 2801.312 ; gain = 63.973 ; free physical = 440230 ; free virtual = 612379
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:19 ; elapsed = 00:00:21 . Memory (MB): peak = 2801.312 ; gain = 63.973 ; free physical = 454232 ; free virtual = 616247
+Finished Timing Optimization : Time (s): cpu = 00:00:20 ; elapsed = 00:00:22 . Memory (MB): peak = 2801.312 ; gain = 63.973 ; free physical = 440230 ; free virtual = 612379
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
@@ -561,7 +606,7 @@ INFO: [Synth 8-5816] Retiming module `design_1_wrapper' done
 
 
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:19 ; elapsed = 00:00:21 . Memory (MB): peak = 2801.312 ; gain = 63.973 ; free physical = 454230 ; free virtual = 616245
+Finished Technology Mapping : Time (s): cpu = 00:00:20 ; elapsed = 00:00:22 . Memory (MB): peak = 2801.312 ; gain = 63.973 ; free physical = 440227 ; free virtual = 612376
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -579,37 +624,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:22 ; elapsed = 00:00:25 . Memory (MB): peak = 2801.312 ; gain = 63.973 ; free physical = 454218 ; free virtual = 616233
+Finished IO Insertion : Time (s): cpu = 00:00:23 ; elapsed = 00:00:26 . Memory (MB): peak = 2801.312 ; gain = 63.973 ; free physical = 440254 ; free virtual = 612403
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:22 ; elapsed = 00:00:25 . Memory (MB): peak = 2801.312 ; gain = 63.973 ; free physical = 454218 ; free virtual = 616233
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:23 ; elapsed = 00:00:26 . Memory (MB): peak = 2801.312 ; gain = 63.973 ; free physical = 440254 ; free virtual = 612403
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:22 ; elapsed = 00:00:25 . Memory (MB): peak = 2801.312 ; gain = 63.973 ; free physical = 454219 ; free virtual = 616233
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:23 ; elapsed = 00:00:26 . Memory (MB): peak = 2801.312 ; gain = 63.973 ; free physical = 440253 ; free virtual = 612403
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:22 ; elapsed = 00:00:25 . Memory (MB): peak = 2801.312 ; gain = 63.973 ; free physical = 454219 ; free virtual = 616233
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:23 ; elapsed = 00:00:26 . Memory (MB): peak = 2801.312 ; gain = 63.973 ; free physical = 440253 ; free virtual = 612403
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:22 ; elapsed = 00:00:25 . Memory (MB): peak = 2801.312 ; gain = 63.973 ; free physical = 454219 ; free virtual = 616233
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:23 ; elapsed = 00:00:26 . Memory (MB): peak = 2801.312 ; gain = 63.973 ; free physical = 440253 ; free virtual = 612402
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:22 ; elapsed = 00:00:25 . Memory (MB): peak = 2801.312 ; gain = 63.973 ; free physical = 454219 ; free virtual = 616233
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:23 ; elapsed = 00:00:26 . Memory (MB): peak = 2801.312 ; gain = 63.973 ; free physical = 440253 ; free virtual = 612402
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -619,17 +664,19 @@ Report BlackBoxes:
 +------+----------------------------------+----------+
 |      |BlackBox name                     |Instances |
 +------+----------------------------------+----------+
-|1     |design_1_auto_pc_1                |         1|
-|2     |design_1_xbar_0                   |         1|
-|3     |design_1_auto_pc_0                |         1|
-|4     |design_1_axi_dma_0_0              |         1|
-|5     |design_1_axis_clock_converter_0_0 |         1|
-|6     |design_1_clk_wiz_0_0              |         1|
-|7     |design_1_proc_sys_reset_0_0       |         1|
-|8     |design_1_processing_system7_0_0   |         1|
-|9     |design_1_rst_ps7_0_50M_0          |         1|
-|10    |design_1_top_0_0                  |         1|
-|11    |design_1_util_ds_buf_0_0          |         1|
+|1     |design_1_xbar_1                   |         1|
+|2     |design_1_auto_pc_1                |         1|
+|3     |design_1_auto_us_0                |         1|
+|4     |design_1_xbar_0                   |         1|
+|5     |design_1_auto_pc_0                |         1|
+|6     |design_1_axi_dma_0_0              |         1|
+|7     |design_1_axis_clock_converter_0_0 |         1|
+|8     |design_1_clk_wiz_0_0              |         1|
+|9     |design_1_proc_sys_reset_0_0       |         1|
+|10    |design_1_processing_system7_0_0   |         1|
+|11    |design_1_rst_ps7_0_50M_0          |         1|
+|12    |design_1_top_0_0                  |         1|
+|13    |design_1_util_ds_buf_0_0          |         1|
 +------+----------------------------------+----------+
 
 Report Cell Usage: 
@@ -637,38 +684,39 @@ Report Cell Usage:
 |      |Cell                            |Count |
 +------+--------------------------------+------+
 |1     |design_1_auto_pc                |     2|
-|3     |design_1_axi_dma_0              |     1|
-|4     |design_1_axis_clock_converter_0 |     1|
-|5     |design_1_clk_wiz_0              |     1|
-|6     |design_1_proc_sys_reset_0       |     1|
-|7     |design_1_processing_system7_0   |     1|
-|8     |design_1_rst_ps7_0_50M          |     1|
-|9     |design_1_top_0                  |     1|
-|10    |design_1_util_ds_buf_0          |     1|
-|11    |design_1_xbar                   |     1|
-|12    |IBUF                            |    16|
-|13    |OBUF                            |     3|
+|3     |design_1_auto_us                |     1|
+|4     |design_1_axi_dma_0              |     1|
+|5     |design_1_axis_clock_converter_0 |     1|
+|6     |design_1_clk_wiz_0              |     1|
+|7     |design_1_proc_sys_reset_0       |     1|
+|8     |design_1_processing_system7_0   |     1|
+|9     |design_1_rst_ps7_0_50M          |     1|
+|10    |design_1_top_0                  |     1|
+|11    |design_1_util_ds_buf_0          |     1|
+|12    |design_1_xbar                   |     2|
+|14    |IBUF                            |    16|
+|15    |OBUF                            |     3|
 +------+--------------------------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:22 ; elapsed = 00:00:25 . Memory (MB): peak = 2801.312 ; gain = 63.973 ; free physical = 454219 ; free virtual = 616233
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:23 ; elapsed = 00:00:26 . Memory (MB): peak = 2801.312 ; gain = 63.973 ; free physical = 440252 ; free virtual = 612401
 ---------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 0 critical warnings and 11 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:20 ; elapsed = 00:00:22 . Memory (MB): peak = 2801.312 ; gain = 0.000 ; free physical = 454271 ; free virtual = 616285
-Synthesis Optimization Complete : Time (s): cpu = 00:00:23 ; elapsed = 00:00:25 . Memory (MB): peak = 2801.312 ; gain = 63.973 ; free physical = 454271 ; free virtual = 616285
+Synthesis finished with 0 errors, 0 critical warnings and 23 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:20 ; elapsed = 00:00:22 . Memory (MB): peak = 2801.312 ; gain = 0.000 ; free physical = 440302 ; free virtual = 612451
+Synthesis Optimization Complete : Time (s): cpu = 00:00:23 ; elapsed = 00:00:26 . Memory (MB): peak = 2801.312 ; gain = 63.973 ; free physical = 440302 ; free virtual = 612451
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.02 . Memory (MB): peak = 2801.312 ; gain = 0.000 ; free physical = 454367 ; free virtual = 616382
+Netlist sorting complete. Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.02 . Memory (MB): peak = 2801.312 ; gain = 0.000 ; free physical = 440385 ; free virtual = 612535
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2801.312 ; gain = 0.000 ; free physical = 454302 ; free virtual = 616316
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2801.312 ; gain = 0.000 ; free physical = 440313 ; free virtual = 612463
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Synth Design complete, checksum: d186fb7f
+Synth Design complete, checksum: 758aa474
 INFO: [Common 17-83] Releasing license: Synthesis
-72 Infos, 64 Warnings, 4 Critical Warnings and 0 Errors encountered.
+80 Infos, 95 Warnings, 4 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:35 ; elapsed = 00:00:33 . Memory (MB): peak = 2801.312 ; gain = 68.148 ; free physical = 454374 ; free virtual = 616388
+synth_design: Time (s): cpu = 00:00:36 ; elapsed = 00:00:34 . Memory (MB): peak = 2801.312 ; gain = 68.148 ; free physical = 440383 ; free virtual = 612533
 INFO: [runtcl-6] Synthesis results are not added to the cache due to CRITICAL_WARNING
 INFO: [Common 17-1381] The checkpoint '/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.runs/synth_1/design_1_wrapper.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file design_1_wrapper_utilization_synth.rpt -pb design_1_wrapper_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Fri Aug 21 14:09:16 2026...
+INFO: [Common 17-206] Exiting Vivado at Fri Aug 21 18:05:04 2026...

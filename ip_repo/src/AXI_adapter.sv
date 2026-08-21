@@ -1,5 +1,5 @@
 module AXI_adapter #(
-    parameter int unsigned PACKET_LEN_EXP = 4,
+    parameter int unsigned PACKET_LEN_EXP = 10,
     parameter int unsigned FIFO_DEPTH_EXP = 5
 ) (
     input logic clk,

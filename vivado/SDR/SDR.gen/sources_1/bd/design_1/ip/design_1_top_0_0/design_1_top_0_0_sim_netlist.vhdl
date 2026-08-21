@@ -1,7 +1,7 @@
 -- Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2021.2 (lin64) Build 3367213 Tue Oct 19 02:47:39 MDT 2021
--- Date        : Fri Aug 21 14:08:03 2026
+-- Date        : Fri Aug 21 17:55:49 2026
 -- Host        : ece-lnx-10 running 64-bit Red Hat Enterprise Linux release 8.10 (Ootpa)
 -- Command     : write_vhdl -force -mode funcsim
 --               /ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/ip/design_1_top_0_0/design_1_top_0_0_sim_netlist.vhdl
@@ -17,8 +17,8 @@ use UNISIM.VCOMPONENTS.ALL;
 entity design_1_top_0_0_AXI_adapter is
   port (
     m_axis_tdata : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    m_axis_tvalid : out STD_LOGIC;
     m_axis_tlast : out STD_LOGIC;
+    m_axis_tvalid : out STD_LOGIC;
     adc_rst : in STD_LOGIC;
     adc_clk : in STD_LOGIC;
     packed_signal : in STD_LOGIC_VECTOR ( 31 downto 0 );
@@ -34,9 +34,10 @@ architecture STRUCTURE of design_1_top_0_0_AXI_adapter is
   signal fifo_reg_0_31_30_31_i_2_n_0 : STD_LOGIC;
   signal fifo_reg_0_31_30_31_i_3_n_0 : STD_LOGIC;
   signal fifo_reg_0_31_30_31_i_4_n_0 : STD_LOGIC;
+  signal m_axis_tlast_INST_0_i_1_n_0 : STD_LOGIC;
   signal m_axis_tvalid_INST_0_i_1_n_0 : STD_LOGIC;
-  signal p_0_in : STD_LOGIC_VECTOR ( 3 downto 0 );
-  signal packet_count_r_reg : STD_LOGIC_VECTOR ( 3 downto 0 );
+  signal p_0_in : STD_LOGIC_VECTOR ( 9 downto 0 );
+  signal packet_count_r_reg : STD_LOGIC_VECTOR ( 9 downto 0 );
   signal rd_en : STD_LOGIC;
   signal \read_ptr[0]_i_1_n_0\ : STD_LOGIC;
   signal \read_ptr[1]_i_1_n_0\ : STD_LOGIC;
@@ -118,7 +119,7 @@ architecture STRUCTURE of design_1_top_0_0_AXI_adapter is
   attribute ram_slice_begin of \fifo_reg_0_31_30_31__0\ : label is 30;
   attribute ram_slice_end of \fifo_reg_0_31_30_31__0\ : label is 31;
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of fifo_reg_0_31_30_31_i_4 : label is "soft_lutpair6";
+  attribute SOFT_HLUTNM of fifo_reg_0_31_30_31_i_4 : label is "soft_lutpair8";
   attribute METHODOLOGY_DRC_VIOS of fifo_reg_0_31_6_11 : label is "";
   attribute RTL_RAM_BITS of fifo_reg_0_31_6_11 : label is 1024;
   attribute RTL_RAM_NAME of fifo_reg_0_31_6_11 : label is "inst/DUT_ADAPTER/fifo";
@@ -128,19 +129,23 @@ architecture STRUCTURE of design_1_top_0_0_AXI_adapter is
   attribute ram_offset of fifo_reg_0_31_6_11 : label is 0;
   attribute ram_slice_begin of fifo_reg_0_31_6_11 : label is 6;
   attribute ram_slice_end of fifo_reg_0_31_6_11 : label is 11;
-  attribute SOFT_HLUTNM of m_axis_tlast_INST_0 : label is "soft_lutpair2";
-  attribute SOFT_HLUTNM of \packet_count_r[1]_i_1\ : label is "soft_lutpair4";
-  attribute SOFT_HLUTNM of \packet_count_r[2]_i_1\ : label is "soft_lutpair4";
-  attribute SOFT_HLUTNM of \packet_count_r[3]_i_2\ : label is "soft_lutpair2";
-  attribute SOFT_HLUTNM of \read_ptr[0]_i_1\ : label is "soft_lutpair6";
-  attribute SOFT_HLUTNM of \read_ptr[1]_i_1\ : label is "soft_lutpair5";
-  attribute SOFT_HLUTNM of \read_ptr[2]_i_1\ : label is "soft_lutpair5";
-  attribute SOFT_HLUTNM of \read_ptr[3]_i_1\ : label is "soft_lutpair1";
-  attribute SOFT_HLUTNM of \read_ptr[4]_i_1\ : label is "soft_lutpair1";
-  attribute SOFT_HLUTNM of \write_ptr[1]_i_1\ : label is "soft_lutpair3";
-  attribute SOFT_HLUTNM of \write_ptr[2]_i_1\ : label is "soft_lutpair3";
-  attribute SOFT_HLUTNM of \write_ptr[3]_i_1\ : label is "soft_lutpair0";
-  attribute SOFT_HLUTNM of \write_ptr[4]_i_2\ : label is "soft_lutpair0";
+  attribute SOFT_HLUTNM of m_axis_tlast_INST_0 : label is "soft_lutpair0";
+  attribute SOFT_HLUTNM of \packet_count_r[1]_i_1\ : label is "soft_lutpair6";
+  attribute SOFT_HLUTNM of \packet_count_r[2]_i_1\ : label is "soft_lutpair6";
+  attribute SOFT_HLUTNM of \packet_count_r[3]_i_1\ : label is "soft_lutpair2";
+  attribute SOFT_HLUTNM of \packet_count_r[4]_i_1\ : label is "soft_lutpair2";
+  attribute SOFT_HLUTNM of \packet_count_r[7]_i_1\ : label is "soft_lutpair4";
+  attribute SOFT_HLUTNM of \packet_count_r[8]_i_1\ : label is "soft_lutpair4";
+  attribute SOFT_HLUTNM of \packet_count_r[9]_i_2\ : label is "soft_lutpair0";
+  attribute SOFT_HLUTNM of \read_ptr[0]_i_1\ : label is "soft_lutpair8";
+  attribute SOFT_HLUTNM of \read_ptr[1]_i_1\ : label is "soft_lutpair7";
+  attribute SOFT_HLUTNM of \read_ptr[2]_i_1\ : label is "soft_lutpair7";
+  attribute SOFT_HLUTNM of \read_ptr[3]_i_1\ : label is "soft_lutpair3";
+  attribute SOFT_HLUTNM of \read_ptr[4]_i_1\ : label is "soft_lutpair3";
+  attribute SOFT_HLUTNM of \write_ptr[1]_i_1\ : label is "soft_lutpair5";
+  attribute SOFT_HLUTNM of \write_ptr[2]_i_1\ : label is "soft_lutpair5";
+  attribute SOFT_HLUTNM of \write_ptr[3]_i_1\ : label is "soft_lutpair1";
+  attribute SOFT_HLUTNM of \write_ptr[4]_i_2\ : label is "soft_lutpair1";
 begin
 fifo_reg_0_31_0_5: unisim.vcomponents.RAM32M
      port map (
@@ -311,16 +316,30 @@ fifo_reg_0_31_6_11: unisim.vcomponents.RAM32M
       WCLK => adc_clk,
       WE => fifo_reg_0_31_30_31_i_1_n_0
     );
-m_axis_tlast_INST_0: unisim.vcomponents.LUT4
+m_axis_tlast_INST_0: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"8000"
+      INIT => X"80000000"
     )
         port map (
-      I0 => packet_count_r_reg(1),
-      I1 => packet_count_r_reg(0),
-      I2 => packet_count_r_reg(3),
-      I3 => packet_count_r_reg(2),
+      I0 => m_axis_tlast_INST_0_i_1_n_0,
+      I1 => packet_count_r_reg(6),
+      I2 => packet_count_r_reg(7),
+      I3 => packet_count_r_reg(8),
+      I4 => packet_count_r_reg(9),
       O => m_axis_tlast
+    );
+m_axis_tlast_INST_0_i_1: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"8000000000000000"
+    )
+        port map (
+      I0 => packet_count_r_reg(4),
+      I1 => packet_count_r_reg(2),
+      I2 => packet_count_r_reg(0),
+      I3 => packet_count_r_reg(1),
+      I4 => packet_count_r_reg(3),
+      I5 => packet_count_r_reg(5),
+      O => m_axis_tlast_INST_0_i_1_n_0
     );
 m_axis_tvalid_INST_0: unisim.vcomponents.LUT5
     generic map(
@@ -374,7 +393,73 @@ m_axis_tvalid_INST_0_i_1: unisim.vcomponents.LUT6
       I2 => packet_count_r_reg(2),
       O => p_0_in(2)
     );
-\packet_count_r[3]_i_1\: unisim.vcomponents.LUT6
+\packet_count_r[3]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"7F80"
+    )
+        port map (
+      I0 => packet_count_r_reg(2),
+      I1 => packet_count_r_reg(0),
+      I2 => packet_count_r_reg(1),
+      I3 => packet_count_r_reg(3),
+      O => p_0_in(3)
+    );
+\packet_count_r[4]_i_1\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"7FFF8000"
+    )
+        port map (
+      I0 => packet_count_r_reg(3),
+      I1 => packet_count_r_reg(1),
+      I2 => packet_count_r_reg(0),
+      I3 => packet_count_r_reg(2),
+      I4 => packet_count_r_reg(4),
+      O => p_0_in(4)
+    );
+\packet_count_r[5]_i_1\: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"7FFFFFFF80000000"
+    )
+        port map (
+      I0 => packet_count_r_reg(4),
+      I1 => packet_count_r_reg(2),
+      I2 => packet_count_r_reg(0),
+      I3 => packet_count_r_reg(1),
+      I4 => packet_count_r_reg(3),
+      I5 => packet_count_r_reg(5),
+      O => p_0_in(5)
+    );
+\packet_count_r[6]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"6"
+    )
+        port map (
+      I0 => m_axis_tlast_INST_0_i_1_n_0,
+      I1 => packet_count_r_reg(6),
+      O => p_0_in(6)
+    );
+\packet_count_r[7]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"78"
+    )
+        port map (
+      I0 => m_axis_tlast_INST_0_i_1_n_0,
+      I1 => packet_count_r_reg(6),
+      I2 => packet_count_r_reg(7),
+      O => p_0_in(7)
+    );
+\packet_count_r[8]_i_1\: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"7F80"
+    )
+        port map (
+      I0 => m_axis_tlast_INST_0_i_1_n_0,
+      I1 => packet_count_r_reg(6),
+      I2 => packet_count_r_reg(7),
+      I3 => packet_count_r_reg(8),
+      O => p_0_in(8)
+    );
+\packet_count_r[9]_i_1\: unisim.vcomponents.LUT6
     generic map(
       INIT => X"FFFF6FF600000000"
     )
@@ -387,16 +472,17 @@ m_axis_tvalid_INST_0_i_1: unisim.vcomponents.LUT6
       I5 => m_axis_tready,
       O => rd_en
     );
-\packet_count_r[3]_i_2\: unisim.vcomponents.LUT4
+\packet_count_r[9]_i_2\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"7F80"
+      INIT => X"7FFF8000"
     )
         port map (
-      I0 => packet_count_r_reg(0),
-      I1 => packet_count_r_reg(1),
-      I2 => packet_count_r_reg(2),
-      I3 => packet_count_r_reg(3),
-      O => p_0_in(3)
+      I0 => m_axis_tlast_INST_0_i_1_n_0,
+      I1 => packet_count_r_reg(6),
+      I2 => packet_count_r_reg(7),
+      I3 => packet_count_r_reg(8),
+      I4 => packet_count_r_reg(9),
+      O => p_0_in(9)
     );
 \packet_count_r_reg[0]\: unisim.vcomponents.FDRE
      port map (
@@ -428,6 +514,54 @@ m_axis_tvalid_INST_0_i_1: unisim.vcomponents.LUT6
       CE => rd_en,
       D => p_0_in(3),
       Q => packet_count_r_reg(3),
+      R => adc_rst
+    );
+\packet_count_r_reg[4]\: unisim.vcomponents.FDRE
+     port map (
+      C => adc_clk,
+      CE => rd_en,
+      D => p_0_in(4),
+      Q => packet_count_r_reg(4),
+      R => adc_rst
+    );
+\packet_count_r_reg[5]\: unisim.vcomponents.FDRE
+     port map (
+      C => adc_clk,
+      CE => rd_en,
+      D => p_0_in(5),
+      Q => packet_count_r_reg(5),
+      R => adc_rst
+    );
+\packet_count_r_reg[6]\: unisim.vcomponents.FDRE
+     port map (
+      C => adc_clk,
+      CE => rd_en,
+      D => p_0_in(6),
+      Q => packet_count_r_reg(6),
+      R => adc_rst
+    );
+\packet_count_r_reg[7]\: unisim.vcomponents.FDRE
+     port map (
+      C => adc_clk,
+      CE => rd_en,
+      D => p_0_in(7),
+      Q => packet_count_r_reg(7),
+      R => adc_rst
+    );
+\packet_count_r_reg[8]\: unisim.vcomponents.FDRE
+     port map (
+      C => adc_clk,
+      CE => rd_en,
+      D => p_0_in(8),
+      Q => packet_count_r_reg(8),
+      R => adc_rst
+    );
+\packet_count_r_reg[9]\: unisim.vcomponents.FDRE
+     port map (
+      C => adc_clk,
+      CE => rd_en,
+      D => p_0_in(9),
+      Q => packet_count_r_reg(9),
       R => adc_rst
     );
 \read_ptr[0]_i_1\: unisim.vcomponents.LUT1
@@ -729,46 +863,46 @@ architecture STRUCTURE of design_1_top_0_0_AXI_slave is
   signal \^wready_r_reg_0\ : STD_LOGIC;
   signal \write_state_r0__2\ : STD_LOGIC;
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \FSM_onehot_write_state_r[2]_i_1\ : label is "soft_lutpair9";
+  attribute SOFT_HLUTNM of \FSM_onehot_write_state_r[2]_i_1\ : label is "soft_lutpair11";
   attribute FSM_ENCODED_STATES : string;
   attribute FSM_ENCODED_STATES of \FSM_onehot_write_state_r_reg[0]\ : label is "W_WRITE:010,W_RESPONSE:100,W_ACCEPT:001";
   attribute FSM_ENCODED_STATES of \FSM_onehot_write_state_r_reg[1]\ : label is "W_WRITE:010,W_RESPONSE:100,W_ACCEPT:001";
   attribute FSM_ENCODED_STATES of \FSM_onehot_write_state_r_reg[2]\ : label is "W_WRITE:010,W_RESPONSE:100,W_ACCEPT:001";
-  attribute SOFT_HLUTNM of \FSM_sequential_state_src_r[0]_i_1\ : label is "soft_lutpair8";
-  attribute SOFT_HLUTNM of bvalid_r_i_1 : label is "soft_lutpair9";
-  attribute SOFT_HLUTNM of \rdata_r[10]_i_1\ : label is "soft_lutpair14";
-  attribute SOFT_HLUTNM of \rdata_r[11]_i_1\ : label is "soft_lutpair14";
-  attribute SOFT_HLUTNM of \rdata_r[12]_i_1\ : label is "soft_lutpair15";
-  attribute SOFT_HLUTNM of \rdata_r[13]_i_1\ : label is "soft_lutpair15";
-  attribute SOFT_HLUTNM of \rdata_r[14]_i_1\ : label is "soft_lutpair16";
-  attribute SOFT_HLUTNM of \rdata_r[15]_i_1\ : label is "soft_lutpair16";
-  attribute SOFT_HLUTNM of \rdata_r[16]_i_1\ : label is "soft_lutpair17";
-  attribute SOFT_HLUTNM of \rdata_r[17]_i_1\ : label is "soft_lutpair17";
-  attribute SOFT_HLUTNM of \rdata_r[18]_i_1\ : label is "soft_lutpair18";
-  attribute SOFT_HLUTNM of \rdata_r[19]_i_1\ : label is "soft_lutpair18";
-  attribute SOFT_HLUTNM of \rdata_r[20]_i_1\ : label is "soft_lutpair19";
-  attribute SOFT_HLUTNM of \rdata_r[21]_i_1\ : label is "soft_lutpair19";
-  attribute SOFT_HLUTNM of \rdata_r[22]_i_1\ : label is "soft_lutpair20";
-  attribute SOFT_HLUTNM of \rdata_r[23]_i_1\ : label is "soft_lutpair20";
-  attribute SOFT_HLUTNM of \rdata_r[24]_i_1\ : label is "soft_lutpair21";
-  attribute SOFT_HLUTNM of \rdata_r[25]_i_1\ : label is "soft_lutpair21";
-  attribute SOFT_HLUTNM of \rdata_r[26]_i_1\ : label is "soft_lutpair22";
-  attribute SOFT_HLUTNM of \rdata_r[27]_i_1\ : label is "soft_lutpair22";
-  attribute SOFT_HLUTNM of \rdata_r[28]_i_1\ : label is "soft_lutpair23";
-  attribute SOFT_HLUTNM of \rdata_r[29]_i_1\ : label is "soft_lutpair23";
-  attribute SOFT_HLUTNM of \rdata_r[2]_i_1\ : label is "soft_lutpair10";
-  attribute SOFT_HLUTNM of \rdata_r[30]_i_1\ : label is "soft_lutpair24";
-  attribute SOFT_HLUTNM of \rdata_r[31]_i_2\ : label is "soft_lutpair24";
-  attribute SOFT_HLUTNM of \rdata_r[3]_i_1\ : label is "soft_lutpair10";
-  attribute SOFT_HLUTNM of \rdata_r[4]_i_1\ : label is "soft_lutpair11";
-  attribute SOFT_HLUTNM of \rdata_r[5]_i_1\ : label is "soft_lutpair11";
-  attribute SOFT_HLUTNM of \rdata_r[6]_i_1\ : label is "soft_lutpair12";
-  attribute SOFT_HLUTNM of \rdata_r[7]_i_1\ : label is "soft_lutpair12";
-  attribute SOFT_HLUTNM of \rdata_r[8]_i_1\ : label is "soft_lutpair13";
-  attribute SOFT_HLUTNM of \rdata_r[9]_i_1\ : label is "soft_lutpair13";
-  attribute SOFT_HLUTNM of read_state_r_i_1 : label is "soft_lutpair7";
-  attribute SOFT_HLUTNM of rvalid_r_i_1 : label is "soft_lutpair7";
-  attribute SOFT_HLUTNM of send_src_r_i_1 : label is "soft_lutpair8";
+  attribute SOFT_HLUTNM of \FSM_sequential_state_src_r[0]_i_1\ : label is "soft_lutpair10";
+  attribute SOFT_HLUTNM of bvalid_r_i_1 : label is "soft_lutpair11";
+  attribute SOFT_HLUTNM of \rdata_r[10]_i_1\ : label is "soft_lutpair16";
+  attribute SOFT_HLUTNM of \rdata_r[11]_i_1\ : label is "soft_lutpair16";
+  attribute SOFT_HLUTNM of \rdata_r[12]_i_1\ : label is "soft_lutpair17";
+  attribute SOFT_HLUTNM of \rdata_r[13]_i_1\ : label is "soft_lutpair17";
+  attribute SOFT_HLUTNM of \rdata_r[14]_i_1\ : label is "soft_lutpair18";
+  attribute SOFT_HLUTNM of \rdata_r[15]_i_1\ : label is "soft_lutpair18";
+  attribute SOFT_HLUTNM of \rdata_r[16]_i_1\ : label is "soft_lutpair19";
+  attribute SOFT_HLUTNM of \rdata_r[17]_i_1\ : label is "soft_lutpair19";
+  attribute SOFT_HLUTNM of \rdata_r[18]_i_1\ : label is "soft_lutpair20";
+  attribute SOFT_HLUTNM of \rdata_r[19]_i_1\ : label is "soft_lutpair20";
+  attribute SOFT_HLUTNM of \rdata_r[20]_i_1\ : label is "soft_lutpair21";
+  attribute SOFT_HLUTNM of \rdata_r[21]_i_1\ : label is "soft_lutpair21";
+  attribute SOFT_HLUTNM of \rdata_r[22]_i_1\ : label is "soft_lutpair22";
+  attribute SOFT_HLUTNM of \rdata_r[23]_i_1\ : label is "soft_lutpair22";
+  attribute SOFT_HLUTNM of \rdata_r[24]_i_1\ : label is "soft_lutpair23";
+  attribute SOFT_HLUTNM of \rdata_r[25]_i_1\ : label is "soft_lutpair23";
+  attribute SOFT_HLUTNM of \rdata_r[26]_i_1\ : label is "soft_lutpair24";
+  attribute SOFT_HLUTNM of \rdata_r[27]_i_1\ : label is "soft_lutpair24";
+  attribute SOFT_HLUTNM of \rdata_r[28]_i_1\ : label is "soft_lutpair25";
+  attribute SOFT_HLUTNM of \rdata_r[29]_i_1\ : label is "soft_lutpair25";
+  attribute SOFT_HLUTNM of \rdata_r[2]_i_1\ : label is "soft_lutpair12";
+  attribute SOFT_HLUTNM of \rdata_r[30]_i_1\ : label is "soft_lutpair26";
+  attribute SOFT_HLUTNM of \rdata_r[31]_i_2\ : label is "soft_lutpair26";
+  attribute SOFT_HLUTNM of \rdata_r[3]_i_1\ : label is "soft_lutpair12";
+  attribute SOFT_HLUTNM of \rdata_r[4]_i_1\ : label is "soft_lutpair13";
+  attribute SOFT_HLUTNM of \rdata_r[5]_i_1\ : label is "soft_lutpair13";
+  attribute SOFT_HLUTNM of \rdata_r[6]_i_1\ : label is "soft_lutpair14";
+  attribute SOFT_HLUTNM of \rdata_r[7]_i_1\ : label is "soft_lutpair14";
+  attribute SOFT_HLUTNM of \rdata_r[8]_i_1\ : label is "soft_lutpair15";
+  attribute SOFT_HLUTNM of \rdata_r[9]_i_1\ : label is "soft_lutpair15";
+  attribute SOFT_HLUTNM of read_state_r_i_1 : label is "soft_lutpair9";
+  attribute SOFT_HLUTNM of rvalid_r_i_1 : label is "soft_lutpair9";
+  attribute SOFT_HLUTNM of send_src_r_i_1 : label is "soft_lutpair10";
 begin
   Q(31 downto 0) <= \^q\(31 downto 0);
   SR(0) <= \^sr\(0);
@@ -7627,16 +7761,16 @@ architecture STRUCTURE of design_1_top_0_0_CIC is
   signal \NLW_round_Q_out3_carry__3_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 downto 2 );
   signal \NLW_round_Q_out3_carry__3_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 to 3 );
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \decimation_count_r[0]_i_2\ : label is "soft_lutpair27";
-  attribute SOFT_HLUTNM of \decimation_count_r[1]_i_1\ : label is "soft_lutpair28";
-  attribute SOFT_HLUTNM of \decimation_count_r[2]_i_1\ : label is "soft_lutpair25";
-  attribute SOFT_HLUTNM of \decimation_count_r[3]_i_1\ : label is "soft_lutpair25";
-  attribute SOFT_HLUTNM of \decimation_count_r[5]_i_1\ : label is "soft_lutpair26";
-  attribute SOFT_HLUTNM of \decimation_count_r[6]_i_1\ : label is "soft_lutpair26";
-  attribute SOFT_HLUTNM of \decimation_count_r[9]_i_3\ : label is "soft_lutpair27";
-  attribute SOFT_HLUTNM of \decimation_count_r[9]_i_4\ : label is "soft_lutpair28";
-  attribute SOFT_HLUTNM of \fill_r[0]_i_1\ : label is "soft_lutpair29";
-  attribute SOFT_HLUTNM of \fill_r[2]_i_1\ : label is "soft_lutpair29";
+  attribute SOFT_HLUTNM of \decimation_count_r[0]_i_2\ : label is "soft_lutpair29";
+  attribute SOFT_HLUTNM of \decimation_count_r[1]_i_1\ : label is "soft_lutpair30";
+  attribute SOFT_HLUTNM of \decimation_count_r[2]_i_1\ : label is "soft_lutpair27";
+  attribute SOFT_HLUTNM of \decimation_count_r[3]_i_1\ : label is "soft_lutpair27";
+  attribute SOFT_HLUTNM of \decimation_count_r[5]_i_1\ : label is "soft_lutpair28";
+  attribute SOFT_HLUTNM of \decimation_count_r[6]_i_1\ : label is "soft_lutpair28";
+  attribute SOFT_HLUTNM of \decimation_count_r[9]_i_3\ : label is "soft_lutpair29";
+  attribute SOFT_HLUTNM of \decimation_count_r[9]_i_4\ : label is "soft_lutpair30";
+  attribute SOFT_HLUTNM of \fill_r[0]_i_1\ : label is "soft_lutpair31";
+  attribute SOFT_HLUTNM of \fill_r[2]_i_1\ : label is "soft_lutpair31";
   attribute ADDER_THRESHOLD : integer;
   attribute ADDER_THRESHOLD of \i_/i_/i___1069_carry\ : label is 11;
   attribute ADDER_THRESHOLD of \i_/i_/i___1069_carry__0\ : label is 11;
@@ -8092,22 +8226,22 @@ architecture STRUCTURE of design_1_top_0_0_CIC is
   attribute ADDER_THRESHOLD of \round_I_out3_carry__1\ : label is 35;
   attribute ADDER_THRESHOLD of \round_I_out3_carry__2\ : label is 35;
   attribute ADDER_THRESHOLD of \round_I_out3_carry__3\ : label is 35;
-  attribute SOFT_HLUTNM of \round_I_out[0]_i_1\ : label is "soft_lutpair30";
-  attribute SOFT_HLUTNM of \round_I_out[10]_i_1\ : label is "soft_lutpair35";
-  attribute SOFT_HLUTNM of \round_I_out[11]_i_1\ : label is "soft_lutpair36";
-  attribute SOFT_HLUTNM of \round_I_out[12]_i_1\ : label is "soft_lutpair36";
-  attribute SOFT_HLUTNM of \round_I_out[13]_i_1\ : label is "soft_lutpair37";
-  attribute SOFT_HLUTNM of \round_I_out[14]_i_1\ : label is "soft_lutpair37";
-  attribute SOFT_HLUTNM of \round_I_out[15]_i_1\ : label is "soft_lutpair30";
-  attribute SOFT_HLUTNM of \round_I_out[1]_i_1\ : label is "soft_lutpair31";
-  attribute SOFT_HLUTNM of \round_I_out[2]_i_1\ : label is "soft_lutpair31";
-  attribute SOFT_HLUTNM of \round_I_out[3]_i_1\ : label is "soft_lutpair32";
-  attribute SOFT_HLUTNM of \round_I_out[4]_i_1\ : label is "soft_lutpair32";
-  attribute SOFT_HLUTNM of \round_I_out[5]_i_1\ : label is "soft_lutpair33";
-  attribute SOFT_HLUTNM of \round_I_out[6]_i_1\ : label is "soft_lutpair33";
-  attribute SOFT_HLUTNM of \round_I_out[7]_i_1\ : label is "soft_lutpair34";
-  attribute SOFT_HLUTNM of \round_I_out[8]_i_1\ : label is "soft_lutpair34";
-  attribute SOFT_HLUTNM of \round_I_out[9]_i_1\ : label is "soft_lutpair35";
+  attribute SOFT_HLUTNM of \round_I_out[0]_i_1\ : label is "soft_lutpair32";
+  attribute SOFT_HLUTNM of \round_I_out[10]_i_1\ : label is "soft_lutpair37";
+  attribute SOFT_HLUTNM of \round_I_out[11]_i_1\ : label is "soft_lutpair38";
+  attribute SOFT_HLUTNM of \round_I_out[12]_i_1\ : label is "soft_lutpair38";
+  attribute SOFT_HLUTNM of \round_I_out[13]_i_1\ : label is "soft_lutpair39";
+  attribute SOFT_HLUTNM of \round_I_out[14]_i_1\ : label is "soft_lutpair39";
+  attribute SOFT_HLUTNM of \round_I_out[15]_i_1\ : label is "soft_lutpair32";
+  attribute SOFT_HLUTNM of \round_I_out[1]_i_1\ : label is "soft_lutpair33";
+  attribute SOFT_HLUTNM of \round_I_out[2]_i_1\ : label is "soft_lutpair33";
+  attribute SOFT_HLUTNM of \round_I_out[3]_i_1\ : label is "soft_lutpair34";
+  attribute SOFT_HLUTNM of \round_I_out[4]_i_1\ : label is "soft_lutpair34";
+  attribute SOFT_HLUTNM of \round_I_out[5]_i_1\ : label is "soft_lutpair35";
+  attribute SOFT_HLUTNM of \round_I_out[6]_i_1\ : label is "soft_lutpair35";
+  attribute SOFT_HLUTNM of \round_I_out[7]_i_1\ : label is "soft_lutpair36";
+  attribute SOFT_HLUTNM of \round_I_out[8]_i_1\ : label is "soft_lutpair36";
+  attribute SOFT_HLUTNM of \round_I_out[9]_i_1\ : label is "soft_lutpair37";
   attribute COMPARATOR_THRESHOLD of round_Q_out1_carry : label is 11;
   attribute COMPARATOR_THRESHOLD of \round_Q_out1_carry__0\ : label is 11;
   attribute COMPARATOR_THRESHOLD of \round_Q_out1_carry__1\ : label is 11;
@@ -8129,22 +8263,22 @@ architecture STRUCTURE of design_1_top_0_0_CIC is
   attribute ADDER_THRESHOLD of \round_Q_out3_carry__1\ : label is 35;
   attribute ADDER_THRESHOLD of \round_Q_out3_carry__2\ : label is 35;
   attribute ADDER_THRESHOLD of \round_Q_out3_carry__3\ : label is 35;
-  attribute SOFT_HLUTNM of \round_Q_out[0]_i_1\ : label is "soft_lutpair38";
-  attribute SOFT_HLUTNM of \round_Q_out[10]_i_1\ : label is "soft_lutpair43";
-  attribute SOFT_HLUTNM of \round_Q_out[11]_i_1\ : label is "soft_lutpair44";
-  attribute SOFT_HLUTNM of \round_Q_out[12]_i_1\ : label is "soft_lutpair44";
-  attribute SOFT_HLUTNM of \round_Q_out[13]_i_1\ : label is "soft_lutpair45";
-  attribute SOFT_HLUTNM of \round_Q_out[14]_i_1\ : label is "soft_lutpair45";
-  attribute SOFT_HLUTNM of \round_Q_out[15]_i_1\ : label is "soft_lutpair38";
-  attribute SOFT_HLUTNM of \round_Q_out[1]_i_1\ : label is "soft_lutpair39";
-  attribute SOFT_HLUTNM of \round_Q_out[2]_i_1\ : label is "soft_lutpair39";
-  attribute SOFT_HLUTNM of \round_Q_out[3]_i_1\ : label is "soft_lutpair40";
-  attribute SOFT_HLUTNM of \round_Q_out[4]_i_1\ : label is "soft_lutpair40";
-  attribute SOFT_HLUTNM of \round_Q_out[5]_i_1\ : label is "soft_lutpair41";
-  attribute SOFT_HLUTNM of \round_Q_out[6]_i_1\ : label is "soft_lutpair41";
-  attribute SOFT_HLUTNM of \round_Q_out[7]_i_1\ : label is "soft_lutpair42";
-  attribute SOFT_HLUTNM of \round_Q_out[8]_i_1\ : label is "soft_lutpair42";
-  attribute SOFT_HLUTNM of \round_Q_out[9]_i_1\ : label is "soft_lutpair43";
+  attribute SOFT_HLUTNM of \round_Q_out[0]_i_1\ : label is "soft_lutpair40";
+  attribute SOFT_HLUTNM of \round_Q_out[10]_i_1\ : label is "soft_lutpair45";
+  attribute SOFT_HLUTNM of \round_Q_out[11]_i_1\ : label is "soft_lutpair46";
+  attribute SOFT_HLUTNM of \round_Q_out[12]_i_1\ : label is "soft_lutpair46";
+  attribute SOFT_HLUTNM of \round_Q_out[13]_i_1\ : label is "soft_lutpair47";
+  attribute SOFT_HLUTNM of \round_Q_out[14]_i_1\ : label is "soft_lutpair47";
+  attribute SOFT_HLUTNM of \round_Q_out[15]_i_1\ : label is "soft_lutpair40";
+  attribute SOFT_HLUTNM of \round_Q_out[1]_i_1\ : label is "soft_lutpair41";
+  attribute SOFT_HLUTNM of \round_Q_out[2]_i_1\ : label is "soft_lutpair41";
+  attribute SOFT_HLUTNM of \round_Q_out[3]_i_1\ : label is "soft_lutpair42";
+  attribute SOFT_HLUTNM of \round_Q_out[4]_i_1\ : label is "soft_lutpair42";
+  attribute SOFT_HLUTNM of \round_Q_out[5]_i_1\ : label is "soft_lutpair43";
+  attribute SOFT_HLUTNM of \round_Q_out[6]_i_1\ : label is "soft_lutpair43";
+  attribute SOFT_HLUTNM of \round_Q_out[7]_i_1\ : label is "soft_lutpair44";
+  attribute SOFT_HLUTNM of \round_Q_out[8]_i_1\ : label is "soft_lutpair44";
+  attribute SOFT_HLUTNM of \round_Q_out[9]_i_1\ : label is "soft_lutpair45";
 begin
   \integrator_I_r_reg[0]_24\(71 downto 0) <= \^integrator_i_r_reg[0]_24\(71 downto 0);
   \integrator_Q_r_reg[0]_30\(71 downto 0) <= \^integrator_q_r_reg[0]_30\(71 downto 0);
@@ -53005,20 +53139,20 @@ architecture STRUCTURE of design_1_top_0_0_FIR is
   attribute ADDER_THRESHOLD of \I_out_r3_carry__4\ : label is 35;
   attribute ADDER_THRESHOLD of \I_out_r3_carry__5\ : label is 35;
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \I_out_r[10]_i_1\ : label is "soft_lutpair71";
-  attribute SOFT_HLUTNM of \I_out_r[11]_i_1\ : label is "soft_lutpair70";
-  attribute SOFT_HLUTNM of \I_out_r[12]_i_1\ : label is "soft_lutpair70";
-  attribute SOFT_HLUTNM of \I_out_r[13]_i_1\ : label is "soft_lutpair69";
-  attribute SOFT_HLUTNM of \I_out_r[14]_i_2\ : label is "soft_lutpair69";
-  attribute SOFT_HLUTNM of \I_out_r[1]_i_1\ : label is "soft_lutpair75";
-  attribute SOFT_HLUTNM of \I_out_r[2]_i_1\ : label is "soft_lutpair75";
-  attribute SOFT_HLUTNM of \I_out_r[3]_i_1\ : label is "soft_lutpair74";
-  attribute SOFT_HLUTNM of \I_out_r[4]_i_1\ : label is "soft_lutpair74";
-  attribute SOFT_HLUTNM of \I_out_r[5]_i_1\ : label is "soft_lutpair73";
-  attribute SOFT_HLUTNM of \I_out_r[6]_i_1\ : label is "soft_lutpair73";
-  attribute SOFT_HLUTNM of \I_out_r[7]_i_1\ : label is "soft_lutpair72";
-  attribute SOFT_HLUTNM of \I_out_r[8]_i_1\ : label is "soft_lutpair72";
-  attribute SOFT_HLUTNM of \I_out_r[9]_i_1\ : label is "soft_lutpair71";
+  attribute SOFT_HLUTNM of \I_out_r[10]_i_1\ : label is "soft_lutpair73";
+  attribute SOFT_HLUTNM of \I_out_r[11]_i_1\ : label is "soft_lutpair72";
+  attribute SOFT_HLUTNM of \I_out_r[12]_i_1\ : label is "soft_lutpair72";
+  attribute SOFT_HLUTNM of \I_out_r[13]_i_1\ : label is "soft_lutpair71";
+  attribute SOFT_HLUTNM of \I_out_r[14]_i_2\ : label is "soft_lutpair71";
+  attribute SOFT_HLUTNM of \I_out_r[1]_i_1\ : label is "soft_lutpair77";
+  attribute SOFT_HLUTNM of \I_out_r[2]_i_1\ : label is "soft_lutpair77";
+  attribute SOFT_HLUTNM of \I_out_r[3]_i_1\ : label is "soft_lutpair76";
+  attribute SOFT_HLUTNM of \I_out_r[4]_i_1\ : label is "soft_lutpair76";
+  attribute SOFT_HLUTNM of \I_out_r[5]_i_1\ : label is "soft_lutpair75";
+  attribute SOFT_HLUTNM of \I_out_r[6]_i_1\ : label is "soft_lutpair75";
+  attribute SOFT_HLUTNM of \I_out_r[7]_i_1\ : label is "soft_lutpair74";
+  attribute SOFT_HLUTNM of \I_out_r[8]_i_1\ : label is "soft_lutpair74";
+  attribute SOFT_HLUTNM of \I_out_r[9]_i_1\ : label is "soft_lutpair73";
   attribute COMPARATOR_THRESHOLD of Q_out_r1_carry : label is 11;
   attribute COMPARATOR_THRESHOLD of \Q_out_r1_carry__0\ : label is 11;
   attribute COMPARATOR_THRESHOLD of \Q_out_r1_carry__1\ : label is 11;
@@ -53034,22 +53168,22 @@ architecture STRUCTURE of design_1_top_0_0_FIR is
   attribute ADDER_THRESHOLD of \Q_out_r3_carry__3\ : label is 35;
   attribute ADDER_THRESHOLD of \Q_out_r3_carry__4\ : label is 35;
   attribute ADDER_THRESHOLD of \Q_out_r3_carry__5\ : label is 35;
-  attribute SOFT_HLUTNM of \Q_out_r[10]_i_1\ : label is "soft_lutpair64";
-  attribute SOFT_HLUTNM of \Q_out_r[11]_i_1\ : label is "soft_lutpair63";
-  attribute SOFT_HLUTNM of \Q_out_r[12]_i_1\ : label is "soft_lutpair63";
-  attribute SOFT_HLUTNM of \Q_out_r[13]_i_1\ : label is "soft_lutpair62";
-  attribute SOFT_HLUTNM of \Q_out_r[14]_i_3\ : label is "soft_lutpair62";
-  attribute SOFT_HLUTNM of \Q_out_r[1]_i_1\ : label is "soft_lutpair68";
-  attribute SOFT_HLUTNM of \Q_out_r[2]_i_1\ : label is "soft_lutpair68";
-  attribute SOFT_HLUTNM of \Q_out_r[3]_i_1\ : label is "soft_lutpair67";
-  attribute SOFT_HLUTNM of \Q_out_r[4]_i_1\ : label is "soft_lutpair67";
-  attribute SOFT_HLUTNM of \Q_out_r[5]_i_1\ : label is "soft_lutpair66";
-  attribute SOFT_HLUTNM of \Q_out_r[6]_i_1\ : label is "soft_lutpair66";
-  attribute SOFT_HLUTNM of \Q_out_r[7]_i_1\ : label is "soft_lutpair65";
-  attribute SOFT_HLUTNM of \Q_out_r[8]_i_1\ : label is "soft_lutpair65";
-  attribute SOFT_HLUTNM of \Q_out_r[9]_i_1\ : label is "soft_lutpair64";
-  attribute SOFT_HLUTNM of first_r_i_3 : label is "soft_lutpair48";
-  attribute SOFT_HLUTNM of issuing_r_i_1 : label is "soft_lutpair46";
+  attribute SOFT_HLUTNM of \Q_out_r[10]_i_1\ : label is "soft_lutpair66";
+  attribute SOFT_HLUTNM of \Q_out_r[11]_i_1\ : label is "soft_lutpair65";
+  attribute SOFT_HLUTNM of \Q_out_r[12]_i_1\ : label is "soft_lutpair65";
+  attribute SOFT_HLUTNM of \Q_out_r[13]_i_1\ : label is "soft_lutpair64";
+  attribute SOFT_HLUTNM of \Q_out_r[14]_i_3\ : label is "soft_lutpair64";
+  attribute SOFT_HLUTNM of \Q_out_r[1]_i_1\ : label is "soft_lutpair70";
+  attribute SOFT_HLUTNM of \Q_out_r[2]_i_1\ : label is "soft_lutpair70";
+  attribute SOFT_HLUTNM of \Q_out_r[3]_i_1\ : label is "soft_lutpair69";
+  attribute SOFT_HLUTNM of \Q_out_r[4]_i_1\ : label is "soft_lutpair69";
+  attribute SOFT_HLUTNM of \Q_out_r[5]_i_1\ : label is "soft_lutpair68";
+  attribute SOFT_HLUTNM of \Q_out_r[6]_i_1\ : label is "soft_lutpair68";
+  attribute SOFT_HLUTNM of \Q_out_r[7]_i_1\ : label is "soft_lutpair67";
+  attribute SOFT_HLUTNM of \Q_out_r[8]_i_1\ : label is "soft_lutpair67";
+  attribute SOFT_HLUTNM of \Q_out_r[9]_i_1\ : label is "soft_lutpair66";
+  attribute SOFT_HLUTNM of first_r_i_3 : label is "soft_lutpair50";
+  attribute SOFT_HLUTNM of issuing_r_i_1 : label is "soft_lutpair48";
   attribute \MEM.PORTA.DATA_BIT_LAYOUT\ : string;
   attribute \MEM.PORTA.DATA_BIT_LAYOUT\ of ram_I_reg : label is "p0_d16";
   attribute \MEM.PORTB.DATA_BIT_LAYOUT\ : string;
@@ -53083,25 +53217,25 @@ architecture STRUCTURE of design_1_top_0_0_FIR is
   attribute ram_offset of ram_Q_reg : label is 512;
   attribute ram_slice_begin of ram_Q_reg : label is 0;
   attribute ram_slice_end of ram_Q_reg : label is 15;
-  attribute SOFT_HLUTNM of \read_ptr_r[0]_i_1\ : label is "soft_lutpair60";
-  attribute SOFT_HLUTNM of \read_ptr_r[2]_i_2\ : label is "soft_lutpair53";
-  attribute SOFT_HLUTNM of \read_ptr_r[3]_i_2\ : label is "soft_lutpair53";
-  attribute SOFT_HLUTNM of \read_ptr_r[4]_i_2\ : label is "soft_lutpair51";
-  attribute SOFT_HLUTNM of \read_ptr_r[4]_i_3\ : label is "soft_lutpair56";
-  attribute SOFT_HLUTNM of \read_ptr_r[4]_i_5\ : label is "soft_lutpair52";
-  attribute SOFT_HLUTNM of \read_ptr_r[5]_i_3\ : label is "soft_lutpair58";
-  attribute SOFT_HLUTNM of \read_ptr_r[5]_i_4\ : label is "soft_lutpair52";
-  attribute SOFT_HLUTNM of \read_ptr_r[6]_i_2\ : label is "soft_lutpair51";
-  attribute SOFT_HLUTNM of \read_ptr_r[7]_i_4\ : label is "soft_lutpair57";
-  attribute SOFT_HLUTNM of \state_r[0]_i_1\ : label is "soft_lutpair47";
-  attribute SOFT_HLUTNM of \state_r[1]_i_1\ : label is "soft_lutpair46";
-  attribute SOFT_HLUTNM of \tap_counter_r[0]_i_1\ : label is "soft_lutpair59";
-  attribute SOFT_HLUTNM of \tap_counter_r[1]_i_1\ : label is "soft_lutpair60";
-  attribute SOFT_HLUTNM of \tap_counter_r[2]_i_1\ : label is "soft_lutpair50";
-  attribute SOFT_HLUTNM of \tap_counter_r[3]_i_1\ : label is "soft_lutpair50";
-  attribute SOFT_HLUTNM of \tap_counter_r[5]_i_1\ : label is "soft_lutpair59";
-  attribute SOFT_HLUTNM of \tap_counter_r[6]_i_1\ : label is "soft_lutpair49";
-  attribute SOFT_HLUTNM of \tap_counter_r[7]_i_1\ : label is "soft_lutpair49";
+  attribute SOFT_HLUTNM of \read_ptr_r[0]_i_1\ : label is "soft_lutpair62";
+  attribute SOFT_HLUTNM of \read_ptr_r[2]_i_2\ : label is "soft_lutpair55";
+  attribute SOFT_HLUTNM of \read_ptr_r[3]_i_2\ : label is "soft_lutpair55";
+  attribute SOFT_HLUTNM of \read_ptr_r[4]_i_2\ : label is "soft_lutpair53";
+  attribute SOFT_HLUTNM of \read_ptr_r[4]_i_3\ : label is "soft_lutpair58";
+  attribute SOFT_HLUTNM of \read_ptr_r[4]_i_5\ : label is "soft_lutpair54";
+  attribute SOFT_HLUTNM of \read_ptr_r[5]_i_3\ : label is "soft_lutpair60";
+  attribute SOFT_HLUTNM of \read_ptr_r[5]_i_4\ : label is "soft_lutpair54";
+  attribute SOFT_HLUTNM of \read_ptr_r[6]_i_2\ : label is "soft_lutpair53";
+  attribute SOFT_HLUTNM of \read_ptr_r[7]_i_4\ : label is "soft_lutpair59";
+  attribute SOFT_HLUTNM of \state_r[0]_i_1\ : label is "soft_lutpair49";
+  attribute SOFT_HLUTNM of \state_r[1]_i_1\ : label is "soft_lutpair48";
+  attribute SOFT_HLUTNM of \tap_counter_r[0]_i_1\ : label is "soft_lutpair61";
+  attribute SOFT_HLUTNM of \tap_counter_r[1]_i_1\ : label is "soft_lutpair62";
+  attribute SOFT_HLUTNM of \tap_counter_r[2]_i_1\ : label is "soft_lutpair52";
+  attribute SOFT_HLUTNM of \tap_counter_r[3]_i_1\ : label is "soft_lutpair52";
+  attribute SOFT_HLUTNM of \tap_counter_r[5]_i_1\ : label is "soft_lutpair61";
+  attribute SOFT_HLUTNM of \tap_counter_r[6]_i_1\ : label is "soft_lutpair51";
+  attribute SOFT_HLUTNM of \tap_counter_r[7]_i_1\ : label is "soft_lutpair51";
   attribute \MEM.PORTA.DATA_BIT_LAYOUT\ of tap_counter_r_reg_rep : label is "p0_d16";
   attribute METHODOLOGY_DRC_VIOS of tap_counter_r_reg_rep : label is "{SYNTH-6 {cell *THIS*}}";
   attribute RTL_RAM_BITS of tap_counter_r_reg_rep : label is 8192;
@@ -53112,19 +53246,19 @@ architecture STRUCTURE of design_1_top_0_0_FIR is
   attribute ram_offset of tap_counter_r_reg_rep : label is 0;
   attribute ram_slice_begin of tap_counter_r_reg_rep : label is 0;
   attribute ram_slice_end of tap_counter_r_reg_rep : label is 15;
-  attribute SOFT_HLUTNM of tap_counter_r_reg_rep_i_11 : label is "soft_lutpair48";
-  attribute SOFT_HLUTNM of \trigger_count_r[0]_i_1\ : label is "soft_lutpair76";
-  attribute SOFT_HLUTNM of \trigger_count_r[1]_i_1\ : label is "soft_lutpair76";
-  attribute SOFT_HLUTNM of \valid_out_r_i_1__0\ : label is "soft_lutpair47";
-  attribute SOFT_HLUTNM of \write_ptr_r[1]_i_1\ : label is "soft_lutpair61";
-  attribute SOFT_HLUTNM of \write_ptr_r[2]_i_1\ : label is "soft_lutpair54";
-  attribute SOFT_HLUTNM of \write_ptr_r[3]_i_1\ : label is "soft_lutpair54";
-  attribute SOFT_HLUTNM of \write_ptr_r[5]_i_1\ : label is "soft_lutpair61";
-  attribute SOFT_HLUTNM of \write_ptr_r[6]_i_1\ : label is "soft_lutpair55";
-  attribute SOFT_HLUTNM of \write_ptr_r[7]_i_1\ : label is "soft_lutpair55";
-  attribute SOFT_HLUTNM of \write_ptr_r[8]_i_2\ : label is "soft_lutpair56";
-  attribute SOFT_HLUTNM of \write_ptr_r[8]_i_3\ : label is "soft_lutpair58";
-  attribute SOFT_HLUTNM of \write_ptr_r[8]_i_4\ : label is "soft_lutpair57";
+  attribute SOFT_HLUTNM of tap_counter_r_reg_rep_i_11 : label is "soft_lutpair50";
+  attribute SOFT_HLUTNM of \trigger_count_r[0]_i_1\ : label is "soft_lutpair78";
+  attribute SOFT_HLUTNM of \trigger_count_r[1]_i_1\ : label is "soft_lutpair78";
+  attribute SOFT_HLUTNM of \valid_out_r_i_1__0\ : label is "soft_lutpair49";
+  attribute SOFT_HLUTNM of \write_ptr_r[1]_i_1\ : label is "soft_lutpair63";
+  attribute SOFT_HLUTNM of \write_ptr_r[2]_i_1\ : label is "soft_lutpair56";
+  attribute SOFT_HLUTNM of \write_ptr_r[3]_i_1\ : label is "soft_lutpair56";
+  attribute SOFT_HLUTNM of \write_ptr_r[5]_i_1\ : label is "soft_lutpair63";
+  attribute SOFT_HLUTNM of \write_ptr_r[6]_i_1\ : label is "soft_lutpair57";
+  attribute SOFT_HLUTNM of \write_ptr_r[7]_i_1\ : label is "soft_lutpair57";
+  attribute SOFT_HLUTNM of \write_ptr_r[8]_i_2\ : label is "soft_lutpair58";
+  attribute SOFT_HLUTNM of \write_ptr_r[8]_i_3\ : label is "soft_lutpair60";
+  attribute SOFT_HLUTNM of \write_ptr_r[8]_i_4\ : label is "soft_lutpair59";
 begin
   packed_signal(31 downto 0) <= \^packed_signal\(31 downto 0);
 I_out_r1_carry: unisim.vcomponents.CARRY4
@@ -58433,22 +58567,22 @@ architecture STRUCTURE of design_1_top_0_0_mixer is
   attribute COMPARATOR_THRESHOLD of I_saturate_r1_carry : label is 11;
   attribute COMPARATOR_THRESHOLD of \I_saturate_r1_inferred__0/i__carry\ : label is 11;
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \I_saturate_r[0]_i_1\ : label is "soft_lutpair77";
-  attribute SOFT_HLUTNM of \I_saturate_r[10]_i_1\ : label is "soft_lutpair82";
-  attribute SOFT_HLUTNM of \I_saturate_r[11]_i_1\ : label is "soft_lutpair83";
-  attribute SOFT_HLUTNM of \I_saturate_r[12]_i_1\ : label is "soft_lutpair83";
-  attribute SOFT_HLUTNM of \I_saturate_r[13]_i_1\ : label is "soft_lutpair84";
-  attribute SOFT_HLUTNM of \I_saturate_r[14]_i_1\ : label is "soft_lutpair84";
-  attribute SOFT_HLUTNM of \I_saturate_r[15]_i_1\ : label is "soft_lutpair77";
-  attribute SOFT_HLUTNM of \I_saturate_r[1]_i_1\ : label is "soft_lutpair78";
-  attribute SOFT_HLUTNM of \I_saturate_r[2]_i_1\ : label is "soft_lutpair78";
-  attribute SOFT_HLUTNM of \I_saturate_r[3]_i_1\ : label is "soft_lutpair79";
-  attribute SOFT_HLUTNM of \I_saturate_r[4]_i_1\ : label is "soft_lutpair79";
-  attribute SOFT_HLUTNM of \I_saturate_r[5]_i_1\ : label is "soft_lutpair80";
-  attribute SOFT_HLUTNM of \I_saturate_r[6]_i_1\ : label is "soft_lutpair80";
-  attribute SOFT_HLUTNM of \I_saturate_r[7]_i_1\ : label is "soft_lutpair81";
-  attribute SOFT_HLUTNM of \I_saturate_r[8]_i_1\ : label is "soft_lutpair81";
-  attribute SOFT_HLUTNM of \I_saturate_r[9]_i_1\ : label is "soft_lutpair82";
+  attribute SOFT_HLUTNM of \I_saturate_r[0]_i_1\ : label is "soft_lutpair79";
+  attribute SOFT_HLUTNM of \I_saturate_r[10]_i_1\ : label is "soft_lutpair84";
+  attribute SOFT_HLUTNM of \I_saturate_r[11]_i_1\ : label is "soft_lutpair85";
+  attribute SOFT_HLUTNM of \I_saturate_r[12]_i_1\ : label is "soft_lutpair85";
+  attribute SOFT_HLUTNM of \I_saturate_r[13]_i_1\ : label is "soft_lutpair86";
+  attribute SOFT_HLUTNM of \I_saturate_r[14]_i_1\ : label is "soft_lutpair86";
+  attribute SOFT_HLUTNM of \I_saturate_r[15]_i_1\ : label is "soft_lutpair79";
+  attribute SOFT_HLUTNM of \I_saturate_r[1]_i_1\ : label is "soft_lutpair80";
+  attribute SOFT_HLUTNM of \I_saturate_r[2]_i_1\ : label is "soft_lutpair80";
+  attribute SOFT_HLUTNM of \I_saturate_r[3]_i_1\ : label is "soft_lutpair81";
+  attribute SOFT_HLUTNM of \I_saturate_r[4]_i_1\ : label is "soft_lutpair81";
+  attribute SOFT_HLUTNM of \I_saturate_r[5]_i_1\ : label is "soft_lutpair82";
+  attribute SOFT_HLUTNM of \I_saturate_r[6]_i_1\ : label is "soft_lutpair82";
+  attribute SOFT_HLUTNM of \I_saturate_r[7]_i_1\ : label is "soft_lutpair83";
+  attribute SOFT_HLUTNM of \I_saturate_r[8]_i_1\ : label is "soft_lutpair83";
+  attribute SOFT_HLUTNM of \I_saturate_r[9]_i_1\ : label is "soft_lutpair84";
   attribute METHODOLOGY_DRC_VIOS : string;
   attribute METHODOLOGY_DRC_VIOS of Q_product_r1 : label is "{SYNTH-11 {cell *THIS*}}";
   attribute ADDER_THRESHOLD : integer;
@@ -58467,22 +58601,22 @@ architecture STRUCTURE of design_1_top_0_0_mixer is
   attribute ADDER_THRESHOLD of \Q_round_r_reg[9]_i_1\ : label is 35;
   attribute COMPARATOR_THRESHOLD of Q_saturate_r1_carry : label is 11;
   attribute COMPARATOR_THRESHOLD of \Q_saturate_r1_inferred__0/i__carry\ : label is 11;
-  attribute SOFT_HLUTNM of \Q_saturate_r[0]_i_1\ : label is "soft_lutpair85";
-  attribute SOFT_HLUTNM of \Q_saturate_r[10]_i_1\ : label is "soft_lutpair90";
-  attribute SOFT_HLUTNM of \Q_saturate_r[11]_i_1\ : label is "soft_lutpair91";
-  attribute SOFT_HLUTNM of \Q_saturate_r[12]_i_1\ : label is "soft_lutpair91";
-  attribute SOFT_HLUTNM of \Q_saturate_r[13]_i_1\ : label is "soft_lutpair92";
-  attribute SOFT_HLUTNM of \Q_saturate_r[14]_i_1\ : label is "soft_lutpair92";
-  attribute SOFT_HLUTNM of \Q_saturate_r[15]_i_1\ : label is "soft_lutpair85";
-  attribute SOFT_HLUTNM of \Q_saturate_r[1]_i_1\ : label is "soft_lutpair86";
-  attribute SOFT_HLUTNM of \Q_saturate_r[2]_i_1\ : label is "soft_lutpair86";
-  attribute SOFT_HLUTNM of \Q_saturate_r[3]_i_1\ : label is "soft_lutpair87";
-  attribute SOFT_HLUTNM of \Q_saturate_r[4]_i_1\ : label is "soft_lutpair87";
-  attribute SOFT_HLUTNM of \Q_saturate_r[5]_i_1\ : label is "soft_lutpair88";
-  attribute SOFT_HLUTNM of \Q_saturate_r[6]_i_1\ : label is "soft_lutpair88";
-  attribute SOFT_HLUTNM of \Q_saturate_r[7]_i_1\ : label is "soft_lutpair89";
-  attribute SOFT_HLUTNM of \Q_saturate_r[8]_i_1\ : label is "soft_lutpair89";
-  attribute SOFT_HLUTNM of \Q_saturate_r[9]_i_1\ : label is "soft_lutpair90";
+  attribute SOFT_HLUTNM of \Q_saturate_r[0]_i_1\ : label is "soft_lutpair87";
+  attribute SOFT_HLUTNM of \Q_saturate_r[10]_i_1\ : label is "soft_lutpair92";
+  attribute SOFT_HLUTNM of \Q_saturate_r[11]_i_1\ : label is "soft_lutpair93";
+  attribute SOFT_HLUTNM of \Q_saturate_r[12]_i_1\ : label is "soft_lutpair93";
+  attribute SOFT_HLUTNM of \Q_saturate_r[13]_i_1\ : label is "soft_lutpair94";
+  attribute SOFT_HLUTNM of \Q_saturate_r[14]_i_1\ : label is "soft_lutpair94";
+  attribute SOFT_HLUTNM of \Q_saturate_r[15]_i_1\ : label is "soft_lutpair87";
+  attribute SOFT_HLUTNM of \Q_saturate_r[1]_i_1\ : label is "soft_lutpair88";
+  attribute SOFT_HLUTNM of \Q_saturate_r[2]_i_1\ : label is "soft_lutpair88";
+  attribute SOFT_HLUTNM of \Q_saturate_r[3]_i_1\ : label is "soft_lutpair89";
+  attribute SOFT_HLUTNM of \Q_saturate_r[4]_i_1\ : label is "soft_lutpair89";
+  attribute SOFT_HLUTNM of \Q_saturate_r[5]_i_1\ : label is "soft_lutpair90";
+  attribute SOFT_HLUTNM of \Q_saturate_r[6]_i_1\ : label is "soft_lutpair90";
+  attribute SOFT_HLUTNM of \Q_saturate_r[7]_i_1\ : label is "soft_lutpair91";
+  attribute SOFT_HLUTNM of \Q_saturate_r[8]_i_1\ : label is "soft_lutpair91";
+  attribute SOFT_HLUTNM of \Q_saturate_r[9]_i_1\ : label is "soft_lutpair92";
 begin
   Q(15 downto 0) <= \^q\(15 downto 0);
   \Q_saturate_r_reg[15]_1\(15 downto 0) <= \^q_saturate_r_reg[15]_1\(15 downto 0);
@@ -61645,8 +61779,8 @@ architecture STRUCTURE of design_1_top_0_0_DDC is
   signal mixer_I_out : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal mixer_Q_out : STD_LOGIC_VECTOR ( 15 downto 0 );
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \debug_count[0]_i_1\ : label is "soft_lutpair93";
-  attribute SOFT_HLUTNM of \debug_count[1]_i_1\ : label is "soft_lutpair93";
+  attribute SOFT_HLUTNM of \debug_count[0]_i_1\ : label is "soft_lutpair95";
+  attribute SOFT_HLUTNM of \debug_count[1]_i_1\ : label is "soft_lutpair95";
 begin
   Q(1 downto 0) <= \^q\(1 downto 0);
 DUT_CIC: entity work.design_1_top_0_0_CIC
@@ -62281,10 +62415,10 @@ entity design_1_top_0_0_top is
     arready_r_reg : out STD_LOGIC;
     m_axis_tdata : out STD_LOGIC_VECTOR ( 31 downto 0 );
     ADDRARDADDR : out STD_LOGIC_VECTOR ( 14 downto 0 );
+    m_axis_tlast : out STD_LOGIC;
     adc_rst_0 : out STD_LOGIC_VECTOR ( 14 downto 0 );
     s_axi_rdata : out STD_LOGIC_VECTOR ( 31 downto 0 );
     m_axis_tvalid : out STD_LOGIC;
-    m_axis_tlast : out STD_LOGIC;
     adc_rst : in STD_LOGIC;
     adc_clk : in STD_LOGIC;
     s_axi_aclk : in STD_LOGIC;
@@ -62348,19 +62482,19 @@ architecture STRUCTURE of design_1_top_0_0_top is
   signal state_dest_r : STD_LOGIC_VECTOR ( 1 downto 0 );
   signal state_src_r : STD_LOGIC_VECTOR ( 1 downto 0 );
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \FSM_sequential_state_dest_r[0]_i_1\ : label is "soft_lutpair95";
-  attribute SOFT_HLUTNM of \FSM_sequential_state_dest_r[1]_i_1\ : label is "soft_lutpair95";
+  attribute SOFT_HLUTNM of \FSM_sequential_state_dest_r[0]_i_1\ : label is "soft_lutpair97";
+  attribute SOFT_HLUTNM of \FSM_sequential_state_dest_r[1]_i_1\ : label is "soft_lutpair97";
   attribute FSM_ENCODED_STATES : string;
   attribute FSM_ENCODED_STATES of \FSM_sequential_state_dest_r_reg[0]\ : label is "DEST_SEND_ACK:01,DEST_RESET_ACK:10,DEST_READY:00,iSTATE:11";
   attribute FSM_ENCODED_STATES of \FSM_sequential_state_dest_r_reg[1]\ : label is "DEST_SEND_ACK:01,DEST_RESET_ACK:10,DEST_READY:00,iSTATE:11";
   attribute FSM_ENCODED_STATES of \FSM_sequential_state_src_r_reg[0]\ : label is "SRC_WAIT_FOR_ACK:01,SRC_RESET_ACK:10,SRC_READY:00,iSTATE:11";
   attribute FSM_ENCODED_STATES of \FSM_sequential_state_src_r_reg[1]\ : label is "SRC_WAIT_FOR_ACK:01,SRC_RESET_ACK:10,SRC_READY:00,iSTATE:11";
-  attribute SOFT_HLUTNM of \ack_dest_in_src_r[0]_i_1\ : label is "soft_lutpair96";
-  attribute SOFT_HLUTNM of \ack_dest_in_src_r[1]_i_1\ : label is "soft_lutpair96";
-  attribute SOFT_HLUTNM of ack_dest_r_i_1 : label is "soft_lutpair94";
-  attribute SOFT_HLUTNM of rcv : label is "soft_lutpair94";
-  attribute SOFT_HLUTNM of \send_src_in_dst_r[0]_i_1\ : label is "soft_lutpair97";
-  attribute SOFT_HLUTNM of \send_src_in_dst_r[1]_i_1\ : label is "soft_lutpair97";
+  attribute SOFT_HLUTNM of \ack_dest_in_src_r[0]_i_1\ : label is "soft_lutpair98";
+  attribute SOFT_HLUTNM of \ack_dest_in_src_r[1]_i_1\ : label is "soft_lutpair98";
+  attribute SOFT_HLUTNM of ack_dest_r_i_1 : label is "soft_lutpair96";
+  attribute SOFT_HLUTNM of rcv : label is "soft_lutpair96";
+  attribute SOFT_HLUTNM of \send_src_in_dst_r[0]_i_1\ : label is "soft_lutpair99";
+  attribute SOFT_HLUTNM of \send_src_in_dst_r[1]_i_1\ : label is "soft_lutpair99";
 begin
 DUT_ADAPTER: entity work.design_1_top_0_0_AXI_adapter
      port map (
@@ -62907,7 +63041,6 @@ architecture STRUCTURE of design_1_top_0_0 is
   signal inst_n_49 : STD_LOGIC;
   signal inst_n_50 : STD_LOGIC;
   signal inst_n_51 : STD_LOGIC;
-  signal inst_n_52 : STD_LOGIC;
   signal inst_n_53 : STD_LOGIC;
   signal inst_n_54 : STD_LOGIC;
   signal inst_n_55 : STD_LOGIC;
@@ -62922,6 +63055,7 @@ architecture STRUCTURE of design_1_top_0_0 is
   signal inst_n_64 : STD_LOGIC;
   signal inst_n_65 : STD_LOGIC;
   signal inst_n_66 : STD_LOGIC;
+  signal inst_n_67 : STD_LOGIC;
   signal p_0_in : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal sel_0_0_n_35 : STD_LOGIC;
   signal sel_0_10_n_35 : STD_LOGIC;
@@ -63722,21 +63856,21 @@ inst: entity work.design_1_top_0_0_top
       adc_clk => adc_clk,
       adc_dat_i(15 downto 0) => adc_dat_i(15 downto 0),
       adc_rst => adc_rst,
-      adc_rst_0(14) => inst_n_52,
-      adc_rst_0(13) => inst_n_53,
-      adc_rst_0(12) => inst_n_54,
-      adc_rst_0(11) => inst_n_55,
-      adc_rst_0(10) => inst_n_56,
-      adc_rst_0(9) => inst_n_57,
-      adc_rst_0(8) => inst_n_58,
-      adc_rst_0(7) => inst_n_59,
-      adc_rst_0(6) => inst_n_60,
-      adc_rst_0(5) => inst_n_61,
-      adc_rst_0(4) => inst_n_62,
-      adc_rst_0(3) => inst_n_63,
-      adc_rst_0(2) => inst_n_64,
-      adc_rst_0(1) => inst_n_65,
-      adc_rst_0(0) => inst_n_66,
+      adc_rst_0(14) => inst_n_53,
+      adc_rst_0(13) => inst_n_54,
+      adc_rst_0(12) => inst_n_55,
+      adc_rst_0(11) => inst_n_56,
+      adc_rst_0(10) => inst_n_57,
+      adc_rst_0(9) => inst_n_58,
+      adc_rst_0(8) => inst_n_59,
+      adc_rst_0(7) => inst_n_60,
+      adc_rst_0(6) => inst_n_61,
+      adc_rst_0(5) => inst_n_62,
+      adc_rst_0(4) => inst_n_63,
+      adc_rst_0(3) => inst_n_64,
+      adc_rst_0(2) => inst_n_65,
+      adc_rst_0(1) => inst_n_66,
+      adc_rst_0(0) => inst_n_67,
       arready_r_reg => s_axi_arready,
       awready_r_reg => s_axi_awready,
       m_axis_tdata(31 downto 0) => m_axis_tdata(31 downto 0),
@@ -63946,21 +64080,21 @@ sel_0_0: unisim.vcomponents.RAMB36E1
     )
         port map (
       ADDRARDADDR(15) => '1',
-      ADDRARDADDR(14) => inst_n_52,
-      ADDRARDADDR(13) => inst_n_53,
-      ADDRARDADDR(12) => inst_n_54,
-      ADDRARDADDR(11) => inst_n_55,
-      ADDRARDADDR(10) => inst_n_56,
-      ADDRARDADDR(9) => inst_n_57,
-      ADDRARDADDR(8) => inst_n_58,
-      ADDRARDADDR(7) => inst_n_59,
-      ADDRARDADDR(6) => inst_n_60,
-      ADDRARDADDR(5) => inst_n_61,
-      ADDRARDADDR(4) => inst_n_62,
-      ADDRARDADDR(3) => inst_n_63,
-      ADDRARDADDR(2) => inst_n_64,
-      ADDRARDADDR(1) => inst_n_65,
-      ADDRARDADDR(0) => inst_n_66,
+      ADDRARDADDR(14) => inst_n_53,
+      ADDRARDADDR(13) => inst_n_54,
+      ADDRARDADDR(12) => inst_n_55,
+      ADDRARDADDR(11) => inst_n_56,
+      ADDRARDADDR(10) => inst_n_57,
+      ADDRARDADDR(9) => inst_n_58,
+      ADDRARDADDR(8) => inst_n_59,
+      ADDRARDADDR(7) => inst_n_60,
+      ADDRARDADDR(6) => inst_n_61,
+      ADDRARDADDR(5) => inst_n_62,
+      ADDRARDADDR(4) => inst_n_63,
+      ADDRARDADDR(3) => inst_n_64,
+      ADDRARDADDR(2) => inst_n_65,
+      ADDRARDADDR(1) => inst_n_66,
+      ADDRARDADDR(0) => inst_n_67,
       ADDRBWRADDR(15 downto 0) => B"1111111111111111",
       CASCADEINA => '1',
       CASCADEINB => '0',
@@ -64165,21 +64299,21 @@ sel_0_1: unisim.vcomponents.RAMB36E1
     )
         port map (
       ADDRARDADDR(15) => '1',
-      ADDRARDADDR(14) => inst_n_52,
-      ADDRARDADDR(13) => inst_n_53,
-      ADDRARDADDR(12) => inst_n_54,
-      ADDRARDADDR(11) => inst_n_55,
-      ADDRARDADDR(10) => inst_n_56,
-      ADDRARDADDR(9) => inst_n_57,
-      ADDRARDADDR(8) => inst_n_58,
-      ADDRARDADDR(7) => inst_n_59,
-      ADDRARDADDR(6) => inst_n_60,
-      ADDRARDADDR(5) => inst_n_61,
-      ADDRARDADDR(4) => inst_n_62,
-      ADDRARDADDR(3) => inst_n_63,
-      ADDRARDADDR(2) => inst_n_64,
-      ADDRARDADDR(1) => inst_n_65,
-      ADDRARDADDR(0) => inst_n_66,
+      ADDRARDADDR(14) => inst_n_53,
+      ADDRARDADDR(13) => inst_n_54,
+      ADDRARDADDR(12) => inst_n_55,
+      ADDRARDADDR(11) => inst_n_56,
+      ADDRARDADDR(10) => inst_n_57,
+      ADDRARDADDR(9) => inst_n_58,
+      ADDRARDADDR(8) => inst_n_59,
+      ADDRARDADDR(7) => inst_n_60,
+      ADDRARDADDR(6) => inst_n_61,
+      ADDRARDADDR(5) => inst_n_62,
+      ADDRARDADDR(4) => inst_n_63,
+      ADDRARDADDR(3) => inst_n_64,
+      ADDRARDADDR(2) => inst_n_65,
+      ADDRARDADDR(1) => inst_n_66,
+      ADDRARDADDR(0) => inst_n_67,
       ADDRBWRADDR(15 downto 0) => B"1111111111111111",
       CASCADEINA => '1',
       CASCADEINB => '0',
@@ -64384,21 +64518,21 @@ sel_0_10: unisim.vcomponents.RAMB36E1
     )
         port map (
       ADDRARDADDR(15) => '1',
-      ADDRARDADDR(14) => inst_n_52,
-      ADDRARDADDR(13) => inst_n_53,
-      ADDRARDADDR(12) => inst_n_54,
-      ADDRARDADDR(11) => inst_n_55,
-      ADDRARDADDR(10) => inst_n_56,
-      ADDRARDADDR(9) => inst_n_57,
-      ADDRARDADDR(8) => inst_n_58,
-      ADDRARDADDR(7) => inst_n_59,
-      ADDRARDADDR(6) => inst_n_60,
-      ADDRARDADDR(5) => inst_n_61,
-      ADDRARDADDR(4) => inst_n_62,
-      ADDRARDADDR(3) => inst_n_63,
-      ADDRARDADDR(2) => inst_n_64,
-      ADDRARDADDR(1) => inst_n_65,
-      ADDRARDADDR(0) => inst_n_66,
+      ADDRARDADDR(14) => inst_n_53,
+      ADDRARDADDR(13) => inst_n_54,
+      ADDRARDADDR(12) => inst_n_55,
+      ADDRARDADDR(11) => inst_n_56,
+      ADDRARDADDR(10) => inst_n_57,
+      ADDRARDADDR(9) => inst_n_58,
+      ADDRARDADDR(8) => inst_n_59,
+      ADDRARDADDR(7) => inst_n_60,
+      ADDRARDADDR(6) => inst_n_61,
+      ADDRARDADDR(5) => inst_n_62,
+      ADDRARDADDR(4) => inst_n_63,
+      ADDRARDADDR(3) => inst_n_64,
+      ADDRARDADDR(2) => inst_n_65,
+      ADDRARDADDR(1) => inst_n_66,
+      ADDRARDADDR(0) => inst_n_67,
       ADDRBWRADDR(15 downto 0) => B"1111111111111111",
       CASCADEINA => '1',
       CASCADEINB => '0',
@@ -64603,21 +64737,21 @@ sel_0_11: unisim.vcomponents.RAMB36E1
     )
         port map (
       ADDRARDADDR(15) => '1',
-      ADDRARDADDR(14) => inst_n_52,
-      ADDRARDADDR(13) => inst_n_53,
-      ADDRARDADDR(12) => inst_n_54,
-      ADDRARDADDR(11) => inst_n_55,
-      ADDRARDADDR(10) => inst_n_56,
-      ADDRARDADDR(9) => inst_n_57,
-      ADDRARDADDR(8) => inst_n_58,
-      ADDRARDADDR(7) => inst_n_59,
-      ADDRARDADDR(6) => inst_n_60,
-      ADDRARDADDR(5) => inst_n_61,
-      ADDRARDADDR(4) => inst_n_62,
-      ADDRARDADDR(3) => inst_n_63,
-      ADDRARDADDR(2) => inst_n_64,
-      ADDRARDADDR(1) => inst_n_65,
-      ADDRARDADDR(0) => inst_n_66,
+      ADDRARDADDR(14) => inst_n_53,
+      ADDRARDADDR(13) => inst_n_54,
+      ADDRARDADDR(12) => inst_n_55,
+      ADDRARDADDR(11) => inst_n_56,
+      ADDRARDADDR(10) => inst_n_57,
+      ADDRARDADDR(9) => inst_n_58,
+      ADDRARDADDR(8) => inst_n_59,
+      ADDRARDADDR(7) => inst_n_60,
+      ADDRARDADDR(6) => inst_n_61,
+      ADDRARDADDR(5) => inst_n_62,
+      ADDRARDADDR(4) => inst_n_63,
+      ADDRARDADDR(3) => inst_n_64,
+      ADDRARDADDR(2) => inst_n_65,
+      ADDRARDADDR(1) => inst_n_66,
+      ADDRARDADDR(0) => inst_n_67,
       ADDRBWRADDR(15 downto 0) => B"1111111111111111",
       CASCADEINA => '1',
       CASCADEINB => '0',
@@ -64822,21 +64956,21 @@ sel_0_12: unisim.vcomponents.RAMB36E1
     )
         port map (
       ADDRARDADDR(15) => '1',
-      ADDRARDADDR(14) => inst_n_52,
-      ADDRARDADDR(13) => inst_n_53,
-      ADDRARDADDR(12) => inst_n_54,
-      ADDRARDADDR(11) => inst_n_55,
-      ADDRARDADDR(10) => inst_n_56,
-      ADDRARDADDR(9) => inst_n_57,
-      ADDRARDADDR(8) => inst_n_58,
-      ADDRARDADDR(7) => inst_n_59,
-      ADDRARDADDR(6) => inst_n_60,
-      ADDRARDADDR(5) => inst_n_61,
-      ADDRARDADDR(4) => inst_n_62,
-      ADDRARDADDR(3) => inst_n_63,
-      ADDRARDADDR(2) => inst_n_64,
-      ADDRARDADDR(1) => inst_n_65,
-      ADDRARDADDR(0) => inst_n_66,
+      ADDRARDADDR(14) => inst_n_53,
+      ADDRARDADDR(13) => inst_n_54,
+      ADDRARDADDR(12) => inst_n_55,
+      ADDRARDADDR(11) => inst_n_56,
+      ADDRARDADDR(10) => inst_n_57,
+      ADDRARDADDR(9) => inst_n_58,
+      ADDRARDADDR(8) => inst_n_59,
+      ADDRARDADDR(7) => inst_n_60,
+      ADDRARDADDR(6) => inst_n_61,
+      ADDRARDADDR(5) => inst_n_62,
+      ADDRARDADDR(4) => inst_n_63,
+      ADDRARDADDR(3) => inst_n_64,
+      ADDRARDADDR(2) => inst_n_65,
+      ADDRARDADDR(1) => inst_n_66,
+      ADDRARDADDR(0) => inst_n_67,
       ADDRBWRADDR(15 downto 0) => B"1111111111111111",
       CASCADEINA => '1',
       CASCADEINB => '0',
@@ -65041,21 +65175,21 @@ sel_0_13: unisim.vcomponents.RAMB36E1
     )
         port map (
       ADDRARDADDR(15) => '1',
-      ADDRARDADDR(14) => inst_n_52,
-      ADDRARDADDR(13) => inst_n_53,
-      ADDRARDADDR(12) => inst_n_54,
-      ADDRARDADDR(11) => inst_n_55,
-      ADDRARDADDR(10) => inst_n_56,
-      ADDRARDADDR(9) => inst_n_57,
-      ADDRARDADDR(8) => inst_n_58,
-      ADDRARDADDR(7) => inst_n_59,
-      ADDRARDADDR(6) => inst_n_60,
-      ADDRARDADDR(5) => inst_n_61,
-      ADDRARDADDR(4) => inst_n_62,
-      ADDRARDADDR(3) => inst_n_63,
-      ADDRARDADDR(2) => inst_n_64,
-      ADDRARDADDR(1) => inst_n_65,
-      ADDRARDADDR(0) => inst_n_66,
+      ADDRARDADDR(14) => inst_n_53,
+      ADDRARDADDR(13) => inst_n_54,
+      ADDRARDADDR(12) => inst_n_55,
+      ADDRARDADDR(11) => inst_n_56,
+      ADDRARDADDR(10) => inst_n_57,
+      ADDRARDADDR(9) => inst_n_58,
+      ADDRARDADDR(8) => inst_n_59,
+      ADDRARDADDR(7) => inst_n_60,
+      ADDRARDADDR(6) => inst_n_61,
+      ADDRARDADDR(5) => inst_n_62,
+      ADDRARDADDR(4) => inst_n_63,
+      ADDRARDADDR(3) => inst_n_64,
+      ADDRARDADDR(2) => inst_n_65,
+      ADDRARDADDR(1) => inst_n_66,
+      ADDRARDADDR(0) => inst_n_67,
       ADDRBWRADDR(15 downto 0) => B"1111111111111111",
       CASCADEINA => '1',
       CASCADEINB => '0',
@@ -65260,21 +65394,21 @@ sel_0_14: unisim.vcomponents.RAMB36E1
     )
         port map (
       ADDRARDADDR(15) => '1',
-      ADDRARDADDR(14) => inst_n_52,
-      ADDRARDADDR(13) => inst_n_53,
-      ADDRARDADDR(12) => inst_n_54,
-      ADDRARDADDR(11) => inst_n_55,
-      ADDRARDADDR(10) => inst_n_56,
-      ADDRARDADDR(9) => inst_n_57,
-      ADDRARDADDR(8) => inst_n_58,
-      ADDRARDADDR(7) => inst_n_59,
-      ADDRARDADDR(6) => inst_n_60,
-      ADDRARDADDR(5) => inst_n_61,
-      ADDRARDADDR(4) => inst_n_62,
-      ADDRARDADDR(3) => inst_n_63,
-      ADDRARDADDR(2) => inst_n_64,
-      ADDRARDADDR(1) => inst_n_65,
-      ADDRARDADDR(0) => inst_n_66,
+      ADDRARDADDR(14) => inst_n_53,
+      ADDRARDADDR(13) => inst_n_54,
+      ADDRARDADDR(12) => inst_n_55,
+      ADDRARDADDR(11) => inst_n_56,
+      ADDRARDADDR(10) => inst_n_57,
+      ADDRARDADDR(9) => inst_n_58,
+      ADDRARDADDR(8) => inst_n_59,
+      ADDRARDADDR(7) => inst_n_60,
+      ADDRARDADDR(6) => inst_n_61,
+      ADDRARDADDR(5) => inst_n_62,
+      ADDRARDADDR(4) => inst_n_63,
+      ADDRARDADDR(3) => inst_n_64,
+      ADDRARDADDR(2) => inst_n_65,
+      ADDRARDADDR(1) => inst_n_66,
+      ADDRARDADDR(0) => inst_n_67,
       ADDRBWRADDR(15 downto 0) => B"1111111111111111",
       CASCADEINA => '1',
       CASCADEINB => '0',
@@ -65479,21 +65613,21 @@ sel_0_15: unisim.vcomponents.RAMB36E1
     )
         port map (
       ADDRARDADDR(15) => '1',
-      ADDRARDADDR(14) => inst_n_52,
-      ADDRARDADDR(13) => inst_n_53,
-      ADDRARDADDR(12) => inst_n_54,
-      ADDRARDADDR(11) => inst_n_55,
-      ADDRARDADDR(10) => inst_n_56,
-      ADDRARDADDR(9) => inst_n_57,
-      ADDRARDADDR(8) => inst_n_58,
-      ADDRARDADDR(7) => inst_n_59,
-      ADDRARDADDR(6) => inst_n_60,
-      ADDRARDADDR(5) => inst_n_61,
-      ADDRARDADDR(4) => inst_n_62,
-      ADDRARDADDR(3) => inst_n_63,
-      ADDRARDADDR(2) => inst_n_64,
-      ADDRARDADDR(1) => inst_n_65,
-      ADDRARDADDR(0) => inst_n_66,
+      ADDRARDADDR(14) => inst_n_53,
+      ADDRARDADDR(13) => inst_n_54,
+      ADDRARDADDR(12) => inst_n_55,
+      ADDRARDADDR(11) => inst_n_56,
+      ADDRARDADDR(10) => inst_n_57,
+      ADDRARDADDR(9) => inst_n_58,
+      ADDRARDADDR(8) => inst_n_59,
+      ADDRARDADDR(7) => inst_n_60,
+      ADDRARDADDR(6) => inst_n_61,
+      ADDRARDADDR(5) => inst_n_62,
+      ADDRARDADDR(4) => inst_n_63,
+      ADDRARDADDR(3) => inst_n_64,
+      ADDRARDADDR(2) => inst_n_65,
+      ADDRARDADDR(1) => inst_n_66,
+      ADDRARDADDR(0) => inst_n_67,
       ADDRBWRADDR(15 downto 0) => B"1111111111111111",
       CASCADEINA => '1',
       CASCADEINB => '0',
@@ -66574,21 +66708,21 @@ sel_0_2: unisim.vcomponents.RAMB36E1
     )
         port map (
       ADDRARDADDR(15) => '1',
-      ADDRARDADDR(14) => inst_n_52,
-      ADDRARDADDR(13) => inst_n_53,
-      ADDRARDADDR(12) => inst_n_54,
-      ADDRARDADDR(11) => inst_n_55,
-      ADDRARDADDR(10) => inst_n_56,
-      ADDRARDADDR(9) => inst_n_57,
-      ADDRARDADDR(8) => inst_n_58,
-      ADDRARDADDR(7) => inst_n_59,
-      ADDRARDADDR(6) => inst_n_60,
-      ADDRARDADDR(5) => inst_n_61,
-      ADDRARDADDR(4) => inst_n_62,
-      ADDRARDADDR(3) => inst_n_63,
-      ADDRARDADDR(2) => inst_n_64,
-      ADDRARDADDR(1) => inst_n_65,
-      ADDRARDADDR(0) => inst_n_66,
+      ADDRARDADDR(14) => inst_n_53,
+      ADDRARDADDR(13) => inst_n_54,
+      ADDRARDADDR(12) => inst_n_55,
+      ADDRARDADDR(11) => inst_n_56,
+      ADDRARDADDR(10) => inst_n_57,
+      ADDRARDADDR(9) => inst_n_58,
+      ADDRARDADDR(8) => inst_n_59,
+      ADDRARDADDR(7) => inst_n_60,
+      ADDRARDADDR(6) => inst_n_61,
+      ADDRARDADDR(5) => inst_n_62,
+      ADDRARDADDR(4) => inst_n_63,
+      ADDRARDADDR(3) => inst_n_64,
+      ADDRARDADDR(2) => inst_n_65,
+      ADDRARDADDR(1) => inst_n_66,
+      ADDRARDADDR(0) => inst_n_67,
       ADDRBWRADDR(15 downto 0) => B"1111111111111111",
       CASCADEINA => '1',
       CASCADEINB => '0',
@@ -68983,21 +69117,21 @@ sel_0_3: unisim.vcomponents.RAMB36E1
     )
         port map (
       ADDRARDADDR(15) => '1',
-      ADDRARDADDR(14) => inst_n_52,
-      ADDRARDADDR(13) => inst_n_53,
-      ADDRARDADDR(12) => inst_n_54,
-      ADDRARDADDR(11) => inst_n_55,
-      ADDRARDADDR(10) => inst_n_56,
-      ADDRARDADDR(9) => inst_n_57,
-      ADDRARDADDR(8) => inst_n_58,
-      ADDRARDADDR(7) => inst_n_59,
-      ADDRARDADDR(6) => inst_n_60,
-      ADDRARDADDR(5) => inst_n_61,
-      ADDRARDADDR(4) => inst_n_62,
-      ADDRARDADDR(3) => inst_n_63,
-      ADDRARDADDR(2) => inst_n_64,
-      ADDRARDADDR(1) => inst_n_65,
-      ADDRARDADDR(0) => inst_n_66,
+      ADDRARDADDR(14) => inst_n_53,
+      ADDRARDADDR(13) => inst_n_54,
+      ADDRARDADDR(12) => inst_n_55,
+      ADDRARDADDR(11) => inst_n_56,
+      ADDRARDADDR(10) => inst_n_57,
+      ADDRARDADDR(9) => inst_n_58,
+      ADDRARDADDR(8) => inst_n_59,
+      ADDRARDADDR(7) => inst_n_60,
+      ADDRARDADDR(6) => inst_n_61,
+      ADDRARDADDR(5) => inst_n_62,
+      ADDRARDADDR(4) => inst_n_63,
+      ADDRARDADDR(3) => inst_n_64,
+      ADDRARDADDR(2) => inst_n_65,
+      ADDRARDADDR(1) => inst_n_66,
+      ADDRARDADDR(0) => inst_n_67,
       ADDRBWRADDR(15 downto 0) => B"1111111111111111",
       CASCADEINA => '1',
       CASCADEINB => '0',
@@ -69640,21 +69774,21 @@ sel_0_4: unisim.vcomponents.RAMB36E1
     )
         port map (
       ADDRARDADDR(15) => '1',
-      ADDRARDADDR(14) => inst_n_52,
-      ADDRARDADDR(13) => inst_n_53,
-      ADDRARDADDR(12) => inst_n_54,
-      ADDRARDADDR(11) => inst_n_55,
-      ADDRARDADDR(10) => inst_n_56,
-      ADDRARDADDR(9) => inst_n_57,
-      ADDRARDADDR(8) => inst_n_58,
-      ADDRARDADDR(7) => inst_n_59,
-      ADDRARDADDR(6) => inst_n_60,
-      ADDRARDADDR(5) => inst_n_61,
-      ADDRARDADDR(4) => inst_n_62,
-      ADDRARDADDR(3) => inst_n_63,
-      ADDRARDADDR(2) => inst_n_64,
-      ADDRARDADDR(1) => inst_n_65,
-      ADDRARDADDR(0) => inst_n_66,
+      ADDRARDADDR(14) => inst_n_53,
+      ADDRARDADDR(13) => inst_n_54,
+      ADDRARDADDR(12) => inst_n_55,
+      ADDRARDADDR(11) => inst_n_56,
+      ADDRARDADDR(10) => inst_n_57,
+      ADDRARDADDR(9) => inst_n_58,
+      ADDRARDADDR(8) => inst_n_59,
+      ADDRARDADDR(7) => inst_n_60,
+      ADDRARDADDR(6) => inst_n_61,
+      ADDRARDADDR(5) => inst_n_62,
+      ADDRARDADDR(4) => inst_n_63,
+      ADDRARDADDR(3) => inst_n_64,
+      ADDRARDADDR(2) => inst_n_65,
+      ADDRARDADDR(1) => inst_n_66,
+      ADDRARDADDR(0) => inst_n_67,
       ADDRBWRADDR(15 downto 0) => B"1111111111111111",
       CASCADEINA => '1',
       CASCADEINB => '0',
@@ -69859,21 +69993,21 @@ sel_0_5: unisim.vcomponents.RAMB36E1
     )
         port map (
       ADDRARDADDR(15) => '1',
-      ADDRARDADDR(14) => inst_n_52,
-      ADDRARDADDR(13) => inst_n_53,
-      ADDRARDADDR(12) => inst_n_54,
-      ADDRARDADDR(11) => inst_n_55,
-      ADDRARDADDR(10) => inst_n_56,
-      ADDRARDADDR(9) => inst_n_57,
-      ADDRARDADDR(8) => inst_n_58,
-      ADDRARDADDR(7) => inst_n_59,
-      ADDRARDADDR(6) => inst_n_60,
-      ADDRARDADDR(5) => inst_n_61,
-      ADDRARDADDR(4) => inst_n_62,
-      ADDRARDADDR(3) => inst_n_63,
-      ADDRARDADDR(2) => inst_n_64,
-      ADDRARDADDR(1) => inst_n_65,
-      ADDRARDADDR(0) => inst_n_66,
+      ADDRARDADDR(14) => inst_n_53,
+      ADDRARDADDR(13) => inst_n_54,
+      ADDRARDADDR(12) => inst_n_55,
+      ADDRARDADDR(11) => inst_n_56,
+      ADDRARDADDR(10) => inst_n_57,
+      ADDRARDADDR(9) => inst_n_58,
+      ADDRARDADDR(8) => inst_n_59,
+      ADDRARDADDR(7) => inst_n_60,
+      ADDRARDADDR(6) => inst_n_61,
+      ADDRARDADDR(5) => inst_n_62,
+      ADDRARDADDR(4) => inst_n_63,
+      ADDRARDADDR(3) => inst_n_64,
+      ADDRARDADDR(2) => inst_n_65,
+      ADDRARDADDR(1) => inst_n_66,
+      ADDRARDADDR(0) => inst_n_67,
       ADDRBWRADDR(15 downto 0) => B"1111111111111111",
       CASCADEINA => '1',
       CASCADEINB => '0',
@@ -70078,21 +70212,21 @@ sel_0_6: unisim.vcomponents.RAMB36E1
     )
         port map (
       ADDRARDADDR(15) => '1',
-      ADDRARDADDR(14) => inst_n_52,
-      ADDRARDADDR(13) => inst_n_53,
-      ADDRARDADDR(12) => inst_n_54,
-      ADDRARDADDR(11) => inst_n_55,
-      ADDRARDADDR(10) => inst_n_56,
-      ADDRARDADDR(9) => inst_n_57,
-      ADDRARDADDR(8) => inst_n_58,
-      ADDRARDADDR(7) => inst_n_59,
-      ADDRARDADDR(6) => inst_n_60,
-      ADDRARDADDR(5) => inst_n_61,
-      ADDRARDADDR(4) => inst_n_62,
-      ADDRARDADDR(3) => inst_n_63,
-      ADDRARDADDR(2) => inst_n_64,
-      ADDRARDADDR(1) => inst_n_65,
-      ADDRARDADDR(0) => inst_n_66,
+      ADDRARDADDR(14) => inst_n_53,
+      ADDRARDADDR(13) => inst_n_54,
+      ADDRARDADDR(12) => inst_n_55,
+      ADDRARDADDR(11) => inst_n_56,
+      ADDRARDADDR(10) => inst_n_57,
+      ADDRARDADDR(9) => inst_n_58,
+      ADDRARDADDR(8) => inst_n_59,
+      ADDRARDADDR(7) => inst_n_60,
+      ADDRARDADDR(6) => inst_n_61,
+      ADDRARDADDR(5) => inst_n_62,
+      ADDRARDADDR(4) => inst_n_63,
+      ADDRARDADDR(3) => inst_n_64,
+      ADDRARDADDR(2) => inst_n_65,
+      ADDRARDADDR(1) => inst_n_66,
+      ADDRARDADDR(0) => inst_n_67,
       ADDRBWRADDR(15 downto 0) => B"1111111111111111",
       CASCADEINA => '1',
       CASCADEINB => '0',
@@ -70297,21 +70431,21 @@ sel_0_7: unisim.vcomponents.RAMB36E1
     )
         port map (
       ADDRARDADDR(15) => '1',
-      ADDRARDADDR(14) => inst_n_52,
-      ADDRARDADDR(13) => inst_n_53,
-      ADDRARDADDR(12) => inst_n_54,
-      ADDRARDADDR(11) => inst_n_55,
-      ADDRARDADDR(10) => inst_n_56,
-      ADDRARDADDR(9) => inst_n_57,
-      ADDRARDADDR(8) => inst_n_58,
-      ADDRARDADDR(7) => inst_n_59,
-      ADDRARDADDR(6) => inst_n_60,
-      ADDRARDADDR(5) => inst_n_61,
-      ADDRARDADDR(4) => inst_n_62,
-      ADDRARDADDR(3) => inst_n_63,
-      ADDRARDADDR(2) => inst_n_64,
-      ADDRARDADDR(1) => inst_n_65,
-      ADDRARDADDR(0) => inst_n_66,
+      ADDRARDADDR(14) => inst_n_53,
+      ADDRARDADDR(13) => inst_n_54,
+      ADDRARDADDR(12) => inst_n_55,
+      ADDRARDADDR(11) => inst_n_56,
+      ADDRARDADDR(10) => inst_n_57,
+      ADDRARDADDR(9) => inst_n_58,
+      ADDRARDADDR(8) => inst_n_59,
+      ADDRARDADDR(7) => inst_n_60,
+      ADDRARDADDR(6) => inst_n_61,
+      ADDRARDADDR(5) => inst_n_62,
+      ADDRARDADDR(4) => inst_n_63,
+      ADDRARDADDR(3) => inst_n_64,
+      ADDRARDADDR(2) => inst_n_65,
+      ADDRARDADDR(1) => inst_n_66,
+      ADDRARDADDR(0) => inst_n_67,
       ADDRBWRADDR(15 downto 0) => B"1111111111111111",
       CASCADEINA => '1',
       CASCADEINB => '0',
@@ -70516,21 +70650,21 @@ sel_0_8: unisim.vcomponents.RAMB36E1
     )
         port map (
       ADDRARDADDR(15) => '1',
-      ADDRARDADDR(14) => inst_n_52,
-      ADDRARDADDR(13) => inst_n_53,
-      ADDRARDADDR(12) => inst_n_54,
-      ADDRARDADDR(11) => inst_n_55,
-      ADDRARDADDR(10) => inst_n_56,
-      ADDRARDADDR(9) => inst_n_57,
-      ADDRARDADDR(8) => inst_n_58,
-      ADDRARDADDR(7) => inst_n_59,
-      ADDRARDADDR(6) => inst_n_60,
-      ADDRARDADDR(5) => inst_n_61,
-      ADDRARDADDR(4) => inst_n_62,
-      ADDRARDADDR(3) => inst_n_63,
-      ADDRARDADDR(2) => inst_n_64,
-      ADDRARDADDR(1) => inst_n_65,
-      ADDRARDADDR(0) => inst_n_66,
+      ADDRARDADDR(14) => inst_n_53,
+      ADDRARDADDR(13) => inst_n_54,
+      ADDRARDADDR(12) => inst_n_55,
+      ADDRARDADDR(11) => inst_n_56,
+      ADDRARDADDR(10) => inst_n_57,
+      ADDRARDADDR(9) => inst_n_58,
+      ADDRARDADDR(8) => inst_n_59,
+      ADDRARDADDR(7) => inst_n_60,
+      ADDRARDADDR(6) => inst_n_61,
+      ADDRARDADDR(5) => inst_n_62,
+      ADDRARDADDR(4) => inst_n_63,
+      ADDRARDADDR(3) => inst_n_64,
+      ADDRARDADDR(2) => inst_n_65,
+      ADDRARDADDR(1) => inst_n_66,
+      ADDRARDADDR(0) => inst_n_67,
       ADDRBWRADDR(15 downto 0) => B"1111111111111111",
       CASCADEINA => '1',
       CASCADEINB => '0',
@@ -70735,21 +70869,21 @@ sel_0_9: unisim.vcomponents.RAMB36E1
     )
         port map (
       ADDRARDADDR(15) => '1',
-      ADDRARDADDR(14) => inst_n_52,
-      ADDRARDADDR(13) => inst_n_53,
-      ADDRARDADDR(12) => inst_n_54,
-      ADDRARDADDR(11) => inst_n_55,
-      ADDRARDADDR(10) => inst_n_56,
-      ADDRARDADDR(9) => inst_n_57,
-      ADDRARDADDR(8) => inst_n_58,
-      ADDRARDADDR(7) => inst_n_59,
-      ADDRARDADDR(6) => inst_n_60,
-      ADDRARDADDR(5) => inst_n_61,
-      ADDRARDADDR(4) => inst_n_62,
-      ADDRARDADDR(3) => inst_n_63,
-      ADDRARDADDR(2) => inst_n_64,
-      ADDRARDADDR(1) => inst_n_65,
-      ADDRARDADDR(0) => inst_n_66,
+      ADDRARDADDR(14) => inst_n_53,
+      ADDRARDADDR(13) => inst_n_54,
+      ADDRARDADDR(12) => inst_n_55,
+      ADDRARDADDR(11) => inst_n_56,
+      ADDRARDADDR(10) => inst_n_57,
+      ADDRARDADDR(9) => inst_n_58,
+      ADDRARDADDR(8) => inst_n_59,
+      ADDRARDADDR(7) => inst_n_60,
+      ADDRARDADDR(6) => inst_n_61,
+      ADDRARDADDR(5) => inst_n_62,
+      ADDRARDADDR(4) => inst_n_63,
+      ADDRARDADDR(3) => inst_n_64,
+      ADDRARDADDR(2) => inst_n_65,
+      ADDRARDADDR(1) => inst_n_66,
+      ADDRARDADDR(0) => inst_n_67,
       ADDRBWRADDR(15 downto 0) => B"1111111111111111",
       CASCADEINA => '1',
       CASCADEINB => '0',

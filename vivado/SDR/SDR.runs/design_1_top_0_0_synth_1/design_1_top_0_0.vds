@@ -2,16 +2,16 @@
 # Vivado v2021.2 (64-bit)
 # SW Build 3367213 on Tue Oct 19 02:47:39 MDT 2021
 # IP Build 3369179 on Thu Oct 21 08:25:16 MDT 2021
-# Start of session at: Fri Aug 21 14:06:51 2026
-# Process ID: 803683
+# Start of session at: Fri Aug 21 17:54:35 2026
+# Process ID: 941272
 # Current directory: /ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.runs/design_1_top_0_0_synth_1
 # Command line: vivado -log design_1_top_0_0.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source design_1_top_0_0.tcl
 # Log file: /ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.runs/design_1_top_0_0_synth_1/design_1_top_0_0.vds
 # Journal file: /ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.runs/design_1_top_0_0_synth_1/vivado.jou
-# Running On: ece-lnx-10, OS: Linux, CPU Frequency: 1788.750 MHz, CPU Physical cores: 32, Host memory: 540191 MB
+# Running On: ece-lnx-10, OS: Linux, CPU Frequency: 2000.000 MHz, CPU Physical cores: 32, Host memory: 540191 MB
 #-----------------------------------------------------------
 source design_1_top_0_0.tcl -notrace
-create_project: Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 2751.980 ; gain = 2.016 ; free physical = 455376 ; free virtual = 617366
+create_project: Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 2733.168 ; gain = 2.016 ; free physical = 441795 ; free virtual = 613819
 INFO: [IP_Flow 19-234] Refreshing IP repositories
 INFO: [IP_Flow 19-1700] Loaded user IP repository '/ecel/UFAD/michael.logsdon/workspace/SDR/ip_repo'.
 INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/apps/reconfig/tools/Xilinx/Vivado/2021.2/data/ip'.
@@ -22,39 +22,39 @@ INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z020
 INFO: [Device 21-403] Loading part xc7z020clg400-1
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 4 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 804017
+INFO: [Synth 8-7075] Helper process launched with PID 941946
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 2756.156 ; gain = 0.000 ; free physical = 453707 ; free virtual = 615697
+Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 2737.344 ; gain = 0.000 ; free physical = 440495 ; free virtual = 612519
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-6157] synthesizing module 'design_1_top_0_0' [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/ip/design_1_top_0_0/synth/design_1_top_0_0.sv:57]
-INFO: [Synth 8-6157] synthesizing module 'top' [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/ipshared/4baa/src/top.sv:1]
-INFO: [Synth 8-6157] synthesizing module 'DDC' [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/ipshared/4baa/src/DDC.sv:1]
-INFO: [Synth 8-6157] synthesizing module 'NCO' [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/ipshared/4baa/src/NCO.sv:1]
-INFO: [Synth 8-3876] $readmem data file 'nco_lut_p15.mem' is read successfully [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/ipshared/4baa/src/NCO.sv:24]
-INFO: [Synth 8-6155] done synthesizing module 'NCO' (1#1) [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/ipshared/4baa/src/NCO.sv:1]
-INFO: [Synth 8-6157] synthesizing module 'mixer' [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/ipshared/4baa/src/mixer.sv:1]
-INFO: [Synth 8-6155] done synthesizing module 'mixer' (2#1) [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/ipshared/4baa/src/mixer.sv:1]
-INFO: [Synth 8-6157] synthesizing module 'CIC' [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/ipshared/4baa/src/CIC.sv:1]
-WARNING: [Synth 8-6014] Unused sequential element round_I_reg was removed.  [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/ipshared/4baa/src/CIC.sv:83]
-WARNING: [Synth 8-6014] Unused sequential element round_Q_reg was removed.  [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/ipshared/4baa/src/CIC.sv:88]
-INFO: [Synth 8-6155] done synthesizing module 'CIC' (3#1) [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/ipshared/4baa/src/CIC.sv:1]
-INFO: [Synth 8-6157] synthesizing module 'FIR' [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/ipshared/4baa/src/FIR.sv:1]
-INFO: [Synth 8-3876] $readmem data file 'fir_taps.mem' is read successfully [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/ipshared/4baa/src/FIR.sv:52]
-WARNING: [Synth 8-6014] Unused sequential element round_I_reg was removed.  [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/ipshared/4baa/src/FIR.sv:111]
-WARNING: [Synth 8-6014] Unused sequential element round_Q_reg was removed.  [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/ipshared/4baa/src/FIR.sv:116]
-INFO: [Synth 8-6155] done synthesizing module 'FIR' (4#1) [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/ipshared/4baa/src/FIR.sv:1]
-INFO: [Synth 8-6155] done synthesizing module 'DDC' (5#1) [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/ipshared/4baa/src/DDC.sv:1]
-INFO: [Synth 8-6157] synthesizing module 'AXI_slave' [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/ipshared/4baa/src/AXI_slave.sv:1]
-INFO: [Synth 8-155] case statement is not full and has no default [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/ipshared/4baa/src/AXI_slave.sv:121]
-INFO: [Synth 8-155] case statement is not full and has no default [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/ipshared/4baa/src/AXI_slave.sv:95]
-INFO: [Synth 8-226] default block is never used [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/ipshared/4baa/src/AXI_slave.sv:168]
-INFO: [Synth 8-6155] done synthesizing module 'AXI_slave' (6#1) [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/ipshared/4baa/src/AXI_slave.sv:1]
-INFO: [Synth 8-6157] synthesizing module 'AXI_adapter' [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/ipshared/4baa/src/AXI_adapter.sv:1]
-INFO: [Synth 8-6155] done synthesizing module 'AXI_adapter' (7#1) [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/ipshared/4baa/src/AXI_adapter.sv:1]
-INFO: [Synth 8-155] case statement is not full and has no default [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/ipshared/4baa/src/top.sv:157]
-INFO: [Synth 8-155] case statement is not full and has no default [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/ipshared/4baa/src/top.sv:194]
-WARNING: [Synth 8-6014] Unused sequential element ack_reg was removed.  [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/ipshared/4baa/src/top.sv:149]
-INFO: [Synth 8-6155] done synthesizing module 'top' (8#1) [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/ipshared/4baa/src/top.sv:1]
+INFO: [Synth 8-6157] synthesizing module 'top' [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/ipshared/79c9/src/top.sv:1]
+INFO: [Synth 8-6157] synthesizing module 'DDC' [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/ipshared/79c9/src/DDC.sv:1]
+INFO: [Synth 8-6157] synthesizing module 'NCO' [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/ipshared/79c9/src/NCO.sv:1]
+INFO: [Synth 8-3876] $readmem data file 'nco_lut_p15.mem' is read successfully [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/ipshared/79c9/src/NCO.sv:24]
+INFO: [Synth 8-6155] done synthesizing module 'NCO' (1#1) [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/ipshared/79c9/src/NCO.sv:1]
+INFO: [Synth 8-6157] synthesizing module 'mixer' [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/ipshared/79c9/src/mixer.sv:1]
+INFO: [Synth 8-6155] done synthesizing module 'mixer' (2#1) [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/ipshared/79c9/src/mixer.sv:1]
+INFO: [Synth 8-6157] synthesizing module 'CIC' [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/ipshared/79c9/src/CIC.sv:1]
+WARNING: [Synth 8-6014] Unused sequential element round_I_reg was removed.  [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/ipshared/79c9/src/CIC.sv:83]
+WARNING: [Synth 8-6014] Unused sequential element round_Q_reg was removed.  [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/ipshared/79c9/src/CIC.sv:88]
+INFO: [Synth 8-6155] done synthesizing module 'CIC' (3#1) [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/ipshared/79c9/src/CIC.sv:1]
+INFO: [Synth 8-6157] synthesizing module 'FIR' [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/ipshared/79c9/src/FIR.sv:1]
+INFO: [Synth 8-3876] $readmem data file 'fir_taps.mem' is read successfully [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/ipshared/79c9/src/FIR.sv:52]
+WARNING: [Synth 8-6014] Unused sequential element round_I_reg was removed.  [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/ipshared/79c9/src/FIR.sv:111]
+WARNING: [Synth 8-6014] Unused sequential element round_Q_reg was removed.  [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/ipshared/79c9/src/FIR.sv:116]
+INFO: [Synth 8-6155] done synthesizing module 'FIR' (4#1) [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/ipshared/79c9/src/FIR.sv:1]
+INFO: [Synth 8-6155] done synthesizing module 'DDC' (5#1) [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/ipshared/79c9/src/DDC.sv:1]
+INFO: [Synth 8-6157] synthesizing module 'AXI_slave' [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/ipshared/79c9/src/AXI_slave.sv:1]
+INFO: [Synth 8-155] case statement is not full and has no default [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/ipshared/79c9/src/AXI_slave.sv:121]
+INFO: [Synth 8-155] case statement is not full and has no default [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/ipshared/79c9/src/AXI_slave.sv:95]
+INFO: [Synth 8-226] default block is never used [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/ipshared/79c9/src/AXI_slave.sv:168]
+INFO: [Synth 8-6155] done synthesizing module 'AXI_slave' (6#1) [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/ipshared/79c9/src/AXI_slave.sv:1]
+INFO: [Synth 8-6157] synthesizing module 'AXI_adapter' [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/ipshared/79c9/src/AXI_adapter.sv:1]
+INFO: [Synth 8-6155] done synthesizing module 'AXI_adapter' (7#1) [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/ipshared/79c9/src/AXI_adapter.sv:1]
+INFO: [Synth 8-155] case statement is not full and has no default [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/ipshared/79c9/src/top.sv:157]
+INFO: [Synth 8-155] case statement is not full and has no default [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/ipshared/79c9/src/top.sv:194]
+WARNING: [Synth 8-6014] Unused sequential element ack_reg was removed.  [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/ipshared/79c9/src/top.sv:149]
+INFO: [Synth 8-6155] done synthesizing module 'top' (8#1) [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/ipshared/79c9/src/top.sv:1]
 INFO: [Synth 8-6155] done synthesizing module 'design_1_top_0_0' (9#1) [/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.gen/sources_1/bd/design_1/ip/design_1_top_0_0/synth/design_1_top_0_0.sv:57]
 WARNING: [Synth 8-7129] Port wstrb[3] in module AXI_slave is either unconnected or has no load
 WARNING: [Synth 8-7129] Port wstrb[2] in module AXI_slave is either unconnected or has no load
@@ -91,44 +91,44 @@ WARNING: [Synth 8-7129] Port araddr[4] in module AXI_slave is either unconnected
 WARNING: [Synth 8-7129] Port araddr[1] in module AXI_slave is either unconnected or has no load
 WARNING: [Synth 8-7129] Port araddr[0] in module AXI_slave is either unconnected or has no load
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 2756.156 ; gain = 0.000 ; free physical = 454490 ; free virtual = 616481
+Finished RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 2737.344 ; gain = 0.000 ; free physical = 440953 ; free virtual = 612977
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 2756.156 ; gain = 0.000 ; free physical = 454475 ; free virtual = 616467
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 2737.344 ; gain = 0.000 ; free physical = 440941 ; free virtual = 612967
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 2756.156 ; gain = 0.000 ; free physical = 454475 ; free virtual = 616467
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 2737.344 ; gain = 0.000 ; free physical = 440941 ; free virtual = 612967
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00.03 ; elapsed = 00:00:00.04 . Memory (MB): peak = 2756.156 ; gain = 0.000 ; free physical = 454466 ; free virtual = 616459
+Netlist sorting complete. Time (s): cpu = 00:00:00.05 ; elapsed = 00:00:00.05 . Memory (MB): peak = 2737.344 ; gain = 0.000 ; free physical = 440922 ; free virtual = 612948
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
 Initializing timing engine
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2820.129 ; gain = 0.000 ; free physical = 454305 ; free virtual = 616297
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2801.316 ; gain = 0.000 ; free physical = 440787 ; free virtual = 612814
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00.26 ; elapsed = 00:00:00.07 . Memory (MB): peak = 2820.129 ; gain = 0.000 ; free physical = 454304 ; free virtual = 616296
+Constraint Validation Runtime : Time (s): cpu = 00:00:00.25 ; elapsed = 00:00:00.07 . Memory (MB): peak = 2801.316 ; gain = 0.000 ; free physical = 440786 ; free virtual = 612813
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 2820.129 ; gain = 63.973 ; free physical = 454447 ; free virtual = 616440
+Finished Constraint Validation : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 2801.316 ; gain = 63.973 ; free physical = 440927 ; free virtual = 612954
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7z020clg400-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 2820.129 ; gain = 63.973 ; free physical = 454447 ; free virtual = 616440
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 2801.316 ; gain = 63.973 ; free physical = 440927 ; free virtual = 612954
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 2820.129 ; gain = 63.973 ; free physical = 454449 ; free virtual = 616442
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 2801.316 ; gain = 63.973 ; free physical = 440927 ; free virtual = 612954
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-802] inferred FSM for state register 'state_r_reg' in module 'FIR'
 INFO: [Synth 8-802] inferred FSM for state register 'write_state_r_reg' in module 'AXI_slave'
@@ -161,7 +161,7 @@ INFO: [Synth 8-3354] encoded FSM with state register 'state_src_r_reg' using enc
 ---------------------------------------------------------------------------------------------------
 INFO: [Synth 8-3354] encoded FSM with state register 'state_dest_r_reg' using encoding 'sequential' in module 'top'
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:16 ; elapsed = 00:00:18 . Memory (MB): peak = 2820.129 ; gain = 63.973 ; free physical = 454416 ; free virtual = 616409
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:16 ; elapsed = 00:00:18 . Memory (MB): peak = 2801.316 ; gain = 63.973 ; free physical = 440886 ; free virtual = 612912
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
@@ -172,10 +172,9 @@ Detailed RTL Component Info :
 	   2 Input   72 Bit       Adders := 2     
 	   2 Input   41 Bit       Adders := 2     
 	   2 Input   32 Bit       Adders := 2     
-	   2 Input   10 Bit       Adders := 1     
+	   2 Input   10 Bit       Adders := 2     
 	   2 Input    9 Bit       Adders := 4     
 	   2 Input    5 Bit       Adders := 4     
-	   2 Input    4 Bit       Adders := 1     
 	   2 Input    3 Bit       Adders := 1     
 	   2 Input    2 Bit       Adders := 2     
 +---Registers : 
@@ -185,10 +184,9 @@ Detailed RTL Component Info :
 	               17 Bit    Registers := 2     
 	               16 Bit    Registers := 16    
 	               15 Bit    Registers := 1     
-	               10 Bit    Registers := 1     
+	               10 Bit    Registers := 2     
 	                9 Bit    Registers := 3     
 	                5 Bit    Registers := 2     
-	                4 Bit    Registers := 1     
 	                3 Bit    Registers := 1     
 	                2 Bit    Registers := 7     
 	                1 Bit    Registers := 20    
@@ -287,7 +285,7 @@ WARNING: [Synth 8-7129] Port s_axi_araddr[4] in module design_1_top_0_0 is eithe
 WARNING: [Synth 8-7129] Port s_axi_araddr[1] in module design_1_top_0_0 is either unconnected or has no load
 WARNING: [Synth 8-7129] Port s_axi_araddr[0] in module design_1_top_0_0 is either unconnected or has no load
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:21 ; elapsed = 00:00:24 . Memory (MB): peak = 2820.129 ; gain = 63.973 ; free physical = 454395 ; free virtual = 616397
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:21 ; elapsed = 00:00:24 . Memory (MB): peak = 2801.316 ; gain = 63.973 ; free physical = 440846 ; free virtual = 612891
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP, Shift Register and Retiming Reporting
@@ -339,13 +337,13 @@ Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:28 ; elapsed = 00:00:31 . Memory (MB): peak = 2820.129 ; gain = 63.973 ; free physical = 454198 ; free virtual = 616201
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:28 ; elapsed = 00:00:31 . Memory (MB): peak = 2801.316 ; gain = 63.973 ; free physical = 440667 ; free virtual = 612711
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:28 ; elapsed = 00:00:31 . Memory (MB): peak = 2820.129 ; gain = 63.973 ; free physical = 454194 ; free virtual = 616197
+Finished Timing Optimization : Time (s): cpu = 00:00:28 ; elapsed = 00:00:31 . Memory (MB): peak = 2801.316 ; gain = 63.973 ; free physical = 440663 ; free virtual = 612708
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP, Shift Register and Retiming Reporting
@@ -409,7 +407,7 @@ INFO: [Synth 8-7052] The timing for the instance sel_0_29 (implemented as a Bloc
 INFO: [Synth 8-7052] The timing for the instance sel_0_30 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
 INFO: [Synth 8-7052] The timing for the instance sel_0_31 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:29 ; elapsed = 00:00:32 . Memory (MB): peak = 2820.129 ; gain = 63.973 ; free physical = 454202 ; free virtual = 616205
+Finished Technology Mapping : Time (s): cpu = 00:00:29 ; elapsed = 00:00:32 . Memory (MB): peak = 2801.316 ; gain = 63.973 ; free physical = 440671 ; free virtual = 612715
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -427,37 +425,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:33 ; elapsed = 00:00:36 . Memory (MB): peak = 2820.129 ; gain = 63.973 ; free physical = 454199 ; free virtual = 616201
+Finished IO Insertion : Time (s): cpu = 00:00:33 ; elapsed = 00:00:35 . Memory (MB): peak = 2801.316 ; gain = 63.973 ; free physical = 440659 ; free virtual = 612703
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:33 ; elapsed = 00:00:36 . Memory (MB): peak = 2820.129 ; gain = 63.973 ; free physical = 454199 ; free virtual = 616201
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:33 ; elapsed = 00:00:35 . Memory (MB): peak = 2801.316 ; gain = 63.973 ; free physical = 440662 ; free virtual = 612706
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:33 ; elapsed = 00:00:36 . Memory (MB): peak = 2820.129 ; gain = 63.973 ; free physical = 454198 ; free virtual = 616200
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:33 ; elapsed = 00:00:36 . Memory (MB): peak = 2801.316 ; gain = 63.973 ; free physical = 440664 ; free virtual = 612708
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:33 ; elapsed = 00:00:36 . Memory (MB): peak = 2820.129 ; gain = 63.973 ; free physical = 454198 ; free virtual = 616200
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:33 ; elapsed = 00:00:36 . Memory (MB): peak = 2801.316 ; gain = 63.973 ; free physical = 440664 ; free virtual = 612708
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:33 ; elapsed = 00:00:36 . Memory (MB): peak = 2820.129 ; gain = 63.973 ; free physical = 454197 ; free virtual = 616200
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:33 ; elapsed = 00:00:36 . Memory (MB): peak = 2801.316 ; gain = 63.973 ; free physical = 440664 ; free virtual = 612709
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:33 ; elapsed = 00:00:36 . Memory (MB): peak = 2820.129 ; gain = 63.973 ; free physical = 454197 ; free virtual = 616200
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:33 ; elapsed = 00:00:36 . Memory (MB): peak = 2801.316 ; gain = 63.973 ; free physical = 440665 ; free virtual = 612709
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -476,45 +474,45 @@ Report Cell Usage:
 |1     |CARRY4   |   537|
 |2     |DSP48E1  |     4|
 |5     |LUT1     |   209|
-|6     |LUT2     |  1915|
-|7     |LUT3     |   126|
+|6     |LUT2     |  1916|
+|7     |LUT3     |   127|
 |8     |LUT4     |    26|
-|9     |LUT5     |    42|
-|10    |LUT6     |    35|
+|9     |LUT5     |    45|
+|10    |LUT6     |    37|
 |11    |RAM32M   |     5|
 |12    |RAM32X1D |     2|
 |13    |RAMB18E1 |     3|
 |15    |RAMB36E1 |    32|
-|47    |FDRE     |  2854|
+|47    |FDRE     |  2860|
 |48    |FDSE     |    34|
 +------+---------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:33 ; elapsed = 00:00:36 . Memory (MB): peak = 2820.129 ; gain = 63.973 ; free physical = 454197 ; free virtual = 616200
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:33 ; elapsed = 00:00:36 . Memory (MB): peak = 2801.316 ; gain = 63.973 ; free physical = 440665 ; free virtual = 612709
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 35 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:30 ; elapsed = 00:00:34 . Memory (MB): peak = 2820.129 ; gain = 0.000 ; free physical = 454258 ; free virtual = 616261
-Synthesis Optimization Complete : Time (s): cpu = 00:00:33 ; elapsed = 00:00:36 . Memory (MB): peak = 2820.129 ; gain = 63.973 ; free physical = 454258 ; free virtual = 616261
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:30 ; elapsed = 00:00:33 . Memory (MB): peak = 2801.316 ; gain = 0.000 ; free physical = 440730 ; free virtual = 612773
+Synthesis Optimization Complete : Time (s): cpu = 00:00:33 ; elapsed = 00:00:36 . Memory (MB): peak = 2801.316 ; gain = 63.973 ; free physical = 440730 ; free virtual = 612773
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00.05 ; elapsed = 00:00:00.04 . Memory (MB): peak = 2820.129 ; gain = 0.000 ; free physical = 454355 ; free virtual = 616358
+Netlist sorting complete. Time (s): cpu = 00:00:00.05 ; elapsed = 00:00:00.05 . Memory (MB): peak = 2801.316 ; gain = 0.000 ; free physical = 440827 ; free virtual = 612870
 INFO: [Netlist 29-17] Analyzing 583 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 WARNING: [Netlist 29-101] Netlist 'design_1_top_0_0' is not ideal for floorplanning, since the cellview 'CIC' contains a large number of primitives.  Please consider enabling hierarchy in synthesis if you want to do floorplanning.
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2828.137 ; gain = 0.000 ; free physical = 454289 ; free virtual = 616291
+Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00 . Memory (MB): peak = 2826.348 ; gain = 0.000 ; free physical = 440751 ; free virtual = 612794
 INFO: [Project 1-111] Unisim Transformation Summary:
   A total of 7 instances were transformed.
   RAM32M => RAM32M (RAMD32(x6), RAMS32(x2)): 5 instances
   RAM32X1D => RAM32X1D (RAMD32(x2)): 2 instances
 
-Synth Design complete, checksum: e6f2535b
+Synth Design complete, checksum: d0358573
 INFO: [Common 17-83] Releasing license: Synthesis
 87 Infos, 75 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:47 ; elapsed = 00:00:45 . Memory (MB): peak = 2828.137 ; gain = 76.156 ; free physical = 454415 ; free virtual = 616417
+synth_design: Time (s): cpu = 00:00:46 ; elapsed = 00:00:44 . Memory (MB): peak = 2826.348 ; gain = 93.180 ; free physical = 440869 ; free virtual = 612912
 INFO: [Common 17-1381] The checkpoint '/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.runs/design_1_top_0_0_synth_1/design_1_top_0_0.dcp' has been generated.
-INFO: [Coretcl 2-1648] Added synthesis output to IP cache for IP design_1_top_0_0, cache-ID = 00af155bdef38403
+INFO: [Coretcl 2-1648] Added synthesis output to IP cache for IP design_1_top_0_0, cache-ID = acdbaa24147beb87
 INFO: [Coretcl 2-1174] Renamed 8 cell refs.
 INFO: [Common 17-1381] The checkpoint '/ecel/UFAD/michael.logsdon/workspace/SDR/vivado/SDR/SDR.runs/design_1_top_0_0_synth_1/design_1_top_0_0.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file design_1_top_0_0_utilization_synth.rpt -pb design_1_top_0_0_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Fri Aug 21 14:08:04 2026...
+INFO: [Common 17-206] Exiting Vivado at Fri Aug 21 17:55:49 2026...

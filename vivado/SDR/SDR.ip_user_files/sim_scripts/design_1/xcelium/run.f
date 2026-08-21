@@ -104,14 +104,14 @@
   "../../../bd/design_1/ip/design_1_xlconstant_0_1/sim/design_1_xlconstant_0_1.v" \
 -endlib
 -makelib xcelium_lib/xil_defaultlib -sv \
-  "../../../bd/design_1/ipshared/4baa/src/AXI_adapter.sv" \
-  "../../../bd/design_1/ipshared/4baa/src/AXI_slave.sv" \
-  "../../../bd/design_1/ipshared/4baa/src/CIC.sv" \
-  "../../../bd/design_1/ipshared/4baa/src/DDC.sv" \
-  "../../../bd/design_1/ipshared/4baa/src/FIR.sv" \
-  "../../../bd/design_1/ipshared/4baa/src/NCO.sv" \
-  "../../../bd/design_1/ipshared/4baa/src/mixer.sv" \
-  "../../../bd/design_1/ipshared/4baa/src/top.sv" \
+  "../../../bd/design_1/ipshared/79c9/src/AXI_adapter.sv" \
+  "../../../bd/design_1/ipshared/79c9/src/AXI_slave.sv" \
+  "../../../bd/design_1/ipshared/79c9/src/CIC.sv" \
+  "../../../bd/design_1/ipshared/79c9/src/DDC.sv" \
+  "../../../bd/design_1/ipshared/79c9/src/FIR.sv" \
+  "../../../bd/design_1/ipshared/79c9/src/NCO.sv" \
+  "../../../bd/design_1/ipshared/79c9/src/mixer.sv" \
+  "../../../bd/design_1/ipshared/79c9/src/top.sv" \
   "../../../bd/design_1/ip/design_1_top_0_0/sim/design_1_top_0_0.sv" \
 -endlib
 -makelib xcelium_lib/axi_protocol_converter_v2_1_25 \
