@@ -16,7 +16,9 @@ module DDC #(
     input  logic                       phase_valid,
     output logic [15:0]                I_out,
     output logic [15:0]                Q_out,
-    output logic                       valid_out
+    output logic                       valid_out,
+    output logic                       streaming_s,
+    output logic                       sat_s
 );
 
     logic [NCO_OUTPUT_WIDTH-1:0] NCO_sine;
@@ -28,6 +30,8 @@ module DDC #(
     logic CIC_valid_out;
 
     logic [NCO_PHASE_WIDTH-1:0] phase_inc_r;
+    
+    logic [1:0] debug_count;
 
     NCO #(
         .PHASE_WIDTH(NCO_PHASE_WIDTH),
@@ -90,4 +94,11 @@ module DDC #(
             if (phase_valid) phase_inc_r <= phase_inc;
         end
     end
+    
+    // DEBUG
+    always_ff @(posedge clk) begin
+        debug_count <= debug_count + 1;
+    end
+    
+    assign {streaming_s, sat_s} = debug_count;
 endmodule

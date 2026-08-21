@@ -47,6 +47,8 @@ module top #(
     logic [15:0] I_out;
     logic [15:0] Q_out;
     logic DDC_valid_out;
+    logic streaming_s;
+    logic sat_s;
 
     // handshake
     typedef enum logic [1:0] {
@@ -88,7 +90,9 @@ module top #(
         .phase_valid(rcv),
         .I_out(I_out),
         .Q_out(Q_out),
-        .valid_out(DDC_valid_out)
+        .valid_out(DDC_valid_out),
+        .streaming_s(streaming_s),
+        .sat_s(sat_s)
     );
 
     AXI_slave DUT_AXI (
@@ -115,8 +119,8 @@ module top #(
         .phase_inc_sync(phase_inc_sync),
         .enable(),
         .soft_reset(),
-        .streaming_s(1'b0),
-        .sat_s()
+        .streaming_s(streaming_s),
+        .sat_s(sat_s)
     );
 
     AXI_adapter DUT_ADAPTER (

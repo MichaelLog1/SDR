@@ -80,19 +80,6 @@ vlog -work processing_system7_vip_v1_0_13  -sv2k12 "+incdir+../../../../SDR.gen/
 vlog -work xil_defaultlib  -v2k5 "+incdir+../../../../SDR.gen/sources_1/bd/design_1/ipshared/ec67/hdl" "+incdir+../../../../SDR.gen/sources_1/bd/design_1/ipshared/3007/hdl" "+incdir+../../../../SDR.gen/sources_1/bd/design_1/ipshared/8713/hdl" "+incdir+/apps/reconfig/tools/Xilinx/Vivado/2021.2/data/xilinx_vip/include" \
 "../../../bd/design_1/ip/design_1_processing_system7_0_0/sim/design_1_processing_system7_0_0.v" \
 
-vlog -work xil_defaultlib  -sv2k12 "+incdir+../../../../SDR.gen/sources_1/bd/design_1/ipshared/ec67/hdl" "+incdir+../../../../SDR.gen/sources_1/bd/design_1/ipshared/3007/hdl" "+incdir+../../../../SDR.gen/sources_1/bd/design_1/ipshared/8713/hdl" "+incdir+/apps/reconfig/tools/Xilinx/Vivado/2021.2/data/xilinx_vip/include" \
-"../../../bd/design_1/ipshared/f994/src/AXI_adapter.sv" \
-"../../../bd/design_1/ipshared/f994/src/AXI_slave.sv" \
-"../../../bd/design_1/ipshared/f994/src/CIC.sv" \
-"../../../bd/design_1/ipshared/f994/src/DDC.sv" \
-"../../../bd/design_1/ipshared/f994/src/FIR.sv" \
-"../../../bd/design_1/ipshared/f994/src/NCO.sv" \
-"../../../bd/design_1/ipshared/f994/src/mixer.sv" \
-"../../../bd/design_1/ipshared/f994/src/top.sv" \
-
-vlog -work xil_defaultlib  -v2k5 "+incdir+../../../../SDR.gen/sources_1/bd/design_1/ipshared/ec67/hdl" "+incdir+../../../../SDR.gen/sources_1/bd/design_1/ipshared/3007/hdl" "+incdir+../../../../SDR.gen/sources_1/bd/design_1/ipshared/8713/hdl" "+incdir+/apps/reconfig/tools/Xilinx/Vivado/2021.2/data/xilinx_vip/include" \
-"../../../bd/design_1/ip/design_1_top_0_0/sim/design_1_top_0_0.v" \
-
 vcom -work lib_pkg_v1_0_2 -93 \
 "../../../../SDR.gen/sources_1/bd/design_1/ipshared/0513/hdl/lib_pkg_v1_0_rfs.vhd" \
 
@@ -165,6 +152,17 @@ vlog -work axis_clock_converter_v1_1_26  -v2k5 "+incdir+../../../../SDR.gen/sour
 
 vlog -work xil_defaultlib  -v2k5 "+incdir+../../../../SDR.gen/sources_1/bd/design_1/ipshared/ec67/hdl" "+incdir+../../../../SDR.gen/sources_1/bd/design_1/ipshared/3007/hdl" "+incdir+../../../../SDR.gen/sources_1/bd/design_1/ipshared/8713/hdl" "+incdir+/apps/reconfig/tools/Xilinx/Vivado/2021.2/data/xilinx_vip/include" \
 "../../../bd/design_1/ip/design_1_axis_clock_converter_0_0/sim/design_1_axis_clock_converter_0_0.v" \
+
+vlog -work xil_defaultlib  -sv2k12 "+incdir+../../../../SDR.gen/sources_1/bd/design_1/ipshared/ec67/hdl" "+incdir+../../../../SDR.gen/sources_1/bd/design_1/ipshared/3007/hdl" "+incdir+../../../../SDR.gen/sources_1/bd/design_1/ipshared/8713/hdl" "+incdir+/apps/reconfig/tools/Xilinx/Vivado/2021.2/data/xilinx_vip/include" \
+"../../../bd/design_1/ipshared/3e96/src/AXI_adapter.sv" \
+"../../../bd/design_1/ipshared/3e96/src/AXI_slave.sv" \
+"../../../bd/design_1/ipshared/3e96/src/CIC.sv" \
+"../../../bd/design_1/ipshared/3e96/src/DDC.sv" \
+"../../../bd/design_1/ipshared/3e96/src/FIR.sv" \
+"../../../bd/design_1/ipshared/3e96/src/NCO.sv" \
+"../../../bd/design_1/ipshared/3e96/src/mixer.sv" \
+"../../../bd/design_1/ipshared/3e96/src/top.sv" \
+"../../../bd/design_1/ip/design_1_top_0_0/sim/design_1_top_0_0.sv" \
 
 vlog -work axi_protocol_converter_v2_1_25  -v2k5 "+incdir+../../../../SDR.gen/sources_1/bd/design_1/ipshared/ec67/hdl" "+incdir+../../../../SDR.gen/sources_1/bd/design_1/ipshared/3007/hdl" "+incdir+../../../../SDR.gen/sources_1/bd/design_1/ipshared/8713/hdl" "+incdir+/apps/reconfig/tools/Xilinx/Vivado/2021.2/data/xilinx_vip/include" \
 "../../../../SDR.gen/sources_1/bd/design_1/ipshared/8fe4/hdl/axi_protocol_converter_v2_1_vl_rfs.v" \

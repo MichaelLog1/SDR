@@ -29,19 +29,6 @@
 -makelib xcelium_lib/xil_defaultlib \
   "../../../bd/design_1/ip/design_1_processing_system7_0_0/sim/design_1_processing_system7_0_0.v" \
 -endlib
--makelib xcelium_lib/xil_defaultlib -sv \
-  "../../../bd/design_1/ipshared/f994/src/AXI_adapter.sv" \
-  "../../../bd/design_1/ipshared/f994/src/AXI_slave.sv" \
-  "../../../bd/design_1/ipshared/f994/src/CIC.sv" \
-  "../../../bd/design_1/ipshared/f994/src/DDC.sv" \
-  "../../../bd/design_1/ipshared/f994/src/FIR.sv" \
-  "../../../bd/design_1/ipshared/f994/src/NCO.sv" \
-  "../../../bd/design_1/ipshared/f994/src/mixer.sv" \
-  "../../../bd/design_1/ipshared/f994/src/top.sv" \
--endlib
--makelib xcelium_lib/xil_defaultlib \
-  "../../../bd/design_1/ip/design_1_top_0_0/sim/design_1_top_0_0.v" \
--endlib
 -makelib xcelium_lib/lib_pkg_v1_0_2 \
   "../../../../SDR.gen/sources_1/bd/design_1/ipshared/0513/hdl/lib_pkg_v1_0_rfs.vhd" \
 -endlib
@@ -114,6 +101,17 @@
 -endlib
 -makelib xcelium_lib/xil_defaultlib \
   "../../../bd/design_1/ip/design_1_axis_clock_converter_0_0/sim/design_1_axis_clock_converter_0_0.v" \
+-endlib
+-makelib xcelium_lib/xil_defaultlib -sv \
+  "../../../bd/design_1/ipshared/3e96/src/AXI_adapter.sv" \
+  "../../../bd/design_1/ipshared/3e96/src/AXI_slave.sv" \
+  "../../../bd/design_1/ipshared/3e96/src/CIC.sv" \
+  "../../../bd/design_1/ipshared/3e96/src/DDC.sv" \
+  "../../../bd/design_1/ipshared/3e96/src/FIR.sv" \
+  "../../../bd/design_1/ipshared/3e96/src/NCO.sv" \
+  "../../../bd/design_1/ipshared/3e96/src/mixer.sv" \
+  "../../../bd/design_1/ipshared/3e96/src/top.sv" \
+  "../../../bd/design_1/ip/design_1_top_0_0/sim/design_1_top_0_0.sv" \
 -endlib
 -makelib xcelium_lib/axi_protocol_converter_v2_1_25 \
   "../../../../SDR.gen/sources_1/bd/design_1/ipshared/8fe4/hdl/axi_protocol_converter_v2_1_vl_rfs.v" \

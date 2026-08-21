@@ -48,10 +48,10 @@
 
 
 // IP VLNV: user.org:user:top:1.0
-// IP Revision: 6
+// IP Revision: 7
 
-(* X_CORE_INFO = "top,Vivado 2021.2" *)
-(* CHECK_LICENSE_TYPE = "design_1_top_0_0,top,{}" *)
+`timescale 1ns/1ps
+
 (* IP_DEFINITION_SOURCE = "package_project" *)
 (* DowngradeIPIdentifiedWarnings = "yes" *)
 module design_1_top_0_0 (
