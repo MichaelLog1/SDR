@@ -6,6 +6,7 @@ module CIC_tb #(
 
     logic clk = 1'b0;
     logic rst;
+    logic en;
 
     logic [15:0] I_in;
     logic [15:0] Q_in;
@@ -24,6 +25,7 @@ module CIC_tb #(
     ) DUT (
         .clk(clk),
         .rst(rst),
+        .en(en),
         .I_in(I_in),
         .Q_in(Q_in),
         .I_out(I_out),
@@ -44,6 +46,7 @@ module CIC_tb #(
 
         I_in <= '0;
         Q_in <= '0;
+        en <= 1'b0;
         rst <= 1'b1;
         repeat (5) @(posedge clk);
 
@@ -51,6 +54,11 @@ module CIC_tb #(
         rst <= 1'b0;
 
         for (int i = 0; i < N; i++) begin
+            if (($urandom % 5) == 0) begin
+                en <= 1'b0;
+                repeat ($urandom_range(0, 8)) @(posedge clk);
+            end
+            en <= 1'b1;
             I_in <= stimulus[i][31:16];
             Q_in <= stimulus[i][15:0];
             @(posedge clk);

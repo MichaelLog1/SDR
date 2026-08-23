@@ -4,6 +4,7 @@ module AXI_adapter #(
 ) (
     input logic clk,
     input logic rst,
+    input logic en,
     input logic [15:0] I_in,
     input logic [15:0] Q_in,
     input logic valid_in,

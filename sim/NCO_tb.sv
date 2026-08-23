@@ -9,9 +9,12 @@ module NCO_tb #(
 
     logic clk = 1'b0;
     logic rst;
+    logic en;
     logic [PHASE_WIDTH-1:0] phase_inc;
     logic [OUTPUT_WIDTH-1:0] sine;
     logic [OUTPUT_WIDTH-1:0] cosine;
+    logic [OUTPUT_WIDTH-1:0] stalled_sine;
+    logic [OUTPUT_WIDTH-1:0] stalled_cosine;
 
     logic [31:0] expected [0:N-1];
     int errors = 0;
@@ -23,6 +26,7 @@ module NCO_tb #(
     ) DUT (
         .clk(clk),
         .rst(rst),
+        .en(en),
         .phase_inc(phase_inc),
         .sine(sine),
         .cosine(cosine)
@@ -38,7 +42,7 @@ module NCO_tb #(
 
     initial begin
         $timeformat(-9, 0, " ns");
-
+        en <= 1'b0;
         rst <= 1'b1;
         phase_inc <= '0;
         repeat (5) @(posedge clk);
@@ -46,9 +50,18 @@ module NCO_tb #(
         phase_inc <= M;
         @(negedge clk);
         rst <= 1'b0;
+        en <= 1'b1;
         @(posedge clk);
 
         for (int i = 0; i < N; i++) begin
+            if (($urandom % 6) == 0) begin
+                //stalled_sine = sine;
+                //stalled_cosine = cosine;
+                en <= 1'b0;
+                repeat ($urandom_range(0, 8)) @(posedge clk);
+                //if (sine !== stalled_sine || cosine !== stalled_cosine) errors++;
+            end
+            en <= 1'b1;
             @(posedge clk);
             if ({sine, cosine} !== expected[i]) begin
                 $error("Sample %0d: got %08x expected %08x", i, {sine, cosine}, expected[i]);

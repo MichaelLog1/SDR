@@ -11,13 +11,13 @@ module DDC #(
 ) (
     input  logic                       clk,
     input  logic                       rst,
+    input  logic                       en,
     input  logic [MIXER_ADC_WIDTH-1:0] adc,
     input  logic [NCO_PHASE_WIDTH-1:0] phase_inc,
     input  logic                       phase_valid,
     output logic [15:0]                I_out,
     output logic [15:0]                Q_out,
     output logic                       valid_out,
-    output logic                       streaming_s,
     output logic                       sat_s
 );
 
@@ -28,10 +28,11 @@ module DDC #(
     logic [15:0] CIC_I_out;
     logic [15:0] CIC_Q_out;
     logic CIC_valid_out;
+    logic CIC_clip_pulse;
+    logic FIR_clip_pulse;
 
     logic [NCO_PHASE_WIDTH-1:0] phase_inc_r;
-
-    logic [1:0] debug_count;
+    logic sat_sticky;
 
     NCO #(
         .PHASE_WIDTH(NCO_PHASE_WIDTH),
@@ -40,6 +41,7 @@ module DDC #(
     ) DUT_NCO (
         .clk(clk),
         .rst(rst),
+        .en(en),
         .phase_inc(phase_inc_r),
         .sine(NCO_sine),
         .cosine(NCO_cosine)
@@ -52,6 +54,7 @@ module DDC #(
     ) DUT_MIXER (
         .clk(clk),
         .rst(rst),
+        .en(en),
         .adc(adc),
         .sine(NCO_sine),
         .cosine(NCO_cosine),
@@ -65,11 +68,13 @@ module DDC #(
     ) DUT_CIC (
         .clk(clk),
         .rst(rst),
+        .en(en),
         .I_in(mixer_I_out),
         .Q_in(mixer_Q_out),
         .I_out(CIC_I_out),
         .Q_out(CIC_Q_out),
-        .valid_out(CIC_valid_out)
+        .valid_out(CIC_valid_out),
+        .clip_pulse(CIC_clip_pulse)
     );
 
     FIR #(
@@ -78,12 +83,14 @@ module DDC #(
     ) DUT_FIR (
         .clk(clk),
         .rst(rst),
+        .en(en),
         .I_in(CIC_I_out),
         .Q_in(CIC_Q_out),
         .valid_in(CIC_valid_out),
         .I_out(I_out),
         .Q_out(Q_out),
-        .valid_out(valid_out)
+        .valid_out(valid_out),
+        .clip_pulse(FIR_clip_pulse)
     );
 
     // capture synchronized values;
@@ -95,11 +102,14 @@ module DDC #(
         end
     end
 
-    // DEBUG
     always_ff @(posedge clk) begin
-        debug_count <= debug_count + 1;
+        if (rst) begin
+            sat_sticky <= 1'b0;
+        end else begin
+            sat_sticky <= sat_sticky || (CIC_clip_pulse || FIR_clip_pulse);
+        end
     end
-    
-    assign {streaming_s, sat_s} = debug_count;
+
+    assign sat_s = sat_sticky;
 
 endmodule

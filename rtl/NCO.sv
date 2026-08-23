@@ -5,6 +5,7 @@ module NCO #(
 ) (
     input  logic        clk,
     input  logic        rst,
+    input  logic        en,
     input  logic [PHASE_WIDTH-1:0] phase_inc,
     output logic [OUTPUT_WIDTH-1:0] sine,
     output logic [OUTPUT_WIDTH-1:0] cosine
@@ -29,7 +30,7 @@ module NCO #(
             accumulator <= '0;
             sine_r <= '0;
             cosine_r <= '0;
-        end else begin
+        end else if (en) begin
             accumulator <= accumulator + phase_inc;
             {sine_r, cosine_r} <= ram[address];
         end

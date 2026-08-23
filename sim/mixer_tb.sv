@@ -7,6 +7,7 @@ module mixer_tb #(
 
     logic clk = 1'b0;
     logic rst;
+    logic en;
 
     logic [ADC_WIDTH-1:0] adc;
     logic [NCO_WIDTH-1:0] sine;
@@ -28,6 +29,7 @@ module mixer_tb #(
     ) DUT (
         .clk(clk),
         .rst(rst),
+        .en(en),
         .adc(adc),
         .sine(sine),
         .cosine(cosine),
@@ -47,6 +49,7 @@ module mixer_tb #(
     initial begin : driver
 
         rst <= 1'b1;
+        en <= 1'b1;
         repeat (5) @(posedge clk);
 
         @(negedge clk);

@@ -34,8 +34,8 @@ module AXI_slave (
     output logic        soft_reset,
 
     // status info
-    input logic streaming_s,
-    input logic sat_s
+    input logic sat_s,
+    input logic overflow_s
 );
     localparam ID_CONSTANT = 32'hDEADBEEF;
 
@@ -146,7 +146,7 @@ module AXI_slave (
     assign aw_hit = aw_done_r || (awvalid && awready_r);
     assign w_hit = w_done_r || (wvalid && wready_r);
 
-    assign status_r = {streaming_s, sat_s};
+    assign status_r = {overflow_s, sat_s};
     assign enable = control_r[0];
     assign soft_reset = control_r[1];
 

@@ -5,6 +5,7 @@ module mixer #(
 ) (
     input  logic                           clk,
     input  logic                           rst,
+    input  logic                           en,
     input  logic signed [ADC_WIDTH-1:0]    adc,
     input  logic signed [NCO_WIDTH-1:0]    sine,
     input  logic signed [NCO_WIDTH-1:0]    cosine,
@@ -29,7 +30,7 @@ module mixer #(
             Q_round_r <= '0;
             I_saturate_r <= '0;
             Q_saturate_r <= '0;
-        end else begin
+        end else if (en) begin
             // product stage
             I_product_r <= cosine * adc;
             Q_product_r <= sine * adc * -1;

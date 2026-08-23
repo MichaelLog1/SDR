@@ -50,8 +50,8 @@ module top #(
     logic [15:0] I_out;
     logic [15:0] Q_out;
     logic DDC_valid_out;
-    logic streaming_s;
     logic sat_s;
+    logic overflow_sticky;
 
     // handshake
     typedef enum logic [1:0] {
@@ -76,6 +76,10 @@ module top #(
     logic rcv;
     logic [15:0] adc_r;
     logic [15:0] adc_conv_r;
+    logic [1:0] sat_sync_r;
+    logic pipeline_enable;
+    logic [1:0] enable_sync_r;
+    logic [1:0] overflow_sync_r;
 
     DDC #(
         .NCO_PHASE_WIDTH(NCO_PHASE_WIDTH),
@@ -90,13 +94,13 @@ module top #(
     ) DUT_DDC (
         .clk(adc_clk),
         .rst(adc_rst),
+        .en(enable_sync_r[0]),
         .adc(adc_conv_r),
         .phase_inc(phase_inc),
         .phase_valid(rcv),
         .I_out(I_out),
         .Q_out(Q_out),
         .valid_out(DDC_valid_out),
-        .streaming_s(streaming_s),
         .sat_s(sat_s)
     );
 
@@ -122,10 +126,10 @@ module top #(
         .rvalid(s_axi_rvalid),
         .phase_inc(phase_inc),
         .phase_inc_sync(phase_inc_sync),
-        .enable(),
+        .enable(pipeline_enable),
         .soft_reset(),
-        .streaming_s(streaming_s),
-        .sat_s(sat_s)
+        .sat_s(sat_sync_r[0]),
+        .overflow_s(overflow_sync_r[0])
     );
 
     AXI_adapter DUT_ADAPTER (
@@ -138,7 +142,7 @@ module top #(
         .m_axis_tvalid(m_axis_tvalid),
         .m_axis_tready(m_axis_tready),
         .m_axis_tlast(m_axis_tlast),
-        .overflow_sticky()
+        .overflow_sticky(overflow_sticky)
     );
 
     // src
@@ -147,10 +151,17 @@ module top #(
             state_src_r <= SRC_READY;
             send_src_r <= '0;
             ack <= 1'b0;
+            sat_sync_r <= '0;
         end else begin
             // dual flop
             ack_dest_in_src_r[1] <= ack_dest_r;
             ack_dest_in_src_r[0] <= ack_dest_in_src_r[1];
+
+            sat_sync_r[1] <= sat_s;
+            sat_sync_r[0] <= sat_sync_r[1];
+
+            overflow_sync_r[1] <= overflow_sticky;
+            overflow_sync_r[0] <= overflow_sync_r[1];
 
             ack <= 1'b0;
 
@@ -185,9 +196,13 @@ module top #(
             state_dest_r <= DEST_READY;
             ack_dest_r <= 1'b0;
             rcv <= 1'b0;
+            enable_sync_r <= '0;
         end else begin
             send_src_in_dst_r[1] <= send_src_r;
             send_src_in_dst_r[0] <= send_src_in_dst_r[1];
+
+            enable_sync_r[1] <= pipeline_enable;
+            enable_sync_r[0] <= enable_sync_r[1];
 
             rcv <= 1'b0;
 

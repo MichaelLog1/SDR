@@ -4,12 +4,14 @@ module FIR #(
 ) (
     input logic clk,
     input logic rst,
+    input logic en,
     input logic [15:0] I_in,
     input logic [15:0] Q_in,
     input logic valid_in,
     output logic [15:0] I_out,
     output logic [15:0] Q_out,
-    output logic valid_out
+    output logic valid_out,
+    output logic clip_pulse
 );
 
     typedef enum logic [1:0] {
@@ -47,6 +49,7 @@ module FIR #(
     logic signed [15:0] I_out_r;
     logic signed [15:0] Q_out_r;
     logic valid_out_r;
+    logic clip_pulse_r;
  
     initial begin
         $readmemh("fir_taps.mem", coefficients);
@@ -59,9 +62,11 @@ module FIR #(
             tap_counter_r <= '0;
             valid_out_r <= '0;
             issuing_r <= '0;
-        end else begin
+            clip_pulse_r <= 1'b0;
+        end else if (en) begin
             first_r <= 1'b0;
             valid_out_r <= 1'b0;
+            clip_pulse_r <= 1'b0;
             case (state_r)
                 IDLE: begin
                     state_r <= IDLE;
@@ -109,14 +114,26 @@ module FIR #(
                     valid_out_r <= 1'b1;
 
                     round_I = (accumulator_I_r + 41'sd16384) >>> 15;
-                    if      (round_I > 41'sd32767)  I_out_r <= 16'sd32767;
-                    else if (round_I < -41'sd32768) I_out_r <= -16'sd32768;
-                    else                            I_out_r <= round_I[15:0];
+                    if (round_I > 41'sd32767) begin
+                        I_out_r <= 16'sd32767;
+                        clip_pulse_r <= 1'b1;
+                    end else if (round_I < -41'sd32768) begin
+                        I_out_r <= -16'sd32768;
+                        clip_pulse_r <= 1'b1;
+                    end else begin
+                        I_out_r <= round_I[15:0];
+                    end
 
                     round_Q = (accumulator_Q_r + 41'sd16384) >>> 15;
-                    if      (round_Q > 41'sd32767)  Q_out_r <= 16'sd32767;
-                    else if (round_Q < -41'sd32768) Q_out_r <= -16'sd32768;
-                    else                            Q_out_r <= round_Q[15:0];
+                    if (round_Q > 41'sd32767) begin
+                        Q_out_r <= 16'sd32767;
+                        clip_pulse_r <= 1'b1;
+                    end else if (round_Q < -41'sd32768) begin
+                        Q_out_r <= -16'sd32768;
+                        clip_pulse_r <= 1'b1;
+                    end else begin
+                        Q_out_r <= round_Q[15:0];
+                    end
                 end
             endcase
         end
@@ -124,7 +141,8 @@ module FIR #(
 
     assign I_out = I_out_r;
     assign Q_out = Q_out_r;
-    assign valid_out = valid_out_r;
+    assign valid_out = valid_out_r  & en;
+    assign clip_pulse = clip_pulse_r;
 
     // MAC datapath
     always_ff @(posedge clk) begin
@@ -135,7 +153,7 @@ module FIR #(
             accumulate_en_r <= '0;
             accumulator_I_r <= '0;
             accumulator_Q_r <= '0;
-        end else begin
+        end else if (en) begin
             // accumulate pipeline
             sample_I_r <= ram_I[read_ptr_r];
             sample_Q_r <= ram_Q[read_ptr_r];
@@ -159,7 +177,7 @@ module FIR #(
             write_ptr_r <= '0;
             trigger_count_r <= '0;
             start_mac_r <= '0;
-        end else begin
+        end else if (en) begin
             start_mac_r <= 1'b0;
             if (valid_in) begin
                 trigger_count_r <= trigger_count_r + 1;

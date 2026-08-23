@@ -5,8 +5,11 @@ module FIR_tb #(
     parameter int unsigned N = 4000
 );
 
+    localparam int FILL = (TAPS + DECIMATION_FACTOR - 1) / DECIMATION_FACTOR; // need to wait for ram to fill
+
     logic clk = 1'b0;
     logic rst;
+    logic en;
 
     logic [15:0] I_in;
     logic [15:0] Q_in;
@@ -26,6 +29,7 @@ module FIR_tb #(
     ) DUT (
         .clk(clk),
         .rst(rst),
+        .en(en),
         .I_in(I_in),
         .Q_in(Q_in),
         .valid_in(valid_in),
@@ -48,6 +52,7 @@ module FIR_tb #(
         I_in <= '0;
         Q_in <= '0;
         valid_in <= '0;
+        en <= 1'b0;
         rst <= 1'b1;
         repeat (5) @(posedge clk);
 
@@ -57,11 +62,16 @@ module FIR_tb #(
         for (int i = 0; i < N; i++) begin
             I_in <= stimulus[i][31:16];
             Q_in <= stimulus[i][15:0];
+            en <= 1'b1;
             valid_in <= 1'b1;
             @(posedge clk);
             valid_in <= 1'b0;
-
-            repeat (300 + ($urandom % 200)) @(posedge clk); // need to remain IDLE for at least the time it takes to MAC, plus some extra randomly
+            // disable the MAC datapath mid calculation
+            repeat ($urandom_range(20, 30)) @(posedge clk); // let the MAC start
+            en <= 1'b0;
+            repeat ($urandom_range(1, 16)) @(posedge clk); // stall for some cycles
+            en <= 1'b1;
+            repeat ($urandom_range(300, 400)) @(posedge clk); // need to remain IDLE for at least the time it takes to MAC, plus some extra randomly
         end
     end
 
@@ -70,7 +80,7 @@ module FIR_tb #(
 
         for (int i = 0; i < (N / DECIMATION_FACTOR); i++) begin
             do @(posedge clk); while (!valid_out);
-            if ({I_out, Q_out} !== model[i]) errors++;
+            if (i >= FILL && {I_out, Q_out} !== model[i]) errors++;
         end
 
         if (errors == 0) begin

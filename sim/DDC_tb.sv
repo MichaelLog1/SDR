@@ -16,11 +16,14 @@ module DDC_tb #(
 
     logic clk = 1'b0;
     logic rst;
+    logic en;
     logic [MIXER_ADC_WIDTH-1:0] adc;
     logic [NCO_PHASE_WIDTH-1:0] phase_inc;
+    logic phase_valid;
     logic [15:0] I_out;
     logic [15:0] Q_out;
     logic valid_out;
+    logic sat_s;
 
     logic [MIXER_ADC_WIDTH-1:0] stimulus [0:N-1];
 
@@ -37,11 +40,14 @@ module DDC_tb #(
     ) DUT (
         .clk(clk),
         .rst(rst),
+        .en(en),
         .adc(adc),
         .phase_inc(phase_inc),
+        .phase_valid(phase_valid),
         .I_out(I_out),
         .Q_out(Q_out),
-        .valid_out(valid_out)
+        .valid_out(valid_out),
+        .sat_s(sat_s)
     );
 
     initial begin : generate_clock
@@ -54,6 +60,7 @@ module DDC_tb #(
 
     initial begin : driver
         adc <= '0;
+        en <= 1'b0;
         phase_inc <= '0;
         rst <= 1'b1;
         repeat (5) @(posedge clk);
@@ -61,6 +68,9 @@ module DDC_tb #(
         @(negedge clk);
         rst <= 1'b0;
         phase_inc <= M;
+        phase_valid <= 1'b1;
+        en <= 1'b1;
+
 
         for (int i = 0; i < N; i++) begin
             adc <= stimulus[i];

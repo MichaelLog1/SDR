@@ -4,11 +4,13 @@ module CIC#(
 ) (
     input  logic               clk,
     input  logic               rst,
+    input  logic               en,
     input  logic signed [15:0] I_in,
     input  logic signed [15:0] Q_in,
     output logic signed [15:0] I_out,
     output logic signed [15:0] Q_out,
-    output logic               valid_out
+    output logic               valid_out,
+    output logic               clip_pulse
 );
     // integrator stage
     logic signed [71:0] integrator_I_r [STAGES];
@@ -33,6 +35,7 @@ module CIC#(
     logic valid_out_scaled_r;
     logic [$clog2(STAGES+1)-1:0] fill_r;
     logic filled;
+    logic clip_pulse_r;
 
     always_ff @(posedge clk) begin
         if (rst) begin
@@ -42,7 +45,7 @@ module CIC#(
             foreach (comb_Q_r[i])       comb_Q_r[i]       <= '0;
             foreach (comb_delay_I_r[i]) comb_delay_I_r[i] <= '0;
             foreach (comb_delay_Q_r[i]) comb_delay_Q_r[i] <= '0;
-        end else begin
+        end else if (en) begin
             integrator_I_r[0] <= integrator_I_r[0] + I_in;
             for (int i = 1; i < STAGES; i++) begin
                 integrator_I_r[i] <= integrator_I_r[i] + integrator_I_r[i-1];
@@ -77,30 +80,45 @@ module CIC#(
             valid_out_scaled_r <= '0;
             round_I_out <= '0;
             round_Q_out <= '0;
-        end else begin
+            clip_pulse_r <= 1'b0;
+        end else if (en) begin
             valid_out_scaled_r <= valid_out_r;
+            clip_pulse_r <= 1'b0;
 
             round_I = (comb_I_r[STAGES-1] + (72'sd1 << 54)) >>> 55;
-            if      (round_I > 72'sd32767)  round_I_out <= 16'sd32767;
-            else if (round_I < -72'sd32768) round_I_out <= -16'sd32768;
-            else                            round_I_out <= round_I[15:0];
+            if (round_I > 72'sd32767) begin
+                round_I_out <= 16'sd32767;
+                clip_pulse_r <= 1'b1;
+            end else if (round_I < -72'sd32768) begin
+                round_I_out <= -16'sd32768;
+                clip_pulse_r <= 1'b1;
+            end else begin
+                round_I_out <= round_I[15:0];
+            end
 
             round_Q = (comb_Q_r[STAGES-1] + (72'sd1 << 54)) >>> 55;
-            if      (round_Q > 72'sd32767)  round_Q_out <= 16'sd32767;
-            else if (round_Q < -72'sd32768) round_Q_out <= -16'sd32768;
-            else                            round_Q_out <= round_Q[15:0];
+            if (round_Q > 72'sd32767) begin
+                round_Q_out <= 16'sd32767;
+                clip_pulse_r <= 1'b1;
+            end else if (round_Q < -72'sd32768) begin
+                round_Q_out <= -16'sd32768;
+                clip_pulse_r <= 1'b1;
+            end else begin
+                round_Q_out <= round_Q[15:0];
+            end
         end
     end
 
     assign I_out = round_I_out;
     assign Q_out = round_Q_out;
-    assign valid_out = valid_out_scaled_r;
+    assign valid_out = valid_out_scaled_r & en;
+    assign clip_pulse = clip_pulse_r;
 
     // decimation counter
     always_ff @(posedge clk) begin
         if (rst) begin
             decimation_count_r <= '0;
-        end else begin
+        end else if (en) begin
             if (decimation_count_r == DECIMATION_FACTOR-1) begin
                 decimation_count_r <= '0;
             end else begin
@@ -116,7 +134,7 @@ module CIC#(
         if (rst) begin
             fill_r <= '0;
             valid_out_r <= '0;
-        end else begin
+        end else if (en) begin
             valid_out_r <= 1'b0;
 
             if (decimation_en) begin
